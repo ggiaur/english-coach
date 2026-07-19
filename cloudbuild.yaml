@@ -1,0 +1,33 @@
+steps:
+  # Build the container image
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "build"
+      - "-t"
+      - "us-central1-docker.pkg.dev/$PROJECT_ID/english-coach/app:$SHORT_SHA"
+      - "."
+
+  # Push it to Artifact Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "push"
+      - "us-central1-docker.pkg.dev/$PROJECT_ID/english-coach/app:$SHORT_SHA"
+
+  # Deploy to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      - "run"
+      - "deploy"
+      - "english-coach"
+      - "--image=us-central1-docker.pkg.dev/$PROJECT_ID/english-coach/app:$SHORT_SHA"
+      - "--region=us-central1"
+      - "--platform=managed"
+      - "--allow-unauthenticated"
+      - "--set-env-vars=GCP_PROJECT_ID=$PROJECT_ID,GCP_LOCATION=us-central1"
+
+images:
+  - "us-central1-docker.pkg.dev/$PROJECT_ID/english-coach/app:$SHORT_SHA"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
