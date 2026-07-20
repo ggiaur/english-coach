@@ -102,30 +102,44 @@ git push
 
 Nézd meg a **Cloud Build → History**-ban, hogy lefut-e a build. Ha zöld pipa, a **Cloud Run** oldalon meg fogod találni az `english-coach` szolgáltatást, és ott lesz egy publikus URL (pl. `https://english-coach-xxxxx-uc.a.run.app`).
 
-## 8. Tesztelés
+## 8. Tesztelés és Web UI használata
 
+### Webes Felület
+Nyisd meg a Cloud Run szolgáltatás URL-jét a böngésződben (pl. `https://english-coach-xxxxx-uc.a.run.app`).
+Az alkalmazás egy interaktív Web UI-t biztosít az alábbi funkciókkal:
+- **Témaválasztó:** Gyorsindító témák (Daily Standup, DevOps, Cloud, Docker, Sysadmin, Enterprise AI, Állásinterjú).
+- **Text-to-Speech (TTS):** A coach válaszainak hangos felolvasása angolul.
+- **Beszédfelismerés (STT):** Mikrofon alapú beszédbevitel.
+- **Munkamenet törlése:** Új beszélgetés indítása.
+
+### API Tesztelés (`curl`)
 ```bash
 curl -X POST https://YOUR_CLOUD_RUN_URL/chat \
   -H "Content-Type: application/json" \
-  -d '{"message": "Hi! I would like to practice a daily standup conversation."}'
+  -d '{"message": "Hi! I would like to practice a daily standup conversation.", "session_id": "my-session-1"}'
 ```
 
-## Lokális futtatás (fejlesztéshez, deploy előtt)
+## Lokális futtatás & Unit Tesztek
 
 ```bash
 cd app
 pip install -r requirements.txt
 export GCP_PROJECT_ID=YOUR_PROJECT_ID
 export GCP_LOCATION=us-central1
+export MODEL_NAME=gemini-2.0-flash
 gcloud auth application-default login   # lokális hitelesítéshez
 python main.py
 ```
 
-Ezután `http://localhost:8080/chat`-re küldhetsz POST kéréseket ugyanazzal a JSON body-val.
+### Unit tesztek futtatása:
+```bash
+python3 -m unittest discover -s app -p "test_*.py"
+```
+
+Ezután a `http://localhost:8080` címen eléred a webes felületet, a `http://localhost:8080/chat` végponton pedig a REST API-t.
 
 ## Következő lépések (ha később bővítenéd)
 
 - **Firestore**: a jelenlegi memóriában tárolt beszélgetés-history elveszik minden újraindításkor. Firestore-ral perzisztens lenne, session-ök között is megmaradna.
-- **Frontend**: egy egyszerű React/HTML felület a `curl`-özés helyett.
-- **Speech-to-Text / Text-to-Speech**: hogy hangosan is lehessen beszélgetni vele, ne csak gépelve.
 - **Autentikáció**: jelenleg `--allow-unauthenticated` van beállítva, tehát bárki elérheti az URL-t, ha megtalálja. Személyes projektként egyelőre elfogadható, de ha publikálod valahol az URL-t, érdemes lesz auth-ot rátenni.
+
