@@ -57,6 +57,45 @@ class TestEnglishCoach(unittest.TestCase):
             self.assertIn("Failed to communicate with AI model", data["error"])
 
     @patch("google.genai.Client")
+    def test_chat_message_length_limit(self, mock_genai_client):
+        import main
+        with main.app.test_client() as client:
+            long_msg = "a" * 4001
+            res = client.post("/chat", json={"message": long_msg})
+            self.assertEqual(res.status_code, 400)
+            self.assertIn("exceeds maximum length", res.get_json()["error"])
+
+    @patch("google.genai.Client")
+    def test_summary_empty_history(self, mock_genai_client):
+        import main
+        with main.app.test_client() as client:
+            res = client.post("/summary", json={"session_id": "non-existent-session"})
+            self.assertEqual(res.status_code, 400)
+            self.assertIn("No conversation history found", res.get_json()["error"])
+
+    @patch("google.genai.Client")
+    def test_summary_success(self, mock_genai_client):
+        import main
+        mock_instance = MagicMock()
+        mock_genai_client.return_value = mock_instance
+        main._client = mock_instance
+
+        mock_resp = MagicMock()
+        mock_resp.text = "Hello!"
+        mock_summary_resp = MagicMock()
+        mock_summary_resp.text = "Summary: 1) Great standup progress!"
+        mock_instance.models.generate_content.side_effect = [mock_resp, mock_summary_resp]
+
+        with main.app.test_client() as client:
+            # First send a chat message
+            client.post("/chat", json={"message": "I worked on CI/CD yesterday.", "session_id": "test-sum-1"})
+            # Request summary
+            res = client.post("/summary", json={"session_id": "test-sum-1"})
+            self.assertEqual(res.status_code, 200)
+            data = res.get_json()
+            self.assertEqual(data["summary"], "Summary: 1) Great standup progress!")
+
+    @patch("google.genai.Client")
     def test_reset_endpoint(self, mock_genai_client):
         import main
         with main.app.test_client() as client:
@@ -68,4 +107,5 @@ class TestEnglishCoach(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
 

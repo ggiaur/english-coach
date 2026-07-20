@@ -99,41 +99,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Handle Reset Button
-    resetBtn.addEventListener('click', async () => {
-        if (!confirm('Biztosan új beszélgetést szeretnél indítani?')) return;
+    const summaryBtn = document.getElementById('summary-btn');
 
-        try {
-            await fetch('/reset', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ session_id: sessionId })
-            });
+    // Handle Summary Button
+    if (summaryBtn) {
+        summaryBtn.addEventListener('click', async () => {
+            if (messageCount === 0) {
+                alert('Még nem küldtél üzenetet a mai munkamenetben.');
+                return;
+            }
 
-            // Generate new session ID
-            sessionId = generateUUID();
-            localStorage.setItem('english_coach_session_id', sessionId);
-            messageCount = 0;
-            msgCountElem.textContent = '0';
-            localStorage.setItem('english_coach_msg_count', '0');
+            const loadingCard = createLoadingCard();
+            messagesFeed.appendChild(loadingCard);
+            scrollToBottom();
 
-            // Clear feed except welcome card
-            messagesFeed.innerHTML = `
-                <div class="message-card coach-message welcome-card">
-                    <div class="message-header">
-                        <span class="sender-name">English Coach</span>
-                        <span class="time-stamp">Új munkamenet</span>
-                    </div>
-                    <div class="message-content">
-                        <p>Hi! 👋 I've reset our conversation history.</p>
-                        <p>Which topic would you like to practice today?</p>
-                    </div>
-                </div>
-            `;
-        } catch (err) {
-            alert('A munkamenet törlése nem sikerült: ' + err.message);
-        }
-    });
+            try {
+                const response = await fetch('/summary', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Session-ID': sessionId
+                    },
+                    body: JSON.stringify({ session_id: sessionId })
+                });
+
+                loadingCard.remove();
+
+                if (!response.ok) {
+                    const errData = await response.json();
+                    appendMessage('coach', `⚠️ *Hiba:* ${errData.details || errData.error || 'Nem sikerült legenerálni az összefoglalót.'}`);
+                    return;
+                }
+
+                const data = await response.json();
+                appendMessage('coach', data.summary, true);
+
+                if (isTTSEnabled) {
+                    speakText(data.summary);
+                }
+            } catch (err) {
+                loadingCard.remove();
+                appendMessage('coach', `⚠️ *Kapcsolódási Hiba:* ${err.message}`);
+            }
+        });
+    }
 
     // Topic Selection
     topicChips.forEach(chip => {
@@ -183,16 +192,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Helper Functions
-    function appendMessage(sender, rawText) {
+    function appendMessage(sender, rawText, isSummary = false) {
         const card = document.createElement('div');
-        card.className = `message-card ${sender === 'user' ? 'user-message' : 'coach-message'}`;
+        const cardClass = sender === 'user' ? 'user-message' : (isSummary ? 'coach-message summary-card' : 'coach-message');
+        card.className = `message-card ${cardClass}`;
 
         const formattedHtml = typeof marked !== 'undefined' ? marked.parse(rawText) : escapeHtml(rawText);
         const timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const senderTitle = sender === 'user' ? 'Te' : (isSummary ? 'English Coach — Munkamenet Összegzés 📊' : 'English Coach');
 
         card.innerHTML = `
             <div class="message-header">
-                <span class="sender-name">${sender === 'user' ? 'Te' : 'English Coach'}</span>
+                <span class="sender-name">${senderTitle}</span>
                 <span class="time-stamp">${timeNow}</span>
             </div>
             <div class="message-content">${formattedHtml}</div>
