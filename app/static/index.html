@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Coach — IT Workplace Speaking Partner</title>
+    <meta name="description" content="Személyes AI angol beszédcoach IT szakembereknek Vertex AI Gemini támogatással.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12L2.1 12a10 10 0 0 0 9.9 9.9V12z"/><path d="M20 12A8 8 0 1 0 4 12"/></svg>
+                </div>
+                <div class="brand-title">
+                    <h2>English Coach</h2>
+                    <span class="badge">IT Edition</span>
+                </div>
+            </div>
+
+            <!-- New Session Button -->
+            <button class="btn btn-secondary new-session-btn" id="reset-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                Új Beszélgetés
+            </button>
+
+            <!-- Topic Selector Section -->
+            <div class="sidebar-section">
+                <h3 class="section-title">Gyakorlási Témák</h3>
+                <div class="topic-grid" id="topic-grid">
+                    <button class="topic-chip active" data-topic="Daily standups & status updates">
+                        <span class="icon">📋</span> Daily Standup
+                    </button>
+                    <button class="topic-chip" data-topic="DevOps workflows, CI/CD pipelines and incident response">
+                        <span class="icon">🚀</span> DevOps & CI/CD
+                    </button>
+                    <button class="topic-chip" data-topic="Cloud architecture with AWS and Azure">
+                        <span class="icon">☁️</span> Cloud (AWS/Azure)
+                    </button>
+                    <button class="topic-chip" data-topic="Docker, Kubernetes and containerization">
+                        <span class="icon">🐳</span> Docker & Containers
+                    </button>
+                    <button class="topic-chip" data-topic="Linux and Windows system administration">
+                        <span class="icon">💻</span> Sysadmin
+                    </button>
+                    <button class="topic-chip" data-topic="AI in the enterprise and rollout strategies">
+                        <span class="icon">🤖</span> Enterprise AI
+                    </button>
+                    <button class="topic-chip" data-topic="IT Job interview practice">
+                        <span class="icon">💼</span> Állásinterjú
+                    </button>
+                </div>
+            </div>
+
+            <!-- Session Statistics & Vocabulary -->
+            <div class="sidebar-section">
+                <h3 class="section-title">Munkamenet Áttekintés</h3>
+                <div class="insights-card">
+                    <div class="stat-row">
+                        <span class="stat-label">Beszélt üzenetek:</span>
+                        <span class="stat-value" id="msg-count">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Modell:</span>
+                        <span class="stat-value highlight">Gemini 2.0 Flash</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Célszint:</span>
+                        <span class="stat-value">A2 – B1 (Gördülékeny)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Helpful Tips Card -->
+            <div class="tip-box">
+                <h4>💡 Tipp a gyakorláshoz</h4>
+                <p>Ne aggódj a hibák miatt! A Coach csak a legfontosabb 2-3 hibát emeli ki, hogy megmaradjon a beszélgetés lendülete.</p>
+            </div>
+        </aside>
+
+        <!-- Main Chat View -->
+        <main class="chat-container">
+            <!-- Header Bar -->
+            <header class="chat-header">
+                <div class="header-left">
+                    <button class="mobile-toggle" id="sidebar-toggle" aria-label="Toggle Sidebar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <div class="coach-avatar">
+                        <div class="avatar-img">🇬🇧</div>
+                        <div class="online-indicator"></div>
+                    </div>
+                    <div class="header-info">
+                        <h1 id="active-topic-title">Daily Standup Practice</h1>
+                        <p class="status-text"><span class="pulse"></span> AI Coach aktív – IT Workplace English</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="tts-toggle" title="Hangos válaszok ki/bekapcsolása">
+                        <svg class="speaker-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Chat Messages Feed -->
+            <div class="messages-feed" id="messages-feed">
+                <!-- Welcome Message Card -->
+                <div class="message-card coach-message welcome-card">
+                    <div class="message-header">
+                        <span class="sender-name">English Coach</span>
+                        <span class="time-stamp">Most</span>
+                    </div>
+                    <div class="message-content">
+                        <p>Hi there! 👋 Welcome to your IT English speaking session.</p>
+                        <p>I'm your personal coach. Today we can focus on **Daily Standups**, **DevOps**, **Cloud Infrastructure**, or any other IT topic you'd like to practice.</p>
+                        <p>What did you work on yesterday, or what topic would you like to start with today?</p>
+                    </div>
+                    <div class="quick-prompts">
+                        <button class="prompt-btn" data-text="Hi! Yesterday I worked on fixing a bug in our Docker deployment pipeline.">
+                            🐳 Docker pipeline bug-fix
+                        </button>
+                        <button class="prompt-btn" data-text="Hello! I would like to practice explaining a delay in our sprint release.">
+                            ⏱️ Sprint delay magyarázata
+                        </button>
+                        <button class="prompt-btn" data-text="Hi! Can we practice an IT Job interview for a Cloud Engineer position?">
+                            💼 Cloud Engineer állásinterjú
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input Area -->
+            <footer class="chat-footer">
+                <form class="input-form" id="chat-form">
+                    <button type="button" class="btn-voice" id="voice-btn" title="Beszédfelismerés (Mikrofon)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+                    </button>
+                    <textarea class="message-input" id="user-input" placeholder="Írj angolul (pl: 'Yesterday I created a new CI/CD pipeline...')" rows="1" required></textarea>
+                    <button type="submit" class="btn btn-primary send-btn" id="send-btn">
+                        <span>Küldés</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                </form>
+                <div class="input-footer-hint">
+                    Tipp: A billentyűzeten nyomj <code>Enter</code>-t a küldéshez, vagy <code>Shift + Enter</code>-t új sorért.
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
