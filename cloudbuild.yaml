@@ -7,6 +7,13 @@ steps:
       - "us-central1-docker.pkg.dev/$PROJECT_ID/english-coach/app:$SHORT_SHA"
       - "."
 
+  # Configure docker auth for Artifact Registry
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - "gcloud auth configure-docker us-central1-docker.pkg.dev --quiet"
+
   # Push it to Artifact Registry
   - name: "gcr.io/cloud-builders/docker"
     args:
@@ -28,6 +35,3 @@ steps:
 
 images:
   - "us-central1-docker.pkg.dev/$PROJECT_ID/english-coach/app:$SHORT_SHA"
-
-options:
-  logging: CLOUD_LOGGING_ONLY
