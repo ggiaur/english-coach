@@ -9,7 +9,7 @@ Minden fejlesztési lépés, architekturális döntés, elvégzett tesztelés é
 ### 🌟 Főbb Fejlesztések
 
 #### 1. **Modell & Backend Továbbfejlesztések (`app/main.py`)**
-- **Alapértelmezett Modell:** Frissítve a Vertex AI `gemini-2.0-flash` modellre a gyorsabb válaszidők és jobb strukturált kimenet érdekében.
+- **Alapértelmezett Modell:** Frissítve a legújabb Vertex AI `gemini-2.5-flash` modellre a kiemelkedő válaszidő és intelligencia érdekében.
 - **Session azonosítás:** Kérés JSON body (`session_id`) és HTTP fejlécek (`X-Session-ID`) támogatása (fallback Flask session cookie-ra).
 - **Munkamenet Összegző Végpont (`/summary`):** Új API végpont, amely a prompt definíció alapján kéri le a munkamenet végén az összefoglalót (fejlődés, javított hibák, új szavak, házi feladat).
 - **Előzmény-korlátozás (Context Window Pruning):** A memóriában tárolt előzmények automatikus szűkítése az utolsó 40 üzenetre (20 párbeszéd fordulóra) a megbízható és gyors hívásokért.

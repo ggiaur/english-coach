@@ -11,7 +11,7 @@ class TestEnglishCoach(unittest.TestCase):
     @patch("google.genai.Client")
     def test_model_name_default(self, mock_genai_client):
         import main
-        self.assertEqual(main.MODEL_NAME, "gemini-2.0-flash")
+        self.assertEqual(main.MODEL_NAME, "gemini-2.5-flash")
 
     @patch("google.genai.Client")
     def test_health_endpoint(self, mock_genai_client):
@@ -40,7 +40,7 @@ class TestEnglishCoach(unittest.TestCase):
 
             mock_instance.models.generate_content.assert_called_once()
             call_kwargs = mock_instance.models.generate_content.call_args.kwargs
-            self.assertEqual(call_kwargs.get("model"), "gemini-2.0-flash")
+            self.assertEqual(call_kwargs.get("model"), "gemini-2.5-flash")
 
     @patch("google.genai.Client")
     def test_chat_endpoint_error_handling(self, mock_genai_client):

@@ -18,7 +18,7 @@ VERSION = "1.2.0"
 
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 LOCATION = os.environ.get("GCP_LOCATION", "us-central1")
-MODEL_NAME = os.environ.get("MODEL_NAME", "gemini-2.0-flash")
+MODEL_NAME = os.environ.get("MODEL_NAME", "gemini-2.5-flash")
 
 MAX_HISTORY_ITEMS = 40  # Max 20 pairs of messages to keep context focused and fast
 MAX_MESSAGE_LENGTH = 4000

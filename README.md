@@ -126,7 +126,7 @@ cd app
 pip install -r requirements.txt
 export GCP_PROJECT_ID=YOUR_PROJECT_ID
 export GCP_LOCATION=us-central1
-export MODEL_NAME=gemini-2.0-flash
+export MODEL_NAME=gemini-2.5-flash
 gcloud auth application-default login   # lokális hitelesítéshez
 python main.py
 ```
