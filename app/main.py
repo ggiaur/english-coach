@@ -14,6 +14,8 @@ logger = logging.getLogger("english-coach")
 app = Flask(__name__, static_folder="static", static_url_path="")
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev-secret-change-me")
 
+VERSION = "1.2.0"
+
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 LOCATION = os.environ.get("GCP_LOCATION", "us-central1")
 MODEL_NAME = os.environ.get("MODEL_NAME", "gemini-2.0-flash")
@@ -60,12 +62,12 @@ def get_session_id(req_data: dict = None) -> str:
 def index():
     if os.path.exists(os.path.join(app.static_folder, "index.html")):
         return send_from_directory(app.static_folder, "index.html")
-    return jsonify({"status": "ok", "service": "english-coach"})
+    return jsonify({"status": "ok", "service": "english-coach", "version": VERSION})
 
 
 @app.route("/health", methods=["GET"])
 def health():
-    return jsonify({"status": "ok", "service": "english-coach"})
+    return jsonify({"status": "ok", "service": "english-coach", "version": VERSION})
 
 
 @app.route("/chat", methods=["POST", "OPTIONS"])

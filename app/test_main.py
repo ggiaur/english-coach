@@ -19,7 +19,7 @@ class TestEnglishCoach(unittest.TestCase):
         with main.app.test_client() as client:
             res = client.get("/health")
             self.assertEqual(res.status_code, 200)
-            self.assertEqual(res.get_json(), {"status": "ok", "service": "english-coach"})
+            self.assertEqual(res.get_json(), {"status": "ok", "service": "english-coach", "version": "1.2.0"})
 
     @patch("google.genai.Client")
     def test_chat_endpoint_uses_correct_model(self, mock_genai_client):
