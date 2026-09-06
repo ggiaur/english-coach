@@ -13,6 +13,30 @@ class TestEnglishCoach(unittest.TestCase):
         import main
         self.assertEqual(main.MODEL_NAME, "gemini-2.5-flash")
 
+    def test_coach_prompt_enforces_four_pass_speaking_drill(self):
+        from coach_prompt import SYSTEM_PROMPT
+        required_phrases = [
+            "Very slow pass 1",
+            "Very slow pass 2",
+            "Medium-speed pass",
+            "Natural-speed pass",
+            "affirmative statement",
+            "negative statement",
+            "question-and-answer mini-story drills",
+            "definition in simple English",
+        ]
+        for phrase in required_phrases:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, SYSTEM_PROMPT)
+
+    def test_coach_prompt_prioritizes_realistic_it_support_language(self):
+        from coach_prompt import SYSTEM_PROMPT
+        self.assertIn("Excel problems", SYSTEM_PROMPT)
+        self.assertIn("password resets", SYSTEM_PROMPT)
+        self.assertIn("remote assistance", SYSTEM_PROMPT)
+        self.assertIn("what error message the user sees", SYSTEM_PROMPT)
+        self.assertIn("requesting a restart", SYSTEM_PROMPT)
+
     @patch("google.genai.Client")
     def test_health_endpoint(self, mock_genai_client):
         import main
@@ -107,5 +131,3 @@ class TestEnglishCoach(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
