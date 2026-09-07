@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="stat-label">Practice pace:</span>
                 <span class="stat-value" id="progress-pace">—</span>
             </div>
+            <div id="progress-review-wrap" style="display:none; margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,.1);">
+                <div class="stat-label" style="margin-bottom:6px;">Practice again</div>
+                <div id="progress-review-items"></div>
+                <div style="font-size:.74rem; opacity:.68; margin-top:6px; line-height:1.35;">Your coach will reuse these in the next session until they become natural.</div>
+            </div>
             <div id="progress-latest-wrap" style="display:none; margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,.1);">
                 <div class="stat-label" style="margin-bottom:6px;">Latest coach note</div>
                 <div id="progress-latest-summary" style="font-size:.82rem; line-height:1.45; opacity:.92; max-height:8.6em; overflow:hidden;"></div>
@@ -49,6 +54,35 @@ document.addEventListener('DOMContentLoaded', () => {
             .slice(0, 360);
     }
 
+    function renderReviewItems(items) {
+        const wrap = document.getElementById('progress-review-wrap');
+        const container = document.getElementById('progress-review-items');
+        container.replaceChildren();
+        if (!Array.isArray(items) || items.length === 0) {
+            wrap.style.display = 'none';
+            return;
+        }
+        items.slice(-3).reverse().forEach(item => {
+            const row = document.createElement('div');
+            row.style.cssText = 'font-size:.8rem; line-height:1.4; margin-bottom:7px;';
+            const oldForm = document.createElement('div');
+            oldForm.style.cssText = 'opacity:.65; text-decoration:line-through;';
+            oldForm.textContent = item.phrase || '';
+            const betterForm = document.createElement('div');
+            betterForm.style.cssText = 'font-weight:600;';
+            betterForm.textContent = `→ ${item.correction || ''}`;
+            row.append(oldForm, betterForm);
+            if (item.note) {
+                const note = document.createElement('div');
+                note.style.cssText = 'font-size:.72rem; opacity:.68; margin-top:1px;';
+                note.textContent = item.note;
+                row.appendChild(note);
+            }
+            container.appendChild(row);
+        });
+        wrap.style.display = 'block';
+    }
+
     async function loadProgress() {
         const headers = sessionId ? { 'X-Session-ID': sessionId } : {};
         try {
@@ -61,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('progress-session-count').textContent = data.practice_count || 0;
             document.getElementById('progress-focus').textContent = (preferences.focus || 'it-support').replaceAll('-', ' ');
             document.getElementById('progress-pace').textContent = (preferences.pace || 'four-pass').replaceAll('-', ' ');
+            renderReviewItems(data.review_items || []);
 
             const latest = compactSummary(summaries[summaries.length - 1]);
             const latestWrap = document.getElementById('progress-latest-wrap');

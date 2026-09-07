@@ -10,6 +10,7 @@ _LOCK = threading.Lock()
 _DEFAULT_STATE = {
     "preferences": {},
     "session_summaries": [],
+    "review_items": [],
     "practice_count": 0,
 }
 
@@ -33,6 +34,22 @@ def _write_all(data: dict) -> None:
     os.replace(tmp_path, STATE_PATH)
 
 
+def _clean_review_items(items) -> list[dict[str, str]]:
+    clean: list[dict[str, str]] = []
+    if not isinstance(items, list):
+        return clean
+    for item in items[-8:]:
+        if not isinstance(item, dict):
+            continue
+        phrase = str(item.get("phrase", "")).strip()[:240]
+        correction = str(item.get("correction", "")).strip()[:240]
+        note = str(item.get("note", "")).strip()[:240]
+        if not phrase or not correction:
+            continue
+        clean.append({"phrase": phrase, "correction": correction, "note": note})
+    return clean
+
+
 def load_learner_state(session_id: str) -> dict:
     with _LOCK:
         state = _read_all().get(session_id, {})
@@ -42,6 +59,7 @@ def load_learner_state(session_id: str) -> dict:
             merged["preferences"].update(state["preferences"])
         if isinstance(state.get("session_summaries"), list):
             merged["session_summaries"] = [str(item) for item in state["session_summaries"][-5:]]
+        merged["review_items"] = _clean_review_items(state.get("review_items", []))
         if isinstance(state.get("practice_count"), int):
             merged["practice_count"] = max(0, state["practice_count"])
     return merged
@@ -51,6 +69,7 @@ def save_learner_state(session_id: str, state: dict) -> None:
     clean = {
         "preferences": dict(state.get("preferences", {})),
         "session_summaries": [str(item) for item in state.get("session_summaries", [])[-5:]],
+        "review_items": _clean_review_items(state.get("review_items", [])),
         "practice_count": max(0, int(state.get("practice_count", 0))),
     }
     with _LOCK:
