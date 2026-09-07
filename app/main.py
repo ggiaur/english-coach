@@ -14,7 +14,7 @@ logger = logging.getLogger("english-coach")
 app = Flask(__name__, static_folder="static", static_url_path="")
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev-secret-change-me")
 
-VERSION = "1.2.0"
+VERSION = "1.3.0"
 
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 LOCATION = os.environ.get("GCP_LOCATION", "us-central1")
@@ -23,8 +23,20 @@ MODEL_NAME = os.environ.get("MODEL_NAME", "gemini-2.5-flash")
 MAX_HISTORY_ITEMS = 40  # Max 20 pairs of messages to keep context focused and fast
 MAX_MESSAGE_LENGTH = 4000
 
+DEFAULT_PREFERENCES = {
+    "pace": "four-pass",
+    "focus": "it-support",
+    "correction_style": "brief",
+}
+ALLOWED_PREFERENCES = {
+    "pace": {"four-pass", "slow", "natural"},
+    "focus": {"it-support", "general", "interview"},
+    "correction_style": {"brief", "detailed"},
+}
+
 # Initialize client lazily or with graceful fallback for testing/dev
 _client = None
+
 
 def get_client():
     global _client
@@ -36,8 +48,11 @@ def get_client():
         )
     return _client
 
-# In-memory conversation store, keyed by session id.
+
+# In-memory session stores. These intentionally share the same explicit session id so
+# a browser/client can keep practice configuration stable across chat requests.
 CONVERSATIONS: dict[str, list[types.Content]] = {}
+SESSION_PREFERENCES: dict[str, dict[str, str]] = {}
 
 
 @app.after_request
@@ -58,6 +73,35 @@ def get_session_id(req_data: dict = None) -> str:
     return session["session_id"]
 
 
+def get_preferences(sid: str) -> dict[str, str]:
+    return SESSION_PREFERENCES.setdefault(sid, dict(DEFAULT_PREFERENCES))
+
+
+def update_preferences(sid: str, payload: dict) -> tuple[dict[str, str], list[str]]:
+    current = get_preferences(sid)
+    errors = []
+    for key, allowed_values in ALLOWED_PREFERENCES.items():
+        if key not in payload:
+            continue
+        value = payload[key]
+        if value not in allowed_values:
+            errors.append(f"{key} must be one of: {', '.join(sorted(allowed_values))}")
+            continue
+        current[key] = value
+    return current, errors
+
+
+def build_system_prompt(sid: str) -> str:
+    prefs = get_preferences(sid)
+    return (
+        f"{SYSTEM_PROMPT}\n\n"
+        "SESSION PRACTICE PROFILE (follow unless the learner explicitly asks otherwise):\n"
+        f"- pace: {prefs['pace']}\n"
+        f"- focus: {prefs['focus']}\n"
+        f"- correction style: {prefs['correction_style']}\n"
+    )
+
+
 @app.route("/", methods=["GET"])
 def index():
     if os.path.exists(os.path.join(app.static_folder, "index.html")):
@@ -68,6 +112,23 @@ def index():
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "ok", "service": "english-coach", "version": VERSION})
+
+
+@app.route("/preferences", methods=["GET", "POST", "OPTIONS"])
+def preferences():
+    if request.method == "OPTIONS":
+        return jsonify({}), 200
+
+    data = request.get_json(silent=True) or {}
+    sid = get_session_id(data)
+
+    if request.method == "GET":
+        return jsonify({"session_id": sid, "preferences": get_preferences(sid)})
+
+    updated, errors = update_preferences(sid, data)
+    if errors:
+        return jsonify({"error": "invalid preferences", "details": errors}), 400
+    return jsonify({"session_id": sid, "preferences": updated})
 
 
 @app.route("/chat", methods=["POST", "OPTIONS"])
@@ -102,7 +163,7 @@ def chat():
             model=MODEL_NAME,
             contents=history,
             config=types.GenerateContentConfig(
-                system_instruction=SYSTEM_PROMPT,
+                system_instruction=build_system_prompt(sid),
                 temperature=0.8,
             ),
         )
@@ -113,7 +174,7 @@ def chat():
             types.Content(role="model", parts=[types.Part(text=reply_text)])
         )
 
-        return jsonify({"reply": reply_text, "session_id": sid})
+        return jsonify({"reply": reply_text, "session_id": sid, "preferences": get_preferences(sid)})
     except Exception as e:
         logger.error(f"Error calling Gemini API: {e}", exc_info=True)
         # Remove failed user message from history to keep it clean
@@ -135,7 +196,7 @@ def summary():
         return jsonify({"error": "No conversation history found for this session"}), 400
 
     summary_prompt = "Please provide the final session summary now: 1) Biggest improvement today, 2) 2-3 key mistakes to remember with corrections, 3) 3-5 useful new IT expressions from our talk, 4) A small homework task for tomorrow."
-    
+
     # Create temporary payload with prompt request
     temp_contents = list(history) + [types.Content(role="user", parts=[types.Part(text=summary_prompt)])]
 
@@ -145,7 +206,7 @@ def summary():
             model=MODEL_NAME,
             contents=temp_contents,
             config=types.GenerateContentConfig(
-                system_instruction=SYSTEM_PROMPT,
+                system_instruction=build_system_prompt(sid),
                 temperature=0.7,
             ),
         )
@@ -156,7 +217,7 @@ def summary():
         history.append(types.Content(role="user", parts=[types.Part(text=summary_prompt)]))
         history.append(types.Content(role="model", parts=[types.Part(text=summary_text)]))
 
-        return jsonify({"summary": summary_text, "session_id": sid})
+        return jsonify({"summary": summary_text, "session_id": sid, "preferences": get_preferences(sid)})
     except Exception as e:
         logger.error(f"Error generating session summary: {e}", exc_info=True)
         return jsonify({"error": "Failed to generate session summary", "details": str(e)}), 500
@@ -170,11 +231,10 @@ def reset():
     data = request.get_json(silent=True) or {}
     sid = get_session_id(data)
     CONVERSATIONS.pop(sid, None)
+    SESSION_PREFERENCES.pop(sid, None)
     return jsonify({"status": "reset", "session_id": sid})
 
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port, debug=True)
-
-
