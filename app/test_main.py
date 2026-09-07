@@ -44,7 +44,7 @@ class TestEnglishCoach(unittest.TestCase):
         with main.app.test_client() as client:
             res = client.get("/health")
             self.assertEqual(res.status_code, 200)
-            self.assertEqual(res.get_json(), {"status": "ok", "service": "english-coach", "version": "1.4.0"})
+            self.assertEqual(res.get_json(), {"status": "ok", "service": "english-coach", "version": "1.5.0"})
 
     @patch("google.genai.Client")
     def test_preferences_default_and_update_are_session_scoped(self, mock_genai_client):
@@ -156,7 +156,10 @@ class TestEnglishCoach(unittest.TestCase):
         mock_resp = MagicMock()
         mock_resp.text = "Hello!"
         mock_summary_resp = MagicMock()
-        mock_summary_resp.text = "Summary: 1) Great standup progress!"
+        mock_summary_resp.text = (
+            "Summary: 1) Great standup progress!\n"
+            "MEMORY_ITEM: I have problem with Excel || I have a problem with Excel || Use an article before a singular countable noun."
+        )
         mock_instance.models.generate_content.side_effect = [mock_resp, mock_summary_resp]
 
         with main.app.test_client() as client:
@@ -165,6 +168,7 @@ class TestEnglishCoach(unittest.TestCase):
             self.assertEqual(res.status_code, 200)
             data = res.get_json()
             self.assertEqual(data["summary"], "Summary: 1) Great standup progress!")
+            self.assertEqual(data["progress"]["review_items"][0]["correction"], "I have a problem with Excel")
 
     @patch("google.genai.Client")
     def test_reset_endpoint_clears_history_and_preferences(self, mock_genai_client):
