@@ -41,11 +41,7 @@ _client = None
 def get_client():
     global _client
     if _client is None:
-        _client = genai.Client(
-            vertexai=True,
-            project=PROJECT_ID,
-            location=LOCATION,
-        )
+        _client = genai.Client(vertexai=True, project=PROJECT_ID, location=LOCATION)
     return _client
 
 
@@ -156,7 +152,6 @@ def preferences():
 
     data = request.get_json(silent=True) or {}
     sid = get_session_id(data)
-
     if request.method == "GET":
         return jsonify({"session_id": sid, "preferences": get_preferences(sid)})
 
@@ -181,42 +176,27 @@ def chat():
 
     data = request.get_json(silent=True) or {}
     user_message = data.get("message", "").strip()
-
     if not user_message:
         return jsonify({"error": "message is required"}), 400
-
     if len(user_message) > MAX_MESSAGE_LENGTH:
         return jsonify({"error": f"message exceeds maximum length of {MAX_MESSAGE_LENGTH} characters"}), 400
 
     sid = get_session_id(data)
     history = CONVERSATIONS.setdefault(sid, [])
-
     history.append(types.Content(role="user", parts=[types.Part(text=user_message)]))
-
     if len(history) > MAX_HISTORY_ITEMS:
         CONVERSATIONS[sid] = history[-MAX_HISTORY_ITEMS:]
         history = CONVERSATIONS[sid]
 
     try:
-        genai_client = get_client()
-        response = genai_client.models.generate_content(
+        response = get_client().models.generate_content(
             model=MODEL_NAME,
             contents=history,
-            config=types.GenerateContentConfig(
-                system_instruction=build_system_prompt(sid),
-                temperature=0.8,
-            ),
+            config=types.GenerateContentConfig(system_instruction=build_system_prompt(sid), temperature=0.8),
         )
-
         reply_text = getattr(response, "text", None) or "I'm sorry, I could not generate a response. Please try again."
         history.append(types.Content(role="model", parts=[types.Part(text=reply_text)]))
-
-        return jsonify({
-            "reply": reply_text,
-            "session_id": sid,
-            "preferences": get_preferences(sid),
-            "progress": progress_payload(sid),
-        })
+        return jsonify({"reply": reply_text, "session_id": sid, "preferences": get_preferences(sid), "progress": progress_payload(sid)})
     except Exception as e:
         logger.error(f"Error calling Gemini API: {e}", exc_info=True)
         if history and history[-1].role == "user" and history[-1].parts[0].text == user_message:
@@ -232,7 +212,6 @@ def summary():
     data = request.get_json(silent=True) or {}
     sid = get_session_id(data)
     history = CONVERSATIONS.get(sid, [])
-
     if not history:
         return jsonify({"error": "No conversation history found for this session"}), 400
 
@@ -244,16 +223,11 @@ def summary():
     temp_contents = list(history) + [types.Content(role="user", parts=[types.Part(text=summary_prompt)])]
 
     try:
-        genai_client = get_client()
-        response = genai_client.models.generate_content(
+        response = get_client().models.generate_content(
             model=MODEL_NAME,
             contents=temp_contents,
-            config=types.GenerateContentConfig(
-                system_instruction=build_system_prompt(sid),
-                temperature=0.7,
-            ),
+            config=types.GenerateContentConfig(system_instruction=build_system_prompt(sid), temperature=0.7),
         )
-
         summary_text = getattr(response, "text", None) or "Session summary generated."
         history.append(types.Content(role="user", parts=[types.Part(text=summary_prompt)]))
         history.append(types.Content(role="model", parts=[types.Part(text=summary_text)]))
@@ -266,12 +240,7 @@ def summary():
         learner_state["preferences"] = dict(get_preferences(sid))
         save_learner_state(sid, learner_state)
 
-        return jsonify({
-            "summary": summary_text,
-            "session_id": sid,
-            "preferences": get_preferences(sid),
-            "progress": progress_payload(sid),
-        })
+        return jsonify({"summary": summary_text, "session_id": sid, "preferences": get_preferences(sid), "progress": progress_payload(sid)})
     except Exception as e:
         logger.error(f"Error generating session summary: {e}", exc_info=True)
         return jsonify({"error": "Failed to generate session summary", "details": str(e)}), 500
@@ -289,11 +258,11 @@ def reset():
     SESSION_PREFERENCES.pop(sid, None)
     if clear_progress:
         delete_learner_state(sid)
-    return jsonify({
-        "status": "reset",
-        "session_id": sid,
-        "progress_preserved": not clear_progress,
-    })
+    else:
+        learner_state = load_learner_state(sid)
+        learner_state["preferences"] = {}
+        save_learner_state(sid, learner_state)
+    return jsonify({"status": "reset", "session_id": sid, "progress_preserved": not clear_progress})
 
 
 if __name__ == "__main__":
