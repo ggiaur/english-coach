@@ -6,6 +6,7 @@ import sys
 # Add app directory to sys.path
 sys.path.insert(0, os.path.dirname(__file__))
 
+
 class TestEnglishCoach(unittest.TestCase):
 
     @patch("google.genai.Client")
@@ -43,11 +44,51 @@ class TestEnglishCoach(unittest.TestCase):
         with main.app.test_client() as client:
             res = client.get("/health")
             self.assertEqual(res.status_code, 200)
-            self.assertEqual(res.get_json(), {"status": "ok", "service": "english-coach", "version": "1.2.0"})
+            self.assertEqual(res.get_json(), {"status": "ok", "service": "english-coach", "version": "1.3.0"})
 
     @patch("google.genai.Client")
-    def test_chat_endpoint_uses_correct_model(self, mock_genai_client):
+    def test_preferences_default_and_update_are_session_scoped(self, mock_genai_client):
         import main
+        main.SESSION_PREFERENCES.clear()
+        with main.app.test_client() as client:
+            default_res = client.get("/preferences", headers={"X-Session-ID": "prefs-a"})
+            self.assertEqual(default_res.status_code, 200)
+            self.assertEqual(
+                default_res.get_json()["preferences"],
+                {"pace": "four-pass", "focus": "it-support", "correction_style": "brief"},
+            )
+
+            update_res = client.post(
+                "/preferences",
+                json={
+                    "session_id": "prefs-a",
+                    "pace": "slow",
+                    "focus": "interview",
+                    "correction_style": "detailed",
+                },
+            )
+            self.assertEqual(update_res.status_code, 200)
+            self.assertEqual(update_res.get_json()["preferences"]["pace"], "slow")
+
+            other_res = client.get("/preferences", headers={"X-Session-ID": "prefs-b"})
+            self.assertEqual(other_res.get_json()["preferences"]["pace"], "four-pass")
+
+    @patch("google.genai.Client")
+    def test_preferences_reject_invalid_values(self, mock_genai_client):
+        import main
+        with main.app.test_client() as client:
+            res = client.post(
+                "/preferences",
+                json={"session_id": "prefs-invalid", "pace": "extreme"},
+            )
+            self.assertEqual(res.status_code, 400)
+            self.assertEqual(res.get_json()["error"], "invalid preferences")
+
+    @patch("google.genai.Client")
+    def test_chat_endpoint_uses_correct_model_and_session_preferences(self, mock_genai_client):
+        import main
+        main.CONVERSATIONS.clear()
+        main.SESSION_PREFERENCES.clear()
         mock_instance = MagicMock()
         mock_genai_client.return_value = mock_instance
         main._client = mock_instance
@@ -56,15 +97,23 @@ class TestEnglishCoach(unittest.TestCase):
         mock_instance.models.generate_content.return_value = mock_response
 
         with main.app.test_client() as client:
+            client.post(
+                "/preferences",
+                json={"session_id": "test-session-123", "pace": "slow", "focus": "interview"},
+            )
             res = client.post("/chat", json={"message": "Hi!", "session_id": "test-session-123"})
             self.assertEqual(res.status_code, 200)
             data = res.get_json()
             self.assertEqual(data["reply"], "Hello! Ready for standup practice?")
             self.assertEqual(data["session_id"], "test-session-123")
+            self.assertEqual(data["preferences"]["pace"], "slow")
 
             mock_instance.models.generate_content.assert_called_once()
             call_kwargs = mock_instance.models.generate_content.call_args.kwargs
             self.assertEqual(call_kwargs.get("model"), "gemini-2.5-flash")
+            system_instruction = call_kwargs["config"].system_instruction
+            self.assertIn("pace: slow", system_instruction)
+            self.assertIn("focus: interview", system_instruction)
 
     @patch("google.genai.Client")
     def test_chat_endpoint_error_handling(self, mock_genai_client):
@@ -111,23 +160,26 @@ class TestEnglishCoach(unittest.TestCase):
         mock_instance.models.generate_content.side_effect = [mock_resp, mock_summary_resp]
 
         with main.app.test_client() as client:
-            # First send a chat message
             client.post("/chat", json={"message": "I worked on CI/CD yesterday.", "session_id": "test-sum-1"})
-            # Request summary
             res = client.post("/summary", json={"session_id": "test-sum-1"})
             self.assertEqual(res.status_code, 200)
             data = res.get_json()
             self.assertEqual(data["summary"], "Summary: 1) Great standup progress!")
 
     @patch("google.genai.Client")
-    def test_reset_endpoint(self, mock_genai_client):
+    def test_reset_endpoint_clears_history_and_preferences(self, mock_genai_client):
         import main
+        main.CONVERSATIONS["test-session-123"] = []
+        main.SESSION_PREFERENCES["test-session-123"] = {"pace": "slow", "focus": "general", "correction_style": "brief"}
         with main.app.test_client() as client:
             res = client.post("/reset", json={"session_id": "test-session-123"})
             self.assertEqual(res.status_code, 200)
             data = res.get_json()
             self.assertEqual(data["status"], "reset")
             self.assertEqual(data["session_id"], "test-session-123")
+            self.assertNotIn("test-session-123", main.CONVERSATIONS)
+            self.assertNotIn("test-session-123", main.SESSION_PREFERENCES)
+
 
 if __name__ == "__main__":
     unittest.main()
