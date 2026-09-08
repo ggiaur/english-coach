@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div id="progress-empty" style="font-size:.82rem; line-height:1.45; opacity:.72; margin-top:10px;">
                 Finish a session with “Összegzés Kérése” and your next practice will build on it.
             </div>
+            <a href="/progress-dashboard.html" style="display:inline-block; margin-top:12px; font-size:.8rem; font-weight:600; color:inherit;">Open multi-session progress dashboard →</a>
         </div>
     `;
 
