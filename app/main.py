@@ -15,7 +15,7 @@ logger = logging.getLogger("english-coach")
 app = Flask(__name__, static_folder="static", static_url_path="")
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev-secret-change-me")
 
-VERSION = "1.5.0"
+VERSION = "1.6.0"
 
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 LOCATION = os.environ.get("GCP_LOCATION", "us-central1")
@@ -154,9 +154,10 @@ def progress_payload(sid: str) -> dict:
     }
 
 
-def extract_review_items(summary_text: str) -> tuple[str, list[dict[str, str]]]:
+def extract_review_items(summary_text: str) -> tuple[str, list[dict[str, str]], list[str]]:
     visible_lines = []
     review_items = []
+    mastered_items = []
     for line in summary_text.splitlines():
         stripped = line.strip()
         if stripped.upper().startswith("MEMORY_ITEM:"):
@@ -169,8 +170,13 @@ def extract_review_items(summary_text: str) -> tuple[str, list[dict[str, str]]]:
                     "note": parts[2][:240] if len(parts) == 3 else "",
                 })
             continue
+        if stripped.upper().startswith("MASTERED_ITEM:"):
+            correction = stripped.split(":", 1)[1].strip()[:240]
+            if correction:
+                mastered_items.append(correction)
+            continue
         visible_lines.append(line)
-    return "\n".join(visible_lines).strip(), review_items[:3]
+    return "\n".join(visible_lines).strip(), review_items[:3], mastered_items[:5]
 
 
 def merge_review_items(existing: list[dict], incoming: list[dict]) -> list[dict]:
@@ -184,6 +190,16 @@ def merge_review_items(existing: list[dict], incoming: list[dict]) -> list[dict]
         ) != key]
         merged.append(item)
     return merged[-8:]
+
+
+def retire_mastered_items(items: list[dict], mastered_corrections: list[str]) -> list[dict]:
+    mastered = {value.strip().casefold() for value in mastered_corrections if value.strip()}
+    if not mastered:
+        return list(items)
+    return [
+        item for item in items
+        if item.get("correction", "").strip().casefold() not in mastered
+    ]
 
 
 @app.route("/", methods=["GET"])
@@ -274,7 +290,10 @@ def summary():
         "from our talk, 4) A small homework task for tomorrow. After the human-readable summary, "
         "add 1-3 machine-memory lines for the most useful recurring mistakes, exactly in this format: "
         "MEMORY_ITEM: learner phrase || preferred English phrase || short reason. "
-        "Use one line per item and do not use MEMORY_ITEM anywhere else."
+        "For a stored review item that the learner used correctly at least twice, naturally and without prompting in this session, "
+        "add a separate line exactly as MASTERED_ITEM: preferred English phrase, using the exact preferred form from memory. "
+        "Do not mark an item mastered after a single correct use or a prompted repetition. "
+        "Use one machine line per item and do not use MEMORY_ITEM or MASTERED_ITEM anywhere else."
     )
     temp_contents = list(history) + [types.Content(role="user", parts=[types.Part(text=summary_prompt)])]
 
@@ -285,7 +304,7 @@ def summary():
             config=types.GenerateContentConfig(system_instruction=build_system_prompt(sid), temperature=0.7),
         )
         raw_summary = getattr(response, "text", None) or "Session summary generated."
-        summary_text, new_review_items = extract_review_items(raw_summary)
+        summary_text, new_review_items, mastered_items = extract_review_items(raw_summary)
         if not summary_text:
             summary_text = "Session summary generated."
         history.append(types.Content(role="user", parts=[types.Part(text=summary_prompt)]))
@@ -295,7 +314,8 @@ def summary():
         summaries = learner_state.setdefault("session_summaries", [])
         summaries.append(summary_text)
         learner_state["session_summaries"] = summaries[-5:]
-        learner_state["review_items"] = merge_review_items(learner_state.get("review_items", []), new_review_items)
+        active_review_items = merge_review_items(learner_state.get("review_items", []), new_review_items)
+        learner_state["review_items"] = retire_mastered_items(active_review_items, mastered_items)
         learner_state["practice_count"] = learner_state.get("practice_count", 0) + 1
         learner_state["preferences"] = dict(get_preferences(sid))
         save_learner_state(sid, learner_state)
