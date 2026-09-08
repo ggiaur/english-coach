@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>English Coach — Progress Dashboard</title>
+  <style>
+    :root{font-family:Inter,system-ui,sans-serif;color-scheme:dark;background:#101218;color:#f4f6fb}
+    body{margin:0;padding:24px;max-width:980px;margin-inline:auto}
+    h1{margin:0 0 6px;font-size:clamp(1.7rem,4vw,2.5rem)}
+    .muted{opacity:.68}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:22px 0}
+    .card{background:#1b1f2a;border:1px solid #303646;border-radius:14px;padding:16px}.big{font-size:2rem;font-weight:750;margin-top:6px}
+    .weak{display:grid;gap:10px;margin-top:12px}.weak-row{background:#171b24;border:1px solid #2b3242;border-radius:12px;padding:14px}
+    .correction{font-weight:700;margin-top:4px}.bar{height:8px;background:#2a3040;border-radius:999px;overflow:hidden;margin-top:10px}.bar>span{display:block;height:100%;background:currentColor}
+    .pill{display:inline-block;padding:3px 8px;border-radius:999px;background:#2a3040;font-size:.78rem;margin-top:8px}.empty{padding:18px;border:1px dashed #3a4152;border-radius:12px;opacity:.72}
+    a{color:inherit}.error{color:#ffb4b4}
+  </style>
+</head>
+<body>
+  <a href="/">← Back to coaching</a>
+  <h1>Progress Dashboard</h1>
+  <div class="muted">Durable learner progress across completed sessions. Active weak areas are ranked by how often they recur in your recent stored session notes.</div>
+
+  <section class="grid" aria-live="polite">
+    <div class="card"><div class="muted">Completed sessions</div><div class="big" id="sessions">—</div></div>
+    <div class="card"><div class="muted">Active weak areas</div><div class="big" id="active">—</div></div>
+    <div class="card"><div class="muted">Current focus</div><div class="big" id="focus" style="font-size:1.25rem">—</div></div>
+  </section>
+
+  <section class="card">
+    <h2 style="margin-top:0">Recurring weak areas</h2>
+    <div class="muted">“Recent-session hits” counts how many of the stored recent session summaries mention either your original or preferred form. Higher recurrence means the coach should keep prioritizing it; mastered items disappear from active review memory.</div>
+    <div id="weak-areas" class="weak"><div class="empty">Loading progress…</div></div>
+  </section>
+
+<script>
+(function(){
+  const sid=localStorage.getItem('english_coach_session_id');
+  const headers=sid?{'X-Session-ID':sid}:{};
+  const normalise=s=>(s||'').toLocaleLowerCase().replace(/\s+/g,' ').trim();
+  const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  fetch('/progress',{headers}).then(r=>{if(!r.ok)throw new Error('Progress endpoint returned '+r.status);return r.json()}).then(data=>{
+    const summaries=(data.recent_session_summaries||[]).map(normalise);
+    const items=(data.review_items||[]).map(item=>{
+      const phrase=normalise(item.phrase), correction=normalise(item.correction);
+      const hits=summaries.reduce((n,summary)=>n+((phrase&&summary.includes(phrase))||(correction&&summary.includes(correction))?1:0),0);
+      return {...item,hits};
+    }).sort((a,b)=>b.hits-a.hits);
+    document.getElementById('sessions').textContent=data.practice_count||0;
+    document.getElementById('active').textContent=items.length;
+    document.getElementById('focus').textContent=((data.preferences||{}).focus||'it-support').replaceAll('-',' ');
+    const root=document.getElementById('weak-areas');
+    if(!items.length){root.innerHTML='<div class="empty">No active weak areas. Previously mastered review items are retired automatically.</div>';return;}
+    const denominator=Math.max(1,summaries.length);
+    root.innerHTML=items.map(item=>{
+      const pct=Math.round((item.hits/denominator)*100);
+      const recurrence=item.hits===0?'new / not repeated in recent notes':item.hits===1?'seen in 1 recent session':`seen in ${item.hits} recent sessions`;
+      return `<article class="weak-row"><div class="muted"><s>${esc(item.phrase)}</s></div><div class="correction">→ ${esc(item.correction)}</div>${item.note?`<div class="muted" style="margin-top:4px">${esc(item.note)}</div>`:''}<div class="pill">${recurrence}</div><div class="bar" title="${pct}% of stored recent sessions"><span style="width:${pct}%"></span></div></article>`;
+    }).join('');
+  }).catch(err=>{document.getElementById('weak-areas').innerHTML=`<div class="empty error">${esc(err.message)}</div>`});
+})();
+</script>
+</body>
+</html>
