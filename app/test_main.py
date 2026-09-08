@@ -44,7 +44,7 @@ class TestEnglishCoach(unittest.TestCase):
         with main.app.test_client() as client:
             res = client.get("/health")
             self.assertEqual(res.status_code, 200)
-            self.assertEqual(res.get_json(), {"status": "ok", "service": "english-coach", "version": "1.5.0"})
+            self.assertEqual(res.get_json(), {"status": "ok", "service": "english-coach", "version": "1.6.0"})
 
     @patch("google.genai.Client")
     def test_preferences_default_and_update_are_session_scoped(self, mock_genai_client):
