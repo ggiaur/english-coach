@@ -24,4 +24,4 @@ jobs:
 
       - name: Run unit tests
         working-directory: app
-        run: python -m unittest -v test_main.py
+        run: python -m unittest -v test_main.py test_learner_state.py
