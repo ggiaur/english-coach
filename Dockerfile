@@ -6,6 +6,7 @@ COPY app/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app/ .
+COPY docs/effortless-framework/ /app/framework/
 
 ENV PORT=8080
 EXPOSE 8080
