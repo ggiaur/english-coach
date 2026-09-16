@@ -1,12 +1,20 @@
-import os
 import logging
+import os
 import uuid
 
-from flask import Flask, request, jsonify, session, send_from_directory
+from flask import Flask, jsonify, request, send_from_directory, session
 from google import genai
 from google.genai import types
 
 from coach_prompt import SYSTEM_PROMPT
+from framework_loader import build_framework_prompt, find_framework_dir
+from lesson_state import (
+    default_lesson_state,
+    extract_control_updates,
+    merge_lesson_state,
+    state_for_prompt,
+)
+from state_store import SessionStateStore
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("english-coach")
@@ -14,7 +22,7 @@ logger = logging.getLogger("english-coach")
 app = Flask(__name__, static_folder="static", static_url_path="")
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev-secret-change-me")
 
-VERSION = "1.3.0"
+VERSION = "2.0.0"
 
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 LOCATION = os.environ.get("GCP_LOCATION", "us-central1")
@@ -34,6 +42,9 @@ ALLOWED_PREFERENCES = {
     "correction_style": {"brief", "detailed"},
 }
 
+FRAMEWORK_PROMPT = build_framework_prompt()
+FRAMEWORK_DIR = str(find_framework_dir())
+
 # Initialize client lazily or with graceful fallback for testing/dev
 _client = None
 
@@ -49,10 +60,11 @@ def get_client():
     return _client
 
 
-# In-memory session stores. These intentionally share the same explicit session id so
-# a browser/client can keep practice configuration stable across chat requests.
+# Conversation history and UI preferences remain lightweight session caches.
+# Pedagogical lesson state is stored separately and can persist in Firestore.
 CONVERSATIONS: dict[str, list[types.Content]] = {}
 SESSION_PREFERENCES: dict[str, dict[str, str]] = {}
+LESSON_STATES = SessionStateStore()
 
 
 @app.after_request
@@ -91,15 +103,45 @@ def update_preferences(sid: str, payload: dict) -> tuple[dict[str, str], list[st
     return current, errors
 
 
+def get_lesson_state(sid: str) -> dict:
+    state = LESSON_STATES.get(sid)
+    if state is None:
+        state = default_lesson_state()
+        LESSON_STATES.set(sid, state)
+    return state
+
+
+def save_lesson_updates(sid: str, state_update: dict | None, student_update: dict | None) -> dict:
+    state = get_lesson_state(sid)
+    if state_update:
+        state = merge_lesson_state(state, state_update)
+    if student_update:
+        state = merge_lesson_state(state, student_update)
+    LESSON_STATES.set(sid, state)
+    return state
+
+
 def build_system_prompt(sid: str) -> str:
     prefs = get_preferences(sid)
+    lesson_state = get_lesson_state(sid)
     return (
+        f"{FRAMEWORK_PROMPT}\n\n"
         f"{SYSTEM_PROMPT}\n\n"
         "SESSION PRACTICE PROFILE (follow unless the learner explicitly asks otherwise):\n"
         f"- pace: {prefs['pace']}\n"
         f"- focus: {prefs['focus']}\n"
-        f"- correction style: {prefs['correction_style']}\n"
+        f"- correction style: {prefs['correction_style']}\n\n"
+        "CURRENT LESSON STATE — continue from here; do not restart without a learner request:\n"
+        f"{state_for_prompt(lesson_state)}\n"
     )
+
+
+def process_model_reply(sid: str, raw_text: str) -> tuple[str, dict]:
+    visible_text, state_update, student_update = extract_control_updates(raw_text)
+    lesson_state = save_lesson_updates(sid, state_update, student_update)
+    if not visible_text:
+        visible_text = "Please continue with the current lesson phase."
+    return visible_text, lesson_state
 
 
 @app.route("/", methods=["GET"])
@@ -111,7 +153,22 @@ def index():
 
 @app.route("/health", methods=["GET"])
 def health():
-    return jsonify({"status": "ok", "service": "english-coach", "version": VERSION})
+    return jsonify(
+        {
+            "status": "ok",
+            "service": "english-coach",
+            "version": VERSION,
+            "framework_loaded": True,
+        }
+    )
+
+
+@app.route("/lesson-state", methods=["GET", "OPTIONS"])
+def lesson_state_endpoint():
+    if request.method == "OPTIONS":
+        return jsonify({}), 200
+    sid = get_session_id({})
+    return jsonify({"session_id": sid, "lesson_state": get_lesson_state(sid)})
 
 
 @app.route("/preferences", methods=["GET", "POST", "OPTIONS"])
@@ -148,11 +205,10 @@ def chat():
     sid = get_session_id(data)
     history = CONVERSATIONS.setdefault(sid, [])
 
-    history.append(
-        types.Content(role="user", parts=[types.Part(text=user_message)])
-    )
+    history.append(types.Content(role="user", parts=[types.Part(text=user_message)]))
 
-    # Prune history if it exceeds limit (keep newest items)
+    # Prune history if it exceeds limit (keep newest items). The persistent lesson
+    # state still contains the pedagogical position and core lesson context.
     if len(history) > MAX_HISTORY_ITEMS:
         CONVERSATIONS[sid] = history[-MAX_HISTORY_ITEMS:]
         history = CONVERSATIONS[sid]
@@ -164,20 +220,25 @@ def chat():
             contents=history,
             config=types.GenerateContentConfig(
                 system_instruction=build_system_prompt(sid),
-                temperature=0.8,
+                temperature=0.6,
             ),
         )
 
-        reply_text = getattr(response, "text", None) or "I'm sorry, I could not generate a response. Please try again."
+        raw_reply = getattr(response, "text", None) or ""
+        reply_text, lesson_state = process_model_reply(sid, raw_reply)
 
-        history.append(
-            types.Content(role="model", parts=[types.Part(text=reply_text)])
+        history.append(types.Content(role="model", parts=[types.Part(text=reply_text)]))
+
+        return jsonify(
+            {
+                "reply": reply_text,
+                "session_id": sid,
+                "preferences": get_preferences(sid),
+                "lesson_state": lesson_state,
+            }
         )
-
-        return jsonify({"reply": reply_text, "session_id": sid, "preferences": get_preferences(sid)})
     except Exception as e:
-        logger.error(f"Error calling Gemini API: {e}", exc_info=True)
-        # Remove failed user message from history to keep it clean
+        logger.error("Error calling Gemini API: %s", e, exc_info=True)
         if history and history[-1].role == "user" and history[-1].parts[0].text == user_message:
             history.pop()
         return jsonify({"error": "Failed to communicate with AI model", "details": str(e)}), 500
@@ -195,9 +256,12 @@ def summary():
     if not history:
         return jsonify({"error": "No conversation history found for this session"}), 400
 
-    summary_prompt = "Please provide the final session summary now: 1) Biggest improvement today, 2) 2-3 key mistakes to remember with corrections, 3) 3-5 useful new IT expressions from our talk, 4) A small homework task for tomorrow."
+    summary_prompt = (
+        "Provide a short session summary in English: 1) biggest improvement, "
+        "2) 2-3 important corrected mistakes, 3) useful new chunks with simple English definitions, "
+        "4) one small next-practice task. Keep it consistent with the learner state."
+    )
 
-    # Create temporary payload with prompt request
     temp_contents = list(history) + [types.Content(role="user", parts=[types.Part(text=summary_prompt)])]
 
     try:
@@ -207,19 +271,26 @@ def summary():
             contents=temp_contents,
             config=types.GenerateContentConfig(
                 system_instruction=build_system_prompt(sid),
-                temperature=0.7,
+                temperature=0.5,
             ),
         )
 
-        summary_text = getattr(response, "text", None) or "Session summary generated."
+        raw_summary = getattr(response, "text", None) or "Session summary generated."
+        summary_text, lesson_state = process_model_reply(sid, raw_summary)
 
-        # Append summary to history
         history.append(types.Content(role="user", parts=[types.Part(text=summary_prompt)]))
         history.append(types.Content(role="model", parts=[types.Part(text=summary_text)]))
 
-        return jsonify({"summary": summary_text, "session_id": sid, "preferences": get_preferences(sid)})
+        return jsonify(
+            {
+                "summary": summary_text,
+                "session_id": sid,
+                "preferences": get_preferences(sid),
+                "lesson_state": lesson_state,
+            }
+        )
     except Exception as e:
-        logger.error(f"Error generating session summary: {e}", exc_info=True)
+        logger.error("Error generating session summary: %s", e, exc_info=True)
         return jsonify({"error": "Failed to generate session summary", "details": str(e)}), 500
 
 
@@ -232,6 +303,7 @@ def reset():
     sid = get_session_id(data)
     CONVERSATIONS.pop(sid, None)
     SESSION_PREFERENCES.pop(sid, None)
+    LESSON_STATES.delete(sid)
     return jsonify({"status": "reset", "session_id": sid})
 
 
