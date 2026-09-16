@@ -47,6 +47,7 @@ Common current issues include:
   3. medium,
   4. natural.
 - The first two rounds need genuinely long pauses between sentences.
+- Natural pace should be clear normal speech, not rushed.
 - No questions between the four story rounds.
 - Even after the four rounds, more input must come before testing:
   paraphrase, contrast, alternate wording, teacher-answered questions.
@@ -57,9 +58,26 @@ Common current issues include:
 - Avoid idle pauses and repeated meta-commentary.
 - Avoid repetitive praise such as saying `Nice` again and again.
 - Do not ask permission to execute phases that are already part of the agreed protocol.
+- The tutor must remember and resume the current lesson phase instead of making the learner direct the sequence.
 
 ## Current lesson domain
 
 Start with practical IT help-desk situations because the topic is familiar enough to support early spoken English.
 
 Do not stay only in IT long-term. Rotate later into everyday situations as well.
+
+## Recent observed progress — 2026-09-16
+
+Account-access / password-reset practice:
+- understood `locked` in the account context,
+- understood and selected `stop trying`,
+- successfully produced and repeated `I reset the password.`,
+- needed modeling before producing that full sentence independently,
+- the phrase `I reset the password.` is emerging active language but should still be recycled.
+
+## Next priorities
+
+- Recycle `I reset the password.` in guided variation rather than restarting the account-lockout story from zero.
+- Strengthen short full-sentence answers after yes/no and either/or comprehension.
+- Continue with genuinely slow input at the beginning of new material.
+- Introduce a new practical situation after the current material is stabilized; do not return automatically to the Excel prototype.
