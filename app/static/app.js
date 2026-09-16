@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
     const chatForm = document.getElementById('chat-form');
     const userInput = document.getElementById('user-input');
     const messagesFeed = document.getElementById('messages-feed');
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebar = document.getElementById('sidebar');
 
-    // App State
     let sessionId = localStorage.getItem('english_coach_session_id') || generateUUID();
     localStorage.setItem('english_coach_session_id', sessionId);
 
@@ -25,13 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let recognition = null;
     initSpeechRecognition();
 
-    // Auto-resize textarea
     userInput.addEventListener('input', () => {
         userInput.style.height = 'auto';
         userInput.style.height = Math.min(userInput.scrollHeight, 120) + 'px';
     });
 
-    // Enter key submit (Shift+Enter for newline)
     userInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
@@ -39,23 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Handle Form Submit
     chatForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const text = userInput.value.trim();
         if (!text) return;
 
-        // Reset input height
         userInput.value = '';
         userInput.style.height = 'auto';
-
-        // Add user message to UI
         appendMessage('user', text);
         messageCount++;
         msgCountElem.textContent = messageCount;
         localStorage.setItem('english_coach_msg_count', messageCount.toString());
 
-        // Add loading indicator
         const loadingCard = createLoadingCard();
         messagesFeed.appendChild(loadingCard);
         scrollToBottom();
@@ -67,10 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json',
                     'X-Session-ID': sessionId
                 },
-                body: JSON.stringify({
-                    message: text,
-                    session_id: sessionId
-                })
+                body: JSON.stringify({ message: text, session_id: sessionId })
             });
 
             loadingCard.remove();
@@ -89,9 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             appendMessage('coach', data.reply);
 
-            // Speak response if TTS enabled
             if (isTTSEnabled) {
-                speakText(data.reply);
+                speakText(data.reply, data.lesson_state?.phase);
             }
         } catch (err) {
             loadingCard.remove();
@@ -100,8 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const summaryBtn = document.getElementById('summary-btn');
-
-    // Handle Summary Button
     if (summaryBtn) {
         summaryBtn.addEventListener('click', async () => {
             if (messageCount === 0) {
@@ -135,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 appendMessage('coach', data.summary, true);
 
                 if (isTTSEnabled) {
-                    speakText(data.summary);
+                    speakText(data.summary, data.lesson_state?.phase);
                 }
             } catch (err) {
                 loadingCard.remove();
@@ -144,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Topic Selection
     topicChips.forEach(chip => {
         chip.addEventListener('click', () => {
             topicChips.forEach(c => c.classList.remove('active'));
@@ -153,15 +137,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const topicText = chip.getAttribute('data-topic');
             const chipLabel = chip.innerText.trim();
             activeTopicTitle.textContent = chipLabel + ' Practice';
-
-            // Send initial prompt for selected topic
             userInput.value = `Hi! I would like to practice: ${topicText}.`;
             userInput.style.height = 'auto';
             userInput.focus();
         });
     });
 
-    // Quick Prompts Event Delegation
     messagesFeed.addEventListener('click', (e) => {
         const promptBtn = e.target.closest('.prompt-btn');
         if (promptBtn) {
@@ -173,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // TTS Toggle Button
     ttsToggleBtn.addEventListener('click', () => {
         isTTSEnabled = !isTTSEnabled;
         localStorage.setItem('english_coach_tts', isTTSEnabled.toString());
@@ -184,14 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Sidebar Toggle for Mobile
     if (sidebarToggle) {
         sidebarToggle.addEventListener('click', () => {
             sidebar.classList.toggle('open');
         });
     }
 
-    // Helper Functions
     function appendMessage(sender, rawText, isSummary = false) {
         const card = document.createElement('div');
         const cardClass = sender === 'user' ? 'user-message' : (isSummary ? 'coach-message summary-card' : 'coach-message');
@@ -247,16 +225,54 @@ document.addEventListener('DOMContentLoaded', () => {
         return div.innerHTML;
     }
 
-    function speakText(text) {
+    function ttsProfileForPhase(phase) {
+        if (['vocab_pass_1', 'vocab_pass_2', 'story_round_1', 'story_round_2'].includes(phase)) {
+            return { rate: 0.68, pauseMs: 650 };
+        }
+        if (['vocab_pass_3', 'story_round_3'].includes(phase)) {
+            return { rate: 0.82, pauseMs: 250 };
+        }
+        if (['vocab_pass_4', 'story_round_4'].includes(phase)) {
+            return { rate: 0.95, pauseMs: 100 };
+        }
+        if (phase && phase.startsWith('story_expansion_')) {
+            return { rate: 0.82, pauseMs: 250 };
+        }
+        return { rate: 0.9, pauseMs: 120 };
+    }
+
+    function splitForSpeech(text) {
+        const cleanText = text
+            .replace(/```[\s\S]*?```/g, '')
+            .replace(/<[^>]*>?/gm, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+        return cleanText.match(/[^.!?]+[.!?]?/g)?.map(s => s.trim()).filter(Boolean) || [];
+    }
+
+    function speakText(text, phase = null) {
         if (!('speechSynthesis' in window)) return;
         window.speechSynthesis.cancel();
 
-        // Strip markdown code blocks & HTML before speaking
-        const cleanText = text.replace(/```[\s\S]*?```/g, '').replace(/<[^>]*>?/gm, '');
-        const utterance = new SpeechSynthesisUtterance(cleanText);
-        utterance.lang = 'en-US';
-        utterance.rate = 0.95; // slightly deliberate pace for language practice
-        window.speechSynthesis.speak(utterance);
+        const profile = ttsProfileForPhase(phase);
+        const sentences = splitForSpeech(text);
+        if (!sentences.length) return;
+
+        let index = 0;
+        const speakNext = () => {
+            if (!isTTSEnabled || index >= sentences.length) return;
+            const utterance = new SpeechSynthesisUtterance(sentences[index]);
+            utterance.lang = 'en-US';
+            utterance.rate = profile.rate;
+            utterance.onend = () => {
+                index++;
+                if (index < sentences.length && isTTSEnabled) {
+                    window.setTimeout(speakNext, profile.pauseMs);
+                }
+            };
+            window.speechSynthesis.speak(utterance);
+        };
+        speakNext();
     }
 
     function initSpeechRecognition() {
@@ -292,6 +308,24 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 recognition.start();
             }
+        });
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', async () => {
+            if (window.speechSynthesis) window.speechSynthesis.cancel();
+            await fetch('/reset', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Session-ID': sessionId
+                },
+                body: JSON.stringify({ session_id: sessionId })
+            });
+            messageCount = 0;
+            msgCountElem.textContent = '0';
+            localStorage.setItem('english_coach_msg_count', '0');
+            messagesFeed.querySelectorAll('.message-card').forEach(card => card.remove());
         });
     }
 });
