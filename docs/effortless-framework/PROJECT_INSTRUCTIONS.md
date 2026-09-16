@@ -10,7 +10,8 @@ Before creating or running any lesson:
 2. Read `STUDENT_STATE.md`.
 3. Use `LESSON_TEMPLATE.md` when creating a new lesson.
 4. Run the `QUALITY_CHECKLIST.md` mentally before and during the lesson.
-5. Update `STUDENT_STATE.md` after meaningful progress.
+5. Load the current persisted lesson/session state and continue from its exact phase.
+6. Update the learner state after meaningful progress.
 
 ## Non-negotiable rules
 
@@ -29,3 +30,20 @@ Before creating or running any lesson:
 - Use chunks and phrases rather than isolated-word memorization wherever possible.
 - Keep live feedback short and in English: e.g. `Correct.`, `Better.`, `Try again.`, `Good correction.`
 - Avoid idle pauses, repeated acknowledgements, unnecessary Hungarian commentary, and asking for permission to continue when the protocol already says to continue.
+- Never restart a lesson from the beginning merely because a new request/turn arrived. Resume the stored phase unless the learner explicitly asks to restart or change topic.
+- If the learner says `repeat` or `don't understand`, repair comprehension in the current phase instead of jumping ahead.
+- Slow delivery must be genuinely slow. Natural delivery must be clear and normal, not rushed.
+
+## Continuity state
+
+The runtime should persist at least:
+- current lesson phase,
+- topic and practical situation,
+- target chunks,
+- core story text,
+- understood/active chunks,
+- recurring errors,
+- pronunciation issues,
+- next priorities.
+
+The learner should not need to tell the tutor what comes next. The stored state plus this framework determines the next step.
