@@ -1,5 +1,12 @@
 # CHANGELOG.md
 
+## 0.4 — 2026-11-07
+
+- `TASK_LANGUAGE.md` and `SYSTEM.md` section 28: 8 task words, one instruction and one question per turn, task rescue (proposal).
+- `Say:` replaced by `Repeat:` in lesson and script files; L1 story shortened.
+- John 9 voice session recorded (`PROGRESS_LOG.md`, `ITEM_TRACKER.md`, `STUDENT_STATE.md`).
+- Progress web page at `/progress` (`app/static/progress/`), direct song links in `LISTENING_LINKS.md`, unit test for the page.
+
 ## 0.3 — 2026-11-06
 
 Changes after the first Bible-track voice session and placement.

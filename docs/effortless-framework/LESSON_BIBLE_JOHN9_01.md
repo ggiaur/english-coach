@@ -42,7 +42,7 @@ Nehéz szavak (`sinned`, `works of God`, `revealed`) ma **nem** tananyag. Késő
 1. **Genesis-visszahozás** (8'): a 4 célmondat, építkezve. Mastery-szabály: addig maradnak ismétlésben, amíg két különböző napon elsőre nem mennek.
 2. **Új szókapcsolatok** (10'): `blind`, `passed by`, `the light of the world`, többféle magyarázat, négy sebesség.
 3. **János 9:1, négyszer** (5'): lassú, lassú, közepes, természetes. Nincs közbeszólás.
-4. **Építkezés és feladatok, 1. vers** (10'): `Say: As he passed by.` → `...he saw a man.` → `...blind from birth.` → teljes mondat.
+4. **Építkezés és feladatok, 1. vers** (10'): `Repeat: As he passed by.` → `...he saw a man.` → `...blind from birth.` → teljes mondat.
 5. **János 9:5, négyszer** (5'), majd építkezés (10'): `While I am in the world` → `I am the light of the world.`
 6. **2–4. vers hallgatás** (8'): tanári összefoglaló, két egyszerű kérdés tanár-válasszal.
 7. **Aktív kérdések** (8'): `Who saw a man?` `Was the man blind?` `What does Jesus say about himself?`
@@ -66,7 +66,7 @@ Nehéz szavak (`sinned`, `works of God`, `revealed`) ma **nem** tananyag. Késő
 
 ## Szkript (példa-fordulatok)
 
-1. `T: Genesis. Say: In the beginning, God created the heavens and the earth.` (építkezéssel, ha elakad)
+1. `T: Genesis. Repeat: In the beginning, God created the heavens and the earth.` (építkezéssel, ha elakad)
 2. `T: Listen to a new verse. As he passed by, he saw a man blind from birth.` (négy kör)
 3. `T: Say only: As he passed by.` → `L: As he passed by.` → `T: Add: he saw a man.` → `T: Add: blind from birth.` → `T: Say the whole sentence.`
 4. `T: Listen. While I am in the world, I am the light of the world.` (négy kör)

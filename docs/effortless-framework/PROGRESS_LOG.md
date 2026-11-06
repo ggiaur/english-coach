@@ -4,6 +4,27 @@
 
 ```
 SESSION RECORD
+date: 2026-11-07
+track: Bible
+lesson: John 9:1-5 (voice, Claude), partial
+duration_min: unknown
+phase_reached: chunk build-up of John 9:1 and John 9:5; session ended before the end phase
+goal_met: partly
+new_items_taught: [blind, passed by, the light of the world]
+said_correctly_after_repair: [John 9:1 built in parts, John 9:5 built in parts]
+pending (3rd failure, return in 3-7 days): []
+errors_seen: [for -> from (blind from birth), missing "the", "helps" without s, light/like]
+task_confusion: ["Say it" was repeated literally; compound questions not understood; long sentences ("Nagyon hosszú"); answers given together with examples]
+daily_speaking: not done
+genesis_review: skipped
+time_of_day: unknown
+freshness_1_5: unknown
+next_priority: [simple task language (TASK_LANGUAGE.md), fast question comprehension, articles, third-person s, light/like]
+return_dates: [{item: John 9:1 and 9:5, on: 2026-11-10}, {item: Genesis 1 review, on: 2026-11-09}]
+```
+
+```
+SESSION RECORD
 date: 2026-11-06
 track: Bible
 lesson: Genesis 1:1, 1:3-5 chunk work (voice, Claude) + Bible placement v1

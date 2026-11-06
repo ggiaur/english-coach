@@ -88,7 +88,8 @@ Common current issues include:
 - Wants 2 to 3 minutes of free speaking every day, with no correction during it. Feedback at the end: two good sentences, one or two corrections, how to say it fuller or more professionally (one step above his level), and one new synonym or collocation per day. (2026-11-06)
 - Song lane is 10 minutes per weekday. Total plan about 6 hours per week, to be reviewed every two weeks for actual time, time of day, freshness and session length. (2026-11-06)
 - Timing and level estimates are not guarantees; they depend on health, rest, method and individual learning speed. (2026-11-06)
-- Wants a web page for progress with clickable music links (not built yet; first check that the app is live). (2026-11-06)
+- Wants a web page for progress with clickable music links: `/progress` in the app. Progress is kept in the browser only. (2026-11-06)
+- Early sentences and tasks must be simpler: one instruction, one question, up to 6 words per sentence, `Repeat.` not `Say it`. (2026-11-07)
 - After lesson-mode ends, explanations of system or evaluation may be in Hungarian; the lesson itself is English only.
 
 ## Current lesson domain
@@ -117,6 +118,13 @@ Genesis 1 work, chunk by chunk:
 - repaired the question word `call` (give a name) after a simple explanation.
 
 Still unstable: `the` / `a`, `tried`, `saw`, and long question comprehension.
+
+## Recent observed progress — 2026-11-07 (Bible track, voice, John 9)
+
+- Built John 9:1 and John 9:5 in small parts.
+- Errors: `for` for `from`, missing `the`, `helps` without `s`, light/like.
+- Task confusion: `Say it` was repeated literally; compound questions and long sentences were too hard. New rule: `TASK_LANGUAGE.md` and `SYSTEM.md` section 28.
+- Daily free speaking and Genesis review were not done.
 
 ## Next priorities
 

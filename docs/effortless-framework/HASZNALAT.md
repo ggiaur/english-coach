@@ -12,6 +12,8 @@
 | `LISTENING_LINKS.md` | kattintható dal- és hanganyag-linkek |
 | `ASSESSMENT_KIT.md`, `QUESTION_GYM.md` | heti és kétheti mérés, napi kérdéstorna |
 | `PORTABLE_TUTOR_PROMPT.md`, `SESSION_SCRIPTS.md` | a tutor-modellnek (Claude, ChatGPT) |
+| `TASK_LANGUAGE.md` | az egyszerű feladatnyelv (8 szó), egy utasítás egy fordulóban |
+| Weboldal: `/progress` az appban | heti terv, kattintható dalok, pipák, SESSION RECORD vázlat |
 | `STUDENT_STATE.md`, `PROGRESS_LOG.md`, `ITEM_TRACKER.md` | hol tartasz |
 
 ## Alkalom indítása (Claude, ChatGPT vagy bármely modell)
@@ -51,3 +53,7 @@ Legfeljebb kétszer próbáljuk teljesen újra két külön napon. Harmadszor f�
 ## Tartós írási engedély a repóhoz
 
 A `CLAUDE.md` rögzíti, hogy ennek a repónak az írását végleg engedélyezted. A tényleges hozzáférést a csatlakozás beállítása adja, azt Claude nem változtatja.
+
+## Haladási weboldal
+
+Az app `/progress` oldala: napi lista pipákkal, kattintható dallinkek, SESSION RECORD vázlat. A pipák csak abban a böngészőben maradnak meg, ahol bepipáltad (nincs bejelentkezés, nincs szerveren tárolt adat). Ha több eszközön vagy bejelentkezéssel akarod, azt külön döntjük el.

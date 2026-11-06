@@ -65,7 +65,7 @@ L3-ban ugyanez múlt időben (`SYSTEM.md` 7.5): `Yesterday, Tom forgot his passw
 2. **Új szókapcsolatok** (10'): legfeljebb 3, minden szó többféleképpen elmagyarázva, **négy sebességgel**.
 3. **Történet négyszer** (8'): lassú, lassú, közepes, természetes. Nincs kérdés.
 4. **Bővítés** (7'): átfogalmazás, tagadás, a tanár kérdez **és** válaszol (bejelentve: `I ask, I answer. Just listen.`).
-5. **Aktív feladatok** (10'): minden fordulat egy kimondott feladattal indul (`Say: ...`, `Answer: A or B?`). A választ a tanár **nem** mondja meg előre.
+5. **Aktív feladatok** (10'): minden fordulat egy kimondott feladattal indul (`Repeat: ...`, `Answer: A or B?`). A választ a tanár **nem** mondja meg előre.
 6. **Összefoglaló + állapotfrissítés** (5').
 
 Sze (L4) rövidebb: 1., 5. és 6. lépés, plusz nézőpontváltás (`I'm Anna. I work in IT.`).

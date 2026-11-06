@@ -3,6 +3,8 @@
 Kiindulás: IT A1+ / korai A2. A módszer lépései: `SESSION_SCRIPTS.md`. Minden magyarázat és történet itt készen van, a tutor szó szerint használhatja. A tanulónak szóló szöveg **angol**; a magyar megjegyzés a tutornak szól.
 
 Szereplők: **Tom** (értékesítésben dolgozik), **Anna** (az IT-ben, a help desken dolgozik).
+**Egyszerű feladatnyelv:** az utasítások csak a `TASK_LANGUAGE.md` 8 szavát használják; egy utasítás és egy kérdés fordulatonként; tanító mondat legfeljebb 6 szó (L1–L3). Az L1 elején 5 perc feladatnyelv-bemutató.
+
 Minden leckében: legfeljebb 3 új szókapcsolat. A támogató szavak magyarázata a protokoll szerint történik (4 sebesség), de rövidebb.
 
 **Minden lecke végén (a 45' / 30' után): napi szabad beszéd 2–3' és visszajelzés** (`DAILY_SPEAKING.md`), valamint a napszak és frissesség rögzítése (`SYSTEM.md` 26).
@@ -40,11 +42,10 @@ Mastery-szabály minden leckére (`SYSTEM.md` 24): két teljes újrapróbálkoz�
 
 ```
 Tom works in sales.
-This morning, Tom cannot log in.
-He sees a message: "Your account is locked."
+Today, Tom cannot log in.
+The account is locked.
 Tom forgot his password.
-He tries the old password three times.
-Now the account is locked.
+He tries the old password.
 Tom calls the help desk.
 Anna works in IT.
 Anna says, "Please stop trying."
@@ -275,7 +276,7 @@ Kérdéstorna 2× hosszabb (8') a gyenge Who/Where kérdésekre, majd:
 
 ## E. Névelő-feladat (szóban, 3')
 
-Egy mondat egy feladat: `Say: I'm an IT manager.` · `Say: It's a new password.` · `Say: The account is unlocked.` · `Say: Tom has an account.` · `Say: Anna works in an office.`
+Egy mondat egy feladat: `Repeat: I'm an IT manager.` · `Repeat: It's a new password.` · `Repeat: The account is unlocked.` · `Repeat: Tom has an account.` · `Repeat: Anna works in an office.`
 Hiba: `I'm IT manager` → `I'm an IT manager.`
 
 ## F. Építkezés
@@ -320,7 +321,7 @@ Now Maria can log in.
 ## C. Támogatott szerepjáték (15')
 
 1. **Teljes támogatás:** lista mondatokkal (`Say one: ...`).
-2. **Fél támogatás:** csak az első szó (`Say: My account ...`).
+2. **Fél támogatás:** csak az első szó (`Repeat: My account ...`).
 3. **Kevés támogatás:** csak a helyzet (`You are Maria. Your account is locked. Call the help desk.`).
 Szerepcsere is: a tanuló Anna.
 

@@ -63,15 +63,15 @@ Sorrend: átfogalmazás → tagadás/ellentét → tanár kérdez és felel → 
 4. Mondatos válasz: `Answer with a sentence. What is the problem?`
 
 Mozgás: két jó válasz egymás után → lépj feljebb. Két rossz egymás után → lépj vissza egyet, és ismételd a kérdést lassabban és egyszerűbben, utána A vagy B formában.
-Visszajelzés: `Correct.` / `Better. Say: ...` / `Almost. One small change: ...` / `Try again.` Egyszerre **egy** javítás.
+Visszajelzés: `Correct.` / `Better. Repeat: ...` / `Almost. One small change: ...` / `Try again.` Egyszerre **egy** javítás.
 
 ## 6. Építkezés és javítási létra (kiejtés, hosszú mondat)
 
 Ha egy mondat 7–8 szónál hosszabb, vagy elakad:
 1. Elszigeteld a nehéz részt: `Say only: error.`
-2. Add hozzá a következőt: `Say: error message.`
-3. Bővítsd: `Say: What error message.`
-4. Teljes mondat: `Say: What error message do you see?`
+2. Add hozzá a következőt: `Repeat: error message.`
+3. Bővítsd: `Repeat: What error message.`
+4. Teljes mondat: `Repeat: What error message do you see?`
 
 Hangpár-javítás (pl. `light` / `right`): `Light. Like a lamp. Say only: light.` Majd két szó, majd a mondat.
 Ha ugyanaz a teljes mondat kétszer elakad, **ne ismételd változatlanul**: bontsd kisebb részekre, vagy váltsd a stratégiát (mutasd a mintát más szóval).

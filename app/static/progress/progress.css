@@ -1,0 +1,19 @@
+:root{--bg:#f7f7f5;--fg:#1d1d1b;--card:#fff;--line:#d8d8d2;--acc:#1f6f5c}
+@media (prefers-color-scheme:dark){:root{--bg:#171917;--fg:#ececE6;--card:#222522;--line:#3a3d3a;--acc:#5fc4a9}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{margin:.2em 0}h2{margin-top:1.6em}
+a{color:var(--acc)}
+.note{font-size:.9em;opacity:.8}
+.bar{height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+#barfill{height:100%;width:0;background:var(--acc);transition:width .2s}
+.day{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:10px 0}
+.day h3{margin:.1em 0;font-size:1.05em}.day small{opacity:.7}
+.day label{display:flex;gap:8px;align-items:flex-start;padding:6px 0;min-height:32px}
+.day input{width:20px;height:20px;margin-top:2px}
+ul{padding-left:1.2em}li{margin:.4em 0}
+form{display:grid;gap:8px}label{display:grid;gap:2px}
+input,select,textarea,button{font:inherit;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}
+button{cursor:pointer;background:var(--acc);color:#fff;border:0}
+button.danger{background:transparent;color:inherit;border:1px solid var(--line);margin-top:16px}
+textarea{width:100%;box-sizing:border-box;margin:8px 0;font-family:ui-monospace,monospace;font-size:.85em}
