@@ -84,6 +84,11 @@ Common current issues include:
 - Song links must be clickable. Lyrics are not copied into the repository. (2026-11-06)
 - Wants the repository to be complete enough that another tutor model (for example ChatGPT) can run the same course. (2026-11-06)
 - Wants John 9 as the Bible text for 2026-11-07 (verses 1–5 core). (2026-11-06)
+- Bible translation for the repository: World English Bible (WEB). The ESV may be used for listening; its text is not stored. (2026-11-06)
+- Wants 2 to 3 minutes of free speaking every day, with no correction during it. Feedback at the end: two good sentences, one or two corrections, how to say it fuller or more professionally (one step above his level), and one new synonym or collocation per day. (2026-11-06)
+- Song lane is 10 minutes per weekday. Total plan about 6 hours per week, to be reviewed every two weeks for actual time, time of day, freshness and session length. (2026-11-06)
+- Timing and level estimates are not guarantees; they depend on health, rest, method and individual learning speed. (2026-11-06)
+- Wants a web page for progress with clickable music links (not built yet; first check that the app is live). (2026-11-06)
 - After lesson-mode ends, explanations of system or evaluation may be in Hungarian; the lesson itself is English only.
 
 ## Current lesson domain

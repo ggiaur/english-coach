@@ -18,6 +18,9 @@ date: YYYY-MM-DD
 track: IT | Bible | Song | Check | Placement
 lesson: <fájl és azonosító, pl. LESSONS_W01_IT L2>
 duration_min: <szám>
+time_of_day: morning | afternoon | evening
+freshness_1_5: <1 fáradt ... 5 friss, a tanuló mondja>
+minutes_actual: <valódi idő, ha eltér a tervtől>
 phase_reached: <pl. D active comprehension, step 3 who/what>
 goal_met: yes | partly | no
 new_items_taught: [<chunk>, ...]
@@ -28,6 +31,7 @@ pending (3rd failure, return in 3-7 days): [<chunk>, ...]
 errors_seen: [<hiba -> javítás>, ...]       # pl. "God try -> God tried"
 pronunciation: [<szó vagy hang>, ...]       # pl. "faith/face"
 scores: <ha volt mérés: pont/max és részek>
+daily_speaking: {topic: <téma>, seconds: <szám>, good: [<2 mondat>], corrections: [<..>], expansion: <mondat>, enrichment: <tétel>}
 next_priority: [<max 3 pont>]
 return_dates: [{item: <chunk>, on: YYYY-MM-DD}, ...]
 ```

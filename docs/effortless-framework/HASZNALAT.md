@@ -21,6 +21,10 @@
 3. Dalnál: `Start session. Track: Song. Song: S1.` Nyisd meg a linket a `LISTENING_LINKS.md`-ben.
 4. Kérdéstorna mindig az elején van (5 perc).
 
+## Minden alkalom végén: napi szabad beszéd
+
+2–3 perc beszéd egy egyszerű témáról, **közben nincs javítás**. A végén visszajelzést kapsz: két jó mondat, egy–két javítás, hogyan mondhattad volna bővebben vagy profibban, és egy új szinonima vagy szókapcsolat (naponta egy). Részletek: `DAILY_SPEAKING.md`. A tutor megkérdezi, mikor tanultál (reggel, délután, este) és mennyire voltál friss (1–5). Kéthetente ebből készül a terhelés-visszamérés.
+
 ## Alkalom vége
 
 1. Mondd: `End session.`

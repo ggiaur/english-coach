@@ -61,7 +61,9 @@ Ezek alapján az A2-küszöb a 4. kapu körül várható, nagyjából 6–10 hé
 | Elem | Mikor | Megjegyzés |
 |------|-------|------------|
 | IT-lecke | hétköznap, 30–45' | négy sebességes protokoll |
-| Zenei sáv | hétköznap, 20' | linkek: `LISTENING_LINKS.md`, dalszöveg nincs a repóban |
+| Zenei sáv | hétköznap, 10' | linkek: `LISTENING_LINKS.md`, dalszöveg nincs a repóban |
+| Napi szabad beszéd | minden nap, 2–3' + visszajelzés | javítás csak a végén, bővítés, napi 1 szinonima/szókapcsolat (`DAILY_SPEAKING.md`) |
+| Terhelés- és napszak-visszamérés | kéthetente | `ASSESSMENT_KIT.md` 3. pont |
 | Kérdéstorna | napi 5' | szintenként: igen/nem → A vagy B → wh- → mondat |
 | Napló (írásos) | hetente 1× (szerda) | 2–3 mondat angolul: mi történt a történetben, vagy mit tettél |
 | Szabad beszélgetés | hetente 1× (csütörtök) | 10', nincs javítás, csak megszólalsz |
@@ -80,6 +82,8 @@ Nincs szószedet vagy szólista. A kifejezések a leckékben és a visszahozásb
 
 ## 6. Nyitott pontok
 
-1. WEB vagy ESV a Biblia-szövegekhez (a repóban a WEB az alapértelmezett, mert közkincs).
-2. A heti szabad beszélgetés beépítését a hangos megbeszélésen nem erősítetted meg külön. Ha nem kell, elhagyom.
-3. A szakaszok időtartama a kapuktól függ, nem a naptártól.
+1. ~~WEB vagy ESV?~~ Eldöntve (2026-11-06): **WEB**. ESV hallgatásra használható, szövege nincs a repóban.
+2. ~~Szabad beszélgetés?~~ Eldöntve: **napi 2–3 perc** + heti 10 perc hosszabb témával, javítás csak a végén.
+3. ~~Zenei sáv hossza?~~ Eldöntve: **10 perc/nap**, a hét kb. 6 óra; kétheti visszamérés dönt a változtatásról.
+4. A szakaszok időtartama a kapuktól függ, nem a naptártól. Idő- és szintbecslésre nincs garancia: egészség, kipihentség, módszer és egyéni tanulási sebesség befolyásolja.
+5. Haladási weboldal (zenelinkekkel, állapottal): **függőben**, előbb az app élő állapotát kell ellenőrizni (lásd a PR leírását).

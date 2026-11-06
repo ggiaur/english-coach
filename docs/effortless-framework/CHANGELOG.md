@@ -5,11 +5,15 @@
 Changes after the first Bible-track voice session and placement.
 
 Added:
-- `SYSTEM.md` sections 20 to 25: task clarity and turn design, voice mode, Bible track, listening lane (songs and audio), mastery-based progression, portability.
+- `SYSTEM.md` sections 20 to 24: task clarity and turn design, voice mode, Bible track, listening lane (songs and audio), mastery-based progression.
 - Portable tutor kit: `PORTABLE_TUTOR_PROMPT.md`, `SESSION_SCRIPTS.md`, `STATE_PROTOCOL.md`, `PROGRESS_LOG.md`, `ITEM_TRACKER.md`.
 - Fully scripted week 1: `LESSONS_W01_IT.md`, `LESSONS_W01_BIBLE_AND_SONGS.md`, `LESSON_BIBLE_JOHN9_01.md`.
 - Measurement: `ASSESSMENT_KIT.md`, `QUESTION_GYM.md`. Monthly plan: `MONTHLY_PLAN_M01.md`. Links: `LISTENING_LINKS.md`. How-to: `HASZNALAT.md`.
 - Root `CLAUDE.md` with the owner's standing write authorization for this repository.
+- `DAILY_SPEAKING.md`: daily 2 to 3 minutes of free speaking with end-of-session feedback, and the synonym and collocation phrase bank. `SYSTEM.md` sections 25 to 27 (daily speaking, load and timing review, portability).
+- Song lane shortened to 10 minutes per weekday (2 phrases per song); weekly total about 6 hours.
+- Load and timing review every two weeks (`ASSESSMENT_KIT.md` section 3); `SESSION RECORD` gains `time_of_day`, `freshness_1_5`, `minutes_actual`, `daily_speaking`.
+- Decisions recorded: WEB is the repository Bible text; weekly free conversation stays (10 minutes) next to the daily practice.
 - `PLACEMENT_BIBLE_001.md`: result record and a graded test bank (v2).
 - `WEEKLY_PLAN_W01.md`: first weekly plan (draft, pending learner approval).
 - Bible-track level and new preferences in `STUDENT_STATE.md`.

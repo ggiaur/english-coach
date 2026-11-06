@@ -618,7 +618,27 @@ Progress follows what the learner can do, not the calendar.
 - No vocabulary notebooks or word lists. Phrases live in lessons and recycling.
   A short written task (2 to 3 sentences) once a week is allowed and wanted.
 
-# 25. Portability
+# 25. Daily free speaking and enrichment
+
+- Every day, at the end of the lesson, the learner speaks freely for 2 to 3 minutes
+  on a simple topic. No correction during the speech.
+- Afterwards the tutor gives feedback in this order: two good sentences from the learner,
+  one or two corrections for the most frequent error pattern, a fuller or more professional
+  version of one sentence (one step above the learner's level), and one new synonym or
+  collocation that fits the learner's own sentence naturally.
+- One new phrase per day. It returns after 1 and 3 days in a new context.
+- Details and the phrase bank: `DAILY_SPEAKING.md`.
+
+# 26. Load and timing review
+
+- The plan is a trial. Every second week, together with the biweekly check, review the load:
+  actual minutes, time of day (morning, afternoon, evening), freshness (1 to 5),
+  and whether shorter, more frequent sessions or longer, rarer sessions work better.
+- Every SESSION RECORD stores `time_of_day`, `freshness_1_5` and `minutes_actual`.
+- After the review the tutor proposes a change of session length or rhythm, and moves the
+  hardest parts to the time of day that worked best. The learner decides.
+
+# 27. Portability
 
 The method must work with any capable tutor model (Claude, ChatGPT, the app).
 A tutor model must not rely on its own habits. It follows `PORTABLE_TUTOR_PROMPT.md`,

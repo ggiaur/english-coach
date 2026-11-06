@@ -119,6 +119,28 @@ Előző felmérés összesen: __/44
 
 Az eredmény a `PROGRESS_LOG.md`-be és a `STUDENT_STATE.md` szintbecslésébe kerül. A kiinduló alap a 2026-11-06-i felmérés v1 (nem pontozott, informális: A1/A2 határ, A1 felé).
 
+---
+
+## 3. Terhelés- és napszak-visszamérés (kéthetente, a szintfelméréssel együtt, 5')
+
+Cél: a terv élő legyen. Az alkalmak `SESSION RECORD`-jából (`time_of_day`, `freshness_1_5`, `minutes_actual`) a tutor kiszámolja:
+
+1. **Valódi idő:** hány perc volt hetente, a tervhez képest (tervezett kb. 6 óra).
+2. **Napszak:** melyik napszakban (reggel, délután, este) volt a legfrissebb és a legjobb eredményű (átlagos frissesség, kérdéstorna-pontszám napszakonként).
+3. **Fáradtság:** a frissesség átlaga és a leggyengébb napok.
+4. **Ritmus:** a rövidebb, gyakoribb vagy a hosszabb, ritkább alkalmak működnek-e jobban (alkalmak hossza és eredménye).
+
+Kimenet (magyarul, rövid):
+```
+Valódi hetiidő: __ óra (terv: ~6 óra)
+Legjobb napszak: __ (frissesség átlag __/5)
+Gyenge napszak: __
+Rövid vs hosszú alkalom: __
+Javaslat: (hossz/ritmus/napszak, egy-két mondat)
+A nehezebb részeket (új anyag, mérés) ide tegyük: __
+```
+A tanuló dönt a változtatásról. Kevés adatnál (kevesebb mint 6 alkalom) a tutor ezt jelzi, és nem von le következtetést.
+
 ### Megjegyzés a hangmódhoz
 
 A hangfelismerés torzíthat. Gyanús átiratnál kérdezd vissza: `Say it again, please.` Egy tételt ne büntess felismerési hiba miatt.

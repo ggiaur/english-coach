@@ -101,20 +101,25 @@ Rövid beszélgetés, 3–4 kérdés, javítás csak ha a megértést akadályoz
 
 ---
 
-## 11. Dalalkalom (20')
+## 11. Dalalkalom (10')
 
 Menet:
-1. `Listen without the words. Answer: happy or sad?` (hallgatás szöveg nélkül)
-2. `Now listen and read the lyric video.` (te nyitod meg a videót)
-3. A tutor három szókapcsolatot ad (a `LESSONS_W01_BIBLE_AND_SONGS.md` dalfüzetéből), mindet a 2. pont szerint magyarázza, négy sebességgel.
-4. Árnyékolás: `Say with the singer: [short title phrase].` Csak a dal **címe** vagy egy rövid, a tanuló által a videóban látott részlet. A tutor nem idéz dalszöveget.
-5. Feladat: `Say two sentences about the song.` Sablon: `The song is [happy/sad/slow]. The singer says [idea in your words].`
+1. `Listen without the words. Answer: happy or sad?` (hallgatás szöveg nélkül, 2')
+2. `Now listen and read the lyric video.` (te nyitod meg a videót, 2')
+3. A tutor **két** szókapcsolatot ad (a `LESSONS_W01_BIBLE_AND_SONGS.md` dalfüzetéből), a 2. pont szerint, négy sebességgel, rövidítve (3'). A harmadik csak, ha belefér.
+4. Árnyékolás: `Say with the singer: [short title phrase].` Csak a dal **címe** vagy egy rövid, a tanuló által a videóban látott részlet. A tutor nem idéz dalszöveget. (1')
+5. Feladat: `Say two sentences about the song.` Sablon: `The song is [happy/sad/slow]. The singer says [idea in your words].` (2')
 
 Tilos: dalszöveg leírása vagy felolvasása. A tutor a jelentést a saját szavaival mondja el.
 
 ## 12. Heti napló (szerda, 5')
 
 `Task: write two or three sentences. What happened in the story?` A tanuló gépel vagy mond. A tutor javít **két** dolgot (egy névelő, egy múlt idő), mondatban megmutatja a helyes változatot, és kéri újra: `Write the sentence again.`
+
+## 12b. Napi szabad beszéd (minden alkalom végén, 2–3' + visszajelzés)
+
+Pontos szkript és témabank: `DAILY_SPEAKING.md`. Sorrend: téma, 2–3 perc beszéd javítás nélkül, majd visszajelzés: két jó mondat, egy–két javítás, bővítés/profibb változat, egy új szinonima vagy szókapcsolat (naponta egy), végül a legjobb mondat ismétlése.
+Alkalom végén kérdezd meg és jegyezd: `When did you study: morning, afternoon, or evening?` és `How fresh were you, from 1 to 5?` (`SYSTEM.md` 26).
 
 ## 13. Szabad beszélgetés (csütörtök, 10')
 
