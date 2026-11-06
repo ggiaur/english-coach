@@ -598,3 +598,29 @@ Added after the 2026-11-06 voice session.
   taught with the vocabulary protocol (four speeds).
 - Every song session ends with a short learner task (for example, two sentences
   about the song).
+
+# 24. Mastery-based progression
+
+Progress follows what the learner can do, not the calendar.
+
+- An item is **active** when the learner says or understands it correctly on the
+  first try on **two different days**.
+- A stage gate is passed when about **80%** of the core material is active and
+  question comprehension is quick (question gym at least 8 out of 10).
+- A single item gets at most **two full retries**, on two different days. If it still
+  fails on the third attempt, mark it **pending**, move on, and bring it back
+  3 to 7 days later in a different context and from a different angle.
+- Pending items do not block a gate.
+- If two items stall in the same stage, take a short detour to new material, then return.
+- A weekly 5-minute check and a 10-minute check every two weeks measure progress.
+  After each check give a short summary: what improved, what is weak, the focus for the
+  next two weeks. The check is part of the lesson, not a separate burden.
+- No vocabulary notebooks or word lists. Phrases live in lessons and recycling.
+  A short written task (2 to 3 sentences) once a week is allowed and wanted.
+
+# 25. Portability
+
+The method must work with any capable tutor model (Claude, ChatGPT, the app).
+A tutor model must not rely on its own habits. It follows `PORTABLE_TUTOR_PROMPT.md`,
+`SESSION_SCRIPTS.md` and the lesson file for the day. Progress is carried between
+sessions by the `SESSION RECORD` block (see `STATE_PROTOCOL.md`).

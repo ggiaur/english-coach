@@ -78,6 +78,12 @@ Common current issues include:
 - Slow pace only. The learner controls the next step in voice mode. (2026-11-06)
 - Chunk-by-chunk build-up (small part, then add the next) works well. (2026-11-06)
 - Wants more daily and weekly material than the first plan draft, and song lyrics / other audio for weekday vocabulary growth. (2026-11-06)
+- Progress is mastery-based: move on when secure; max two full retries on two different days; then mark pending and return in 3 to 7 days in a different context. (2026-11-06)
+- A short check every week and a longer one every two weeks, built into the lessons. (2026-11-06)
+- No vocabulary notebook or word lists. Phrases in context, plus a short written task about once a week. (2026-11-06)
+- Song links must be clickable. Lyrics are not copied into the repository. (2026-11-06)
+- Wants the repository to be complete enough that another tutor model (for example ChatGPT) can run the same course. (2026-11-06)
+- Wants John 9 as the Bible text for 2026-11-07 (verses 1–5 core). (2026-11-06)
 - After lesson-mode ends, explanations of system or evaluation may be in Hungarian; the lesson itself is English only.
 
 ## Current lesson domain

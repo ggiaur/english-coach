@@ -42,8 +42,8 @@ A 2026-11-07-i szombati alkalom a 0. hét volt, nem kell pótolni.
 | 4 | `What is your user name?` | L2 |
 | 5 | `What is the problem?` | L2 |
 | 6 | `Who is calling?` | L2 |
-| 7 | `Where are you?` | L2 |
-| 8 | `I'll check your account.` (az `I'll check it.` bővítése) | L2 |
+| 7 | `Where are you?` | L4 |
+| 8 | `I'll check your account.` (az `I'll check it.` bővítése) | L4 |
 | 9 | `I reset the password.` (már félig aktív) | L3, visszahozás |
 | 10 | `I tried the old password.` | L3 |
 | 11 | `Now you can log in.` | L3 |
@@ -107,7 +107,26 @@ A szint ezeknél a jelenlegi szinted felett lehet. Ezért a tutor mindig csak 1 
 
 A hét végére kb. **26 aktív szókapcsolat**: 12 IT, 4 Biblia és kb. 10 a dalokból (naponta 2).
 
+### 3.7 Heti írásos feladat és szabad beszélgetés
+
+- **Napló (szerda, 5'):** 2–3 mondat angolul: mi történt a történetben, vagy mit csináltál ma. A tutor két dolgot javít: egy névelő- és egy múlt idő-hibát.
+- **Szabad beszélgetés (csütörtök, 10'):** téma: `Your day at work.` Javítás nincs, csak megszólalsz. A tutor a végén két hasznos mondatot mutat a saját mondataidból.
+- Szószedet, szólista **nincs**.
+
+### 3.8 Haladási szabály
+
+Nem naptár, hanem tudás szerint haladunk (`SYSTEM.md` 24. fejezet): egy tétel legfeljebb kétszer kap teljes újrapróbálkozást, a harmadiknál függőben marad, és 3–7 nap múlva más szövegkörnyezetben visszajön. A kétheti felmérés (csütörtök 11-19 és 12-03) a kapu része.
+
+### 3.9 Hol vannak a kidolgozott leckék
+
+- IT: `LESSONS_W01_IT.md` (L1–L5, teljes szkript)
+- Biblia és dalok: `LESSONS_W01_BIBLE_AND_SONGS.md`, `LESSON_BIBLE_JOHN9_01.md`
+- Módszer a tutornak: `SESSION_SCRIPTS.md`, `PORTABLE_TUTOR_PROMPT.md`
+- Mérés: `ASSESSMENT_KIT.md`, `QUESTION_GYM.md`
+
 ## 4. Biblia-sáv: tartalom
+
+**Módosítás (2026-11-06):** a 2026-11-07-i szombaton **János 9, 1–5. vers** van (`LESSON_BIBLE_JOHN9_01.md`). A Genesis 1 mondatai ismétlésben maradnak, amíg két különböző napon nem mennek elsőre. A 2026-11-14-i szombat tartalmát a kapu dönti el: Genesis-ismétlés + János 9 folytatása (2–4., majd 6–7. vers).
 
 ### 4.1 Szöveg (szó szerinti fordítás, nem átfogalmazás)
 
