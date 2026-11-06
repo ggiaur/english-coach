@@ -14,6 +14,8 @@ Frissítés: heti összesítés a `PROGRESS_LOG.md` alapján.
 | God called the light day. / God called the dark night. | said1 | 2026-11-06 | `is` nélkül |
 | That was the first day. | said1 | 2026-11-06 | tanári mondat, nem WEB-szöveg |
 | Ahab was a bad king. / God tried to save him. | said1 | 2026-11-06 | `a`, `tried` |
+| John 9:1 (As he passed by, he saw a man blind from birth.) | new | 2026-11-07 | built in parts; `from`, `the` errors |
+| John 9:5 (light of the world) | new | 2026-11-07 | built in parts; light/like |
 
 ## IT
 

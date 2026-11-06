@@ -199,5 +199,38 @@ class TestEnglishCoach(unittest.TestCase):
             self.assertEqual(main.get_lesson_state(sid)["phase"], "vocab_pass_1")
 
 
+class TestProgressPage(unittest.TestCase):
+    @patch("google.genai.Client")
+    def test_progress_routes_and_data(self, mock_genai_client):
+        import json
+        import main
+
+        with main.app.test_client() as client:
+            for path in ("/progress", "/progress/"):
+                res = client.get(path)
+                self.assertEqual(res.status_code, 200)
+                self.assertIn(b"progress.js", res.data)
+                res.close()
+            for asset in ("progress.js", "progress.css", "data.json"):
+                res = client.get("/progress/" + asset)
+                self.assertEqual(res.status_code, 200)
+                res.close()
+
+        path = os.path.join(main.app.static_folder, "progress", "data.json")
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        self.assertEqual(len(data["songs"]), 5)
+        urls = [s["url"] for s in data["songs"]] + [r["url"] for r in data["resources"]]
+        for url in urls:
+            self.assertTrue(url.startswith("https://"), url)
+        song_ids = {s["id"] for s in data["songs"]}
+        for day in data["days"]:
+            if "song" in day:
+                self.assertIn(day["song"], song_ids)
+        # No lyrics in the public page data: every text field stays short.
+        for s in data["songs"]:
+            self.assertLess(len(s["title"]), 60)
+
+
 if __name__ == "__main__":
     unittest.main()

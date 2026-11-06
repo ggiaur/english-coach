@@ -389,7 +389,7 @@ Preferred cues:
 - `Almost.`
 - `Try again.`
 - `Good correction.`
-- `Say: ...`
+- `Repeat: ...`
 - `One small change: ...`
 
 Comments may be longer when useful, but they must remain in English during lesson mode.
@@ -554,7 +554,7 @@ Methodology improvements should be recorded in `CHANGELOG.md`.
 Added after the 2026-11-06 voice session.
 
 - Every turn that expects the learner to speak starts with one clear task in
-  simple English: `Say: ...`, `Answer: A or B?`, `Tell me one thing about ...`
+  simple English: `Repeat: ...`, `Answer: A or B?`, `Tell me one thing about ...`
 - The tutor never gives the answer in the same turn as the question.
   Teacher-answered questions belong to input phases only (section 7.3) and are
   announced as such: `I ask, I answer. Just listen.`
@@ -644,3 +644,14 @@ The method must work with any capable tutor model (Claude, ChatGPT, the app).
 A tutor model must not rely on its own habits. It follows `PORTABLE_TUTOR_PROMPT.md`,
 `SESSION_SCRIPTS.md` and the lesson file for the day. Progress is carried between
 sessions by the `SESSION RECORD` block (see `STATE_PROTOCOL.md`).
+
+# 28. Simple task language (early weeks)
+
+Added after the 2026-11-07 voice session: compound questions and long sentences blocked the learner.
+
+- Use only the task words in `TASK_LANGUAGE.md` (Listen, Repeat, Again, Slower, Yes or no, A or B, One word, A sentence).
+- One instruction and one question per turn. Task sentences of at most 5 or 6 words.
+- The task comes last. No example or hint after it.
+- Use `Repeat.` and never "Say it" for repeating (the learner repeated "Say it" literally).
+- Build long sentences in small parts (section 20). Teaching sentences in L1 to L3: at most 6 words.
+- Task rescue (proposal, awaiting owner decision): see `TASK_LANGUAGE.md` section 3.

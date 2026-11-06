@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haladás – English Coach</title>
+<link rel="stylesheet" href="/progress/progress.css">
+</head>
+<body>
+<main>
+  <h1>Haladás</h1>
+  <p class="note">A pipák csak ebben a böngészőben maradnak meg (nincs bejelentkezés). Dalszöveg nincs az oldalon: a linkek a hivatalos videókra mutatnak.</p>
+  <p id="week"></p>
+  <div class="bar"><div id="barfill"></div></div>
+  <p id="pct"></p>
+
+  <section id="days"></section>
+
+  <h2>Dalok (10 perc, hétköznap)</h2>
+  <ul id="songs"></ul>
+
+  <h2>Más anyagok</h2>
+  <ul id="resources"></ul>
+
+  <h2>Napi visszamérés</h2>
+  <form id="logform">
+    <label>Dátum <input type="date" id="f-date"></label>
+    <label>Napszak
+      <select id="f-tod"><option>reggel</option><option>délután</option><option>este</option></select>
+    </label>
+    <label>Frissesség (1–5) <input type="number" id="f-fresh" min="1" max="5" value="3"></label>
+    <label>Tényleges percek <input type="number" id="f-min" min="0" max="240" value="45"></label>
+    <label>Napi szabad beszéd
+      <select id="f-speak"><option>yes</option><option>no</option></select>
+    </label>
+    <button type="submit">SESSION RECORD vázlat</button>
+  </form>
+  <textarea id="record" rows="10" readonly></textarea>
+  <button id="copy" type="button">Másolás</button>
+
+  <p><a id="repo" target="_blank" rel="noopener">Tervek és leckék a repóban</a> · <a href="/">Vissza a tutorhoz</a></p>
+  <button id="reset" type="button" class="danger">Pipák törlése</button>
+</main>
+<script src="/progress/progress.js"></script>
+</body>
+</html>

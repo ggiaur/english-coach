@@ -151,6 +151,12 @@ def index():
     return jsonify({"status": "ok", "service": "english-coach", "version": VERSION})
 
 
+@app.route("/progress", methods=["GET"])
+@app.route("/progress/", methods=["GET"])
+def progress():
+    return send_from_directory(os.path.join(app.static_folder, "progress"), "index.html")
+
+
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify(

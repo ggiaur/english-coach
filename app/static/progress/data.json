@@ -1,0 +1,26 @@
+{
+  "week": "2026-11-08 – 2026-11-14",
+  "days": [
+    {"id": "d0", "day": "Vasárnap 11-08", "title": "IT L1 – The locked account (45')", "items": ["Kérdéstorna + feladatnyelv (5')", "Szómagyarázatok (14')", "Mini-történet 4× (7')", "Bővítés és feladatok (16')", "Napi szabad beszéd (2–3')"], "song": "s1"},
+    {"id": "d1", "day": "Hétfő 11-09", "title": "IT L2 (45')", "items": ["Kérdéstorna (5')", "Lecke L2", "Genesis 1 ismétlés", "Napi szabad beszéd (2–3')"], "song": "s2"},
+    {"id": "d2", "day": "Kedd 11-10", "title": "IT L3 (45')", "items": ["Kérdéstorna (5')", "Lecke L3", "John 9:1 és 9:5 ismétlés", "Napi szabad beszéd (2–3')"], "song": "s3"},
+    {"id": "d3", "day": "Szerda 11-11", "title": "IT L4 (30')", "items": ["Kérdéstorna (5')", "Lecke L4", "Napi szabad beszéd (2–3')"], "song": "s4"},
+    {"id": "d4", "day": "Csütörtök 11-12", "title": "IT L5 + heti ellenőrzés (45')", "items": ["Heti ellenőrzés (5')", "Lecke L5", "Heti 2–3 mondatos írás", "Napi szabad beszéd (2–3')"], "song": "s5"},
+    {"id": "d5", "day": "Péntek 11-13", "title": "Péntek este – Biblia (20–25')", "items": ["Péntek-ülés", "Napi szabad beszéd (2–3')"]},
+    {"id": "d6", "day": "Szombat 11-14", "title": "Szombat – Biblia (60–75')", "items": ["Genesis 1 és János 9 szkript", "Heti szabad beszélgetés (10')", "Napi szabad beszéd (2–3')"]}
+  ],
+  "songs": [
+    {"id": "s1", "title": "What a Wonderful World", "artist": "Louis Armstrong", "url": "https://www.youtube.com/watch?v=0NlfQdH5MSg", "official": "Official", "search": "https://www.youtube.com/results?search_query=Louis+Armstrong+What+a+Wonderful+World+lyrics"},
+    {"id": "s2", "title": "Let It Be", "artist": "The Beatles", "url": "https://www.youtube.com/watch?v=CGj85pVzRJs", "official": "Official Music Video", "search": "https://www.youtube.com/results?search_query=The+Beatles+Let+It+Be+lyrics"},
+    {"id": "s3", "title": "Count on Me", "artist": "Bruno Mars", "url": "https://www.youtube.com/watch?v=6k8cpUkKK4c", "official": "Official Lyric Video", "search": "https://www.youtube.com/results?search_query=Bruno+Mars+Count+on+Me+lyrics"},
+    {"id": "s4", "title": "Lean on Me", "artist": "Bill Withers", "url": "https://www.youtube.com/watch?v=gOZgo8gMIoM", "official": "Official Audio", "search": "https://www.youtube.com/results?search_query=Bill+Withers+Lean+on+Me+lyrics"},
+    {"id": "s5", "title": "Stand By Me", "artist": "Ben E. King", "url": "https://www.youtube.com/watch?v=z5i9vT8wGY8", "official": "Official Vinyl Video", "search": "https://www.youtube.com/results?search_query=Ben+E.+King+Stand+By+Me+lyrics"}
+  ],
+  "resources": [
+    {"title": "VOA Learning English – Technology Report", "url": "https://learningenglish.voanews.com/amp/2343496.html"},
+    {"title": "János 9 – World English Bible (Bible Hub)", "url": "https://biblehub.com/parallel/john/9-1.htm"},
+    {"title": "János 9:1 – WEB (thebible.ch)", "url": "https://thebible.ch/WEB/JHN/9/1"},
+    {"title": "Beatles – Let It Be (hivatalos oldal)", "url": "https://thebeatles.com/let-it-be-3"}
+  ],
+  "repo": "https://github.com/ggiaur/english-coach/tree/main/docs/effortless-framework"
+}

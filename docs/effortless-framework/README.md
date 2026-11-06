@@ -38,6 +38,7 @@ For ChatGPT Projects or any environment with persistent project instructions, co
 - `PORTABLE_TUTOR_PROMPT.md` — paste-in prompt for ChatGPT or another model.
 - `STATE_PROTOCOL.md`, `PROGRESS_LOG.md`, `ITEM_TRACKER.md` — how state travels between tutors.
 - `DAILY_SPEAKING.md` — daily free speaking with end feedback, plus the synonym and collocation bank.
+- `TASK_LANGUAGE.md` — simple task words and turn rules for the early weeks.
 - `HASZNALAT.md` — short how-to in Hungarian.
 - `QUALITY_CHECKLIST.md` — pre-flight and live lesson checks.
 - `CHANGELOG.md` — methodology changes.

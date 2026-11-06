@@ -67,7 +67,7 @@ A négy mondat a péntek szerint. Közben nincs kérdés.
 
 ## 6. Névelő és múlt idő (5')
 
-`Say: God saw the light.` · `Say: God created the heavens.` · `Say: a bad king.` · `Say: He tried to save him.`
+`Repeat: God saw the light.` · `Repeat: God created the heavens.` · `Repeat: a bad king.` · `Repeat: He tried to save him.`
 
 ## 7. János 9:2–4 megértése (15', ha a gate engedi)
 
