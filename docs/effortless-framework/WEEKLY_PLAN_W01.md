@@ -19,15 +19,17 @@ Módosítva a visszajelzés alapján (2026-11-06): több napi anyag, és hétkö
 
 | Nap | Sáv | Idő | Tartalom |
 |-----|-----|-----|----------|
-| Vas 11-08 | IT + zene | 45' + 20' | L1: a zárolt fiók (jelen idő); dal: S1 |
-| Hé 11-09 | IT + zene | 45' + 20' | L2: kérdések a help desk hívásban; dal: S2 |
-| Ke 11-10 | IT + zene | 45' + 20' | L3: ugyanaz a történet múlt időben; dal: S3 |
-| Sze 11-11 | IT + zene | 30' + 20' | L4: visszahozás, névelő, nézőpontváltás; dal: S4 |
-| Cs 11-12 | IT + zene | 45' + 20' | L5: támogatott szerepjáték + heti ellenőrzés; dal: S5 |
+| Vas 11-08 | IT + zene | 45' + 10' | L1: a zárolt fiók (jelen idő); dal: S1 |
+| Hé 11-09 | IT + zene | 45' + 10' | L2: kérdések a help desk hívásban; dal: S2 |
+| Ke 11-10 | IT + zene | 45' + 10' | L3: ugyanaz a történet múlt időben; dal: S3 |
+| Sze 11-11 | IT + zene | 30' + 10' | L4: visszahozás, névelő, nézőpontváltás; dal: S4 |
+| Cs 11-12 | IT + zene | 45' + 10' | L5: támogatott szerepjáték + heti ellenőrzés; dal: S5 |
 | Pé 11-13 | Biblia | 20–25' | Hallgatás + 3 mondat, **napnyugta előtt befejezve** |
 | Szo 11-14 | Biblia | 60–75' | B1: Genesis 1:1, 3–5 (lásd 4. pont) |
 
-Összesen kb. 6,5–7 óra a héten (a korábbi tervezet kb. 4,5 óra volt). Ha ez sok, a zenei sáv napi 10 percre rövidíthető.
+Mindennap (péntek és szombat is) a végén **2–3 perc szabad beszéd** és visszajelzés (`DAILY_SPEAKING.md`), kb. 5 perc összesen.
+
+Összesen kb. **6 óra** a héten (alsó becslés 5 óra 50 perc, felső 6 óra 15 perc). A zenei sáv napi 10 percre rövidítve a 2026-11-06-i döntés szerint. A kétheti mérések és a szerdai napló ezen felül vannak.
 A 2026-11-07-i szombati alkalom a 0. hét volt, nem kell pótolni.
 
 ## 3. IT-sáv: tartalom
@@ -69,17 +71,17 @@ L3-ban ugyanez múlt időben (`SYSTEM.md` 7.5): `Yesterday, Tom forgot his passw
 Sze (L4) rövidebb: 1., 5. és 6. lépés, plusz nézőpontváltás (`I'm Anna. I work in IT.`).
 Cs (L5): támogatott szerepjáték (Anna és Tom), majd heti ellenőrzés (5. pont).
 
-### 3.4 Zenei hallgatási sáv (hétköznap, 20')
+### 3.4 Zenei hallgatási sáv (hétköznap, 10')
 
 Cél: szókincs, kiejtés, ritmus, szókapcsolatok. **Nem** nyelvtani minta (a dalokban sok a `gonna`, `ain't`, kihagyott szó).
 
 **Szabály a szerzői jog miatt:** a dalszöveget a tutor és a repó **nem** másolja le. Te nyitod meg a hivatalos videót vagy a hivatalos szövegoldalt (YouTube lyric video, Spotify), a tutor a jelentést és a szókapcsolatokat saját szavaival, angolul magyarázza.
 
 Egy dal menete:
-1. **Hallgatás szöveg nélkül** (4'): egy feladat utána: `Answer: Is the song happy or sad?`
-2. **Hallgatás szöveggel** (4'): te olvasod a szöveget.
-3. **Szókapcsolatok** (6'): legfeljebb 3 szó vagy szókapcsolat, négy sebességgel magyarázva angolul, saját példamondatokkal.
-4. **Együtténeklés / árnyékolás** (4'): a dallal együtt mondod a refrén egy rövid részét.
+1. **Hallgatás szöveg nélkül** (2'): egy feladat utána: `Answer: Is the song happy or sad?`
+2. **Hallgatás szöveggel** (2'): te olvasod a szöveget.
+3. **Szókapcsolatok** (3'): **2** szókapcsolat a dalfüzet sorrendjében, négy sebességgel, rövid magyarázattal. A 3. csak, ha belefér.
+4. **Árnyékolás** (1'): a dal címe vagy egy rövid, általad látott részlet, a dallal együtt.
 5. **Feladat** (2'): `Say two sentences about the song.`
 
 Heti dallista (lassú, tiszta ének, egyszerű szókincs; a szövegek és az előadói hangzás miatt ezek kezdőknek jók):
@@ -182,6 +184,6 @@ Minden új szókapcsolat visszajön a tanulás utáni 1., 3. és 7. napon, legal
 
 1. Jó a heti ritmus (vasárnaptól csütörtökig IT, pénteken rövid, szombaton Biblia)?
 2. Maradjon-e a napi 5 perces **kérdéstorna**?
-3. Jó-e a **WEB** mint alapfordítás (közkincs, tárolható), vagy az ESV-t szeretnéd, akkor is, ha a szövegét nem tároljuk a repóban?
-4. Jó a napi 20 perces zenei sáv és a hetente kb. 6,5–7 óra, vagy rövidítsünk?
+3. ~~WEB vagy ESV?~~ **Eldöntve (2026-11-06): WEB az alap.** Hallgatásra az ESV bármikor használható, a szövegét nem tároljuk.
+4. ~~Zenei sáv hossza?~~ **Eldöntve (2026-11-06): napi 10 perc**, a hét kb. 6 óra. Heti és kétheti visszamérés dönt a további változtatásról (`ASSESSMENT_KIT.md` 3. pont).
 5. Van kedvenc angol előadód, akitől szívesen tanulnál? Az olyan dalokat könnyű beépíteni, ha lassú és tiszta az ének.

@@ -5,6 +5,8 @@ Kiindulás: IT A1+ / korai A2. A módszer lépései: `SESSION_SCRIPTS.md`. Minde
 Szereplők: **Tom** (értékesítésben dolgozik), **Anna** (az IT-ben, a help desken dolgozik).
 Minden leckében: legfeljebb 3 új szókapcsolat. A támogató szavak magyarázata a protokoll szerint történik (4 sebesség), de rövidebb.
 
+**Minden lecke végén (a 45' / 30' után): napi szabad beszéd 2–3' és visszajelzés** (`DAILY_SPEAKING.md`), valamint a napszak és frissesség rögzítése (`SYSTEM.md` 26).
+
 Mastery-szabály minden leckére (`SYSTEM.md` 24): két teljes újrapróbálkozás két napon, a harmadik kudarc után `PENDING`, visszahozás 3–7 nap múlva más szövegkörnyezetben.
 
 ---

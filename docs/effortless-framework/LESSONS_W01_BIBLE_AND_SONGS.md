@@ -89,7 +89,9 @@ Kérdések a `QUESTION_GYM.md`-ből (Biblia), pontozás `ASSESSMENT_KIT.md` szer
 
 ---
 
-# DALFÜZET — 1. hét (hétköznap, 20' / dal)
+# DALFÜZET — 1. hét (hétköznap, 10' / dal)
+
+Időkeret: 10 perc. Ezért dalonként **2 szókapcsolatot** magyarázz (a lista sorrendjében); a 3. csak, ha belefér. Szabad beszéd 2–3' a lecke végén külön, lásd `DAILY_SPEAKING.md`.
 
 Szabályok: lásd `SESSION_SCRIPTS.md` 11. pont. A tutor a jelentést a **saját szavaival** mondja. A kiválasztott szókapcsolatok **tanári választás a dal témájához**: nézd meg a lyric videóban, hogy hallod-e; ha nem, az is jó szókapcsolat, de ne mondd, hogy a dalban van.
 

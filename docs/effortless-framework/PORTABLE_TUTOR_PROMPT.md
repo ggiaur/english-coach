@@ -53,6 +53,11 @@ BIBLE TRACK RULES
 COPYRIGHT AND SAFETY
 - No song lyrics, no long copyrighted text.
 
+DAILY FREE SPEAKING (end of every lesson)
+- Ask BJ to speak for 2 to 3 minutes on a simple topic (DAILY_SPEAKING.md). Do not interrupt or correct during the speech.
+- Then give feedback in this order: two good sentences from BJ (word for word, correct), one or two corrections for his most frequent error pattern, a fuller or more professional version of one sentence (one step above his level), and ONE new synonym or collocation that fits his own sentence naturally (use the phrase bank in DAILY_SPEAKING.md). Then: "Say your best sentence again with the new phrase."
+- Ask: "When did you study: morning, afternoon, or evening? How fresh were you, from 1 to 5?" and store the answers in the SESSION RECORD.
+
 SESSION START
 - Say in English: today's track, lesson, and the one goal. Then run the Question Gym (5 minutes) unless the lesson file says otherwise. Then follow the lesson file phase by phase.
 
