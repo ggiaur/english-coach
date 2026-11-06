@@ -1,5 +1,25 @@
 # CHANGELOG.md
 
+## 0.3 — 2026-11-06
+
+Changes after the first Bible-track voice session and placement.
+
+Added:
+- `SYSTEM.md` sections 20 to 25: task clarity and turn design, voice mode, Bible track, listening lane (songs and audio), mastery-based progression, portability.
+- Portable tutor kit: `PORTABLE_TUTOR_PROMPT.md`, `SESSION_SCRIPTS.md`, `STATE_PROTOCOL.md`, `PROGRESS_LOG.md`, `ITEM_TRACKER.md`.
+- Fully scripted week 1: `LESSONS_W01_IT.md`, `LESSONS_W01_BIBLE_AND_SONGS.md`, `LESSON_BIBLE_JOHN9_01.md`.
+- Measurement: `ASSESSMENT_KIT.md`, `QUESTION_GYM.md`. Monthly plan: `MONTHLY_PLAN_M01.md`. Links: `LISTENING_LINKS.md`. How-to: `HASZNALAT.md`.
+- Root `CLAUDE.md` with the owner's standing write authorization for this repository.
+- `PLACEMENT_BIBLE_001.md`: result record and a graded test bank (v2).
+- `WEEKLY_PLAN_W01.md`: first weekly plan (draft, pending learner approval).
+- Bible-track level and new preferences in `STUDENT_STATE.md`.
+
+Fixed (system-level causes):
+- Long listening blocks with no learner task.
+- Answers given together with the question.
+- Bible text simplified into a different wording.
+- Placement test items not graded by difficulty.
+
 ## 0.2 — 2026-09-16
 
 Runtime implementation aligned with the written Effortless framework.

@@ -25,6 +25,19 @@ For ChatGPT Projects or any environment with persistent project instructions, co
 - `LESSON_TEMPLATE.md` — required structure for every lesson.
 - `LESSON_001_IT_HELPDESK.md` — first worked example.
 - `STUDENT_STATE.md` — current level estimate, known issues and progress.
+- `PLACEMENT_BIBLE_001.md` — Bible-track placement result and graded test bank.
+- `WEEKLY_PLAN_W01.md` — weekly plan (draft until approved by the learner).
+- `MONTHLY_PLAN_M01.md` — month plan: stages with mastery gates.
+- `LESSONS_W01_IT.md` — week 1 IT lessons L1–L5, fully scripted.
+- `LESSONS_W01_BIBLE_AND_SONGS.md` — Friday and Saturday Bible sessions and five song sheets.
+- `LESSON_BIBLE_JOHN9_01.md` — Saturday 2026-11-07, John 9:1–5.
+- `LISTENING_LINKS.md` — clickable song and audio links (no lyrics).
+- `ASSESSMENT_KIT.md` — weekly check and biweekly test with scoring.
+- `QUESTION_GYM.md` — daily 5-minute question practice and question bank.
+- `SESSION_SCRIPTS.md` — exact turn-by-turn scripts for any tutor model.
+- `PORTABLE_TUTOR_PROMPT.md` — paste-in prompt for ChatGPT or another model.
+- `STATE_PROTOCOL.md`, `PROGRESS_LOG.md`, `ITEM_TRACKER.md` — how state travels between tutors.
+- `HASZNALAT.md` — short how-to in Hungarian.
 - `QUALITY_CHECKLIST.md` — pre-flight and live lesson checks.
 - `CHANGELOG.md` — methodology changes.
 

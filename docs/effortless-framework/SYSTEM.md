@@ -546,3 +546,81 @@ Examples:
 - four rounds were not automatic.
 
 Methodology improvements should be recorded in `CHANGELOG.md`.
+
+---
+
+# 20. Task clarity and turn design
+
+Added after the 2026-11-06 voice session.
+
+- Every turn that expects the learner to speak starts with one clear task in
+  simple English: `Say: ...`, `Answer: A or B?`, `Tell me one thing about ...`
+- The tutor never gives the answer in the same turn as the question.
+  Teacher-answered questions belong to input phases only (section 7.3) and are
+  announced as such: `I ask, I answer. Just listen.`
+- A listening block longer than about one minute ends with a task. No long
+  stretches of listening with no task.
+- Build long sentences in small parts: first part, add the next part, then the
+  whole sentence. Do not repeat a failed long sentence unchanged.
+- One correction per turn: the single most important error.
+
+# 21. Voice mode
+
+- Pauses written as `...` are not honored by speech output. In voice mode the
+  learner controls the pace: very short chunks, then wait for the learner.
+- The very slow rounds still use the shortest possible sentences and a slow rate.
+  When the app is used, pacing comes from the app, not from the text.
+- Speech recognition can distort the learner's words. Judge a pattern across
+  several turns before treating a line as a pronunciation error.
+
+# 22. Bible track
+
+- Saturday lessons (Friday sunset to Saturday sunset) use Bible topics.
+- Scripture is never paraphrased into a different wording. Use a real
+  translation. The repository default is the World English Bible (public
+  domain); other translations may be used for listening but are not stored here.
+- Teaching help (simple explanations, retelling, questions) is clearly marked as
+  teacher speech, separate from the Bible text.
+- Introduce Bible text in short passages, verse by verse, with the same
+  input-first protocol. Prefer passages with concrete actions in early weeks.
+- Core Bible vocabulary is taught as chunks in context (for example
+  `Please forgive me.`, `I pray to God.`), with sound contrasts where needed
+  (`faith` / `face`).
+
+# 23. Listening lane (songs and audio)
+
+- Songs and audio build vocabulary, rhythm and pronunciation. They are not
+  grammar models (reduced forms, slang, missing words are common).
+- Never reproduce song lyrics or long passages from copyrighted texts. The learner
+  opens the official lyric video or text page. The tutor explains meaning and
+  chunks in its own simple English words.
+- Pick slow, clear, repetitive songs first. At most 3 new words or chunks per song,
+  taught with the vocabulary protocol (four speeds).
+- Every song session ends with a short learner task (for example, two sentences
+  about the song).
+
+# 24. Mastery-based progression
+
+Progress follows what the learner can do, not the calendar.
+
+- An item is **active** when the learner says or understands it correctly on the
+  first try on **two different days**.
+- A stage gate is passed when about **80%** of the core material is active and
+  question comprehension is quick (question gym at least 8 out of 10).
+- A single item gets at most **two full retries**, on two different days. If it still
+  fails on the third attempt, mark it **pending**, move on, and bring it back
+  3 to 7 days later in a different context and from a different angle.
+- Pending items do not block a gate.
+- If two items stall in the same stage, take a short detour to new material, then return.
+- A weekly 5-minute check and a 10-minute check every two weeks measure progress.
+  After each check give a short summary: what improved, what is weak, the focus for the
+  next two weeks. The check is part of the lesson, not a separate burden.
+- No vocabulary notebooks or word lists. Phrases live in lessons and recycling.
+  A short written task (2 to 3 sentences) once a week is allowed and wanted.
+
+# 25. Portability
+
+The method must work with any capable tutor model (Claude, ChatGPT, the app).
+A tutor model must not rely on its own habits. It follows `PORTABLE_TUTOR_PROMPT.md`,
+`SESSION_SCRIPTS.md` and the lesson file for the day. Progress is carried between
+sessions by the `SESSION RECORD` block (see `STATE_PROTOCOL.md`).
