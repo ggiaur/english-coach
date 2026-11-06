@@ -9,22 +9,25 @@ A tervezési szöveg magyar, a lecketartalom angol. A leckék maguk angolul futn
 1. **Kérdőszavak:** a `Who / What / Where` kérdéseket ismert tartalomra legalább 8/10 esetben megérted és rövid angol mondatban válaszolsz.
 2. **Névelő:** `a` / `the` az 5 célmondatban legalább 4/5 elsőre helyes.
 3. **Múlt idő:** `reset`, `tried`, `forgot`, `saw`, `said`, `called`, `created` irányított mondatokban helyes.
-4. **Aktív nyelv a hét végén:** 12 IT-szókapcsolat és 5 Genesis-mondat, amelyet **két különböző napon** elsőre jól mondasz.
+4. **Aktív nyelv a hét végén:** 12 IT-szókapcsolat, 4 Genesis-mondat és kb. 10 dalból tanult szókapcsolat, amelyet **két különböző napon** elsőre jól mondasz.
 
 Szintet nem lépünk a héten. A cél stabilizálás, nem több anyag.
 
 ## 2. Heti ritmus
 
+Módosítva a visszajelzés alapján (2026-11-06): több napi anyag, és hétköznap **zenei hallgatási sáv** a szókincsbővítésre (lásd 3.4).
+
 | Nap | Sáv | Idő | Tartalom |
 |-----|-----|-----|----------|
-| Vas 11-08 | IT | 45' | L1: a zárolt fiók (jelen idő) |
-| Hé 11-09 | IT | 45' | L2: kérdések a help desk hívásban |
-| Ke 11-10 | IT | 45' | L3: ugyanaz a történet múlt időben |
-| Sze 11-11 | IT | 30' | L4: visszahozás, névelő, nézőpontváltás |
-| Cs 11-12 | IT | 45' | L5: támogatott szerepjáték + heti ellenőrzés |
-| Pé 11-13 | Biblia | 15–20' | Csak hallgatás + 3 mondat, **napnyugta előtt befejezve** |
-| Szo 11-14 | Biblia | 45–60' | B1: Genesis 1:1, 3–5 (lásd 4. pont) |
+| Vas 11-08 | IT + zene | 45' + 20' | L1: a zárolt fiók (jelen idő); dal: S1 |
+| Hé 11-09 | IT + zene | 45' + 20' | L2: kérdések a help desk hívásban; dal: S2 |
+| Ke 11-10 | IT + zene | 45' + 20' | L3: ugyanaz a történet múlt időben; dal: S3 |
+| Sze 11-11 | IT + zene | 30' + 20' | L4: visszahozás, névelő, nézőpontváltás; dal: S4 |
+| Cs 11-12 | IT + zene | 45' + 20' | L5: támogatott szerepjáték + heti ellenőrzés; dal: S5 |
+| Pé 11-13 | Biblia | 20–25' | Hallgatás + 3 mondat, **napnyugta előtt befejezve** |
+| Szo 11-14 | Biblia | 60–75' | B1: Genesis 1:1, 3–5 (lásd 4. pont) |
 
+Összesen kb. 6,5–7 óra a héten (a korábbi tervezet kb. 4,5 óra volt). Ha ez sok, a zenei sáv napi 10 percre rövidíthető.
 A 2026-11-07-i szombati alkalom a 0. hét volt, nem kell pótolni.
 
 ## 3. IT-sáv: tartalom
@@ -65,6 +68,44 @@ L3-ban ugyanez múlt időben (`SYSTEM.md` 7.5): `Yesterday, Tom forgot his passw
 
 Sze (L4) rövidebb: 1., 5. és 6. lépés, plusz nézőpontváltás (`I'm Anna. I work in IT.`).
 Cs (L5): támogatott szerepjáték (Anna és Tom), majd heti ellenőrzés (5. pont).
+
+### 3.4 Zenei hallgatási sáv (hétköznap, 20')
+
+Cél: szókincs, kiejtés, ritmus, szókapcsolatok. **Nem** nyelvtani minta (a dalokban sok a `gonna`, `ain't`, kihagyott szó).
+
+**Szabály a szerzői jog miatt:** a dalszöveget a tutor és a repó **nem** másolja le. Te nyitod meg a hivatalos videót vagy a hivatalos szövegoldalt (YouTube lyric video, Spotify), a tutor a jelentést és a szókapcsolatokat saját szavaival, angolul magyarázza.
+
+Egy dal menete:
+1. **Hallgatás szöveg nélkül** (4'): egy feladat utána: `Answer: Is the song happy or sad?`
+2. **Hallgatás szöveggel** (4'): te olvasod a szöveget.
+3. **Szókapcsolatok** (6'): legfeljebb 3 szó vagy szókapcsolat, négy sebességgel magyarázva angolul, saját példamondatokkal.
+4. **Együtténeklés / árnyékolás** (4'): a dallal együtt mondod a refrén egy rövid részét.
+5. **Feladat** (2'): `Say two sentences about the song.`
+
+Heti dallista (lassú, tiszta ének, egyszerű szókincs; a szövegek és az előadói hangzás miatt ezek kezdőknek jók):
+
+| Nap | Dal | Miért ez |
+|-----|-----|----------|
+| S1 Vas | *What a Wonderful World* — Louis Armstrong | Nagyon lassú, tiszta; egyszerű főnevek, nappal és éjszaka témája (kapcsolódik a Genesis 1-hez) |
+| S2 Hé | *Let It Be* — The Beatles | Lassú, ismétlődő, rövid mondatok |
+| S3 Ke | *Count on Me* — Bruno Mars | Egyszerű jelen idő, `help` és `friend` témák (illik a help deskhez) |
+| S4 Sze | *Lean on Me* — Bill Withers | Lassú, nagyon ismétlődő, tiszta kiejtés |
+| S5 Cs | *Stand By Me* — Ben E. King | Lassú, ismétlődő szerkezet |
+
+Péntek esti hallgatásra, ha a dalt a szombati sávba is bevonod: *Turn! Turn! Turn!* (The Byrds, szövege a Prédikátor könyve 3. részére épül). Hogy pénteken és szombaton hallgatsz-e zenét, a te döntésed.
+
+Később (2. hét után): *Yesterday* (múlt idő), *Three Little Birds*, *Somewhere Over the Rainbow* (Israel Kamakawiwo'ole változat).
+
+### 3.5 Hanganyag az IT-sávhoz (2. héttől, hetente 2×10')
+
+- [VOA Learning English — Technology Report](https://learningenglish.voanews.com/amp/2343496.html): rövid, egyszerűsített angol technológiai hírek hanggal és szöveggel.
+- BBC Learning English: *English at Work* (YouTube) és a *Learning English for Work* podcast, munkahelyi helyzetekhez.
+
+A szint ezeknél a jelenlegi szinted felett lehet. Ezért a tutor mindig csak 1 rövid részletet vesz, és ugyanazt a protokollt használja (3 szó, négy sebesség, feladat).
+
+### 3.6 Szókincs-célszám
+
+A hét végére kb. **26 aktív szókapcsolat**: 12 IT, 4 Biblia és kb. 10 a dalokból (naponta 2).
 
 ## 4. Biblia-sáv: tartalom
 
@@ -123,3 +164,5 @@ Minden új szókapcsolat visszajön a tanulás utáni 1., 3. és 7. napon, legal
 1. Jó a heti ritmus (vasárnaptól csütörtökig IT, pénteken rövid, szombaton Biblia)?
 2. Maradjon-e a napi 5 perces **kérdéstorna**?
 3. Jó-e a **WEB** mint alapfordítás (közkincs, tárolható), vagy az ESV-t szeretnéd, akkor is, ha a szövegét nem tároljuk a repóban?
+4. Jó a napi 20 perces zenei sáv és a hetente kb. 6,5–7 óra, vagy rövidítsünk?
+5. Van kedvenc angol előadód, akitől szívesen tanulnál? Az olyan dalokat könnyű beépíteni, ha lassú és tiszta az ének.

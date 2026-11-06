@@ -5,7 +5,7 @@
 Changes after the first Bible-track voice session and placement.
 
 Added:
-- `SYSTEM.md` sections 20 to 22: task clarity and turn design, voice mode, Bible track.
+- `SYSTEM.md` sections 20 to 23: task clarity and turn design, voice mode, Bible track, listening lane (songs and audio).
 - `PLACEMENT_BIBLE_001.md`: result record and a graded test bank (v2).
 - `WEEKLY_PLAN_W01.md`: first weekly plan (draft, pending learner approval).
 - Bible-track level and new preferences in `STUDENT_STATE.md`.

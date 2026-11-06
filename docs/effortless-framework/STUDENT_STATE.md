@@ -77,6 +77,7 @@ Common current issues include:
 - Bible content uses real translation wording, not a simplified retelling. The learner rejected a retelling that changed Genesis 1:1. (2026-11-06)
 - Slow pace only. The learner controls the next step in voice mode. (2026-11-06)
 - Chunk-by-chunk build-up (small part, then add the next) works well. (2026-11-06)
+- Wants more daily and weekly material than the first plan draft, and song lyrics / other audio for weekday vocabulary growth. (2026-11-06)
 - After lesson-mode ends, explanations of system or evaluation may be in Hungarian; the lesson itself is English only.
 
 ## Current lesson domain

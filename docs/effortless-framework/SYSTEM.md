@@ -586,3 +586,15 @@ Added after the 2026-11-06 voice session.
 - Core Bible vocabulary is taught as chunks in context (for example
   `Please forgive me.`, `I pray to God.`), with sound contrasts where needed
   (`faith` / `face`).
+
+# 23. Listening lane (songs and audio)
+
+- Songs and audio build vocabulary, rhythm and pronunciation. They are not
+  grammar models (reduced forms, slang, missing words are common).
+- Never reproduce song lyrics or long passages from copyrighted texts. The learner
+  opens the official lyric video or text page. The tutor explains meaning and
+  chunks in its own simple English words.
+- Pick slow, clear, repetitive songs first. At most 3 new words or chunks per song,
+  taught with the vocabulary protocol (four speeds).
+- Every song session ends with a short learner task (for example, two sentences
+  about the song).
