@@ -25,6 +25,8 @@ For ChatGPT Projects or any environment with persistent project instructions, co
 - `LESSON_TEMPLATE.md` — required structure for every lesson.
 - `LESSON_001_IT_HELPDESK.md` — first worked example.
 - `STUDENT_STATE.md` — current level estimate, known issues and progress.
+- `PLACEMENT_BIBLE_001.md` — Bible-track placement result and graded test bank.
+- `WEEKLY_PLAN_W01.md` — weekly plan (draft until approved by the learner).
 - `QUALITY_CHECKLIST.md` — pre-flight and live lesson checks.
 - `CHANGELOG.md` — methodology changes.
 

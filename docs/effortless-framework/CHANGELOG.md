@@ -1,5 +1,21 @@
 # CHANGELOG.md
 
+## 0.3 — 2026-11-06
+
+Changes after the first Bible-track voice session and placement.
+
+Added:
+- `SYSTEM.md` sections 20 to 22: task clarity and turn design, voice mode, Bible track.
+- `PLACEMENT_BIBLE_001.md`: result record and a graded test bank (v2).
+- `WEEKLY_PLAN_W01.md`: first weekly plan (draft, pending learner approval).
+- Bible-track level and new preferences in `STUDENT_STATE.md`.
+
+Fixed (system-level causes):
+- Long listening blocks with no learner task.
+- Answers given together with the question.
+- Bible text simplified into a different wording.
+- Placement test items not graded by difficulty.
+
 ## 0.2 — 2026-09-16
 
 Runtime implementation aligned with the written Effortless framework.

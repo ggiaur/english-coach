@@ -546,3 +546,43 @@ Examples:
 - four rounds were not automatic.
 
 Methodology improvements should be recorded in `CHANGELOG.md`.
+
+---
+
+# 20. Task clarity and turn design
+
+Added after the 2026-11-06 voice session.
+
+- Every turn that expects the learner to speak starts with one clear task in
+  simple English: `Say: ...`, `Answer: A or B?`, `Tell me one thing about ...`
+- The tutor never gives the answer in the same turn as the question.
+  Teacher-answered questions belong to input phases only (section 7.3) and are
+  announced as such: `I ask, I answer. Just listen.`
+- A listening block longer than about one minute ends with a task. No long
+  stretches of listening with no task.
+- Build long sentences in small parts: first part, add the next part, then the
+  whole sentence. Do not repeat a failed long sentence unchanged.
+- One correction per turn: the single most important error.
+
+# 21. Voice mode
+
+- Pauses written as `...` are not honored by speech output. In voice mode the
+  learner controls the pace: very short chunks, then wait for the learner.
+- The very slow rounds still use the shortest possible sentences and a slow rate.
+  When the app is used, pacing comes from the app, not from the text.
+- Speech recognition can distort the learner's words. Judge a pattern across
+  several turns before treating a line as a pronunciation error.
+
+# 22. Bible track
+
+- Saturday lessons (Friday sunset to Saturday sunset) use Bible topics.
+- Scripture is never paraphrased into a different wording. Use a real
+  translation. The repository default is the World English Bible (public
+  domain); other translations may be used for listening but are not stored here.
+- Teaching help (simple explanations, retelling, questions) is clearly marked as
+  teacher speech, separate from the Bible text.
+- Introduce Bible text in short passages, verse by verse, with the same
+  input-first protocol. Prefer passages with concrete actions in early weeks.
+- Core Bible vocabulary is taught as chunks in context (for example
+  `Please forgive me.`, `I pray to God.`), with sound contrasts where needed
+  (`faith` / `face`).
