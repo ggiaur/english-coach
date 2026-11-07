@@ -232,5 +232,116 @@ class TestProgressPage(unittest.TestCase):
             self.assertLess(len(s["title"]), 60)
 
 
+class TestPasswordAndTts(unittest.TestCase):
+    @patch("google.genai.Client")
+    def test_password_off_by_default(self, mock_genai_client):
+        import main
+
+        with patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("APP_PASSWORD", None)
+            with main.app.test_client() as client:
+                self.assertEqual(client.get("/progress").status_code, 200)
+
+    @patch("google.genai.Client")
+    def test_password_required_when_set(self, mock_genai_client):
+        import base64
+        import main
+
+        with patch.dict(os.environ, {"APP_PASSWORD": "secret", "APP_USER": "bj"}):
+            with main.app.test_client() as client:
+                self.assertEqual(client.get("/learn/").status_code, 401)
+                self.assertEqual(client.get("/health").status_code, 200)
+                bad = base64.b64encode(b"bj:wrong").decode()
+                res = client.get("/learn/", headers={"Authorization": "Basic " + bad})
+                self.assertEqual(res.status_code, 401)
+                good = base64.b64encode(b"bj:secret").decode()
+                res = client.get("/learn/", headers={"Authorization": "Basic " + good})
+                self.assertEqual(res.status_code, 200)
+                res.close()
+
+    @patch("google.genai.Client")
+    def test_tts_validation_and_proxy(self, mock_genai_client):
+        import main
+
+        with main.app.test_client() as client:
+            with patch.dict(os.environ, {}, clear=False):
+                os.environ.pop("TTS_URL", None)
+                self.assertEqual(client.get("/tts?text=hello").status_code, 503)
+            with patch.dict(os.environ, {"TTS_URL": "http://tts:5000"}):
+                self.assertEqual(client.get("/tts").status_code, 400)
+                self.assertEqual(client.get("/tts?text=" + "a" * 601).status_code, 400)
+                self.assertEqual(client.get("/tts?text=hi&speed=warp").status_code, 400)
+                fake = MagicMock()
+                fake.__enter__.return_value.read.return_value = b"RIFFwav"
+                with patch("urllib.request.urlopen", return_value=fake) as uo:
+                    res = client.get("/tts?text=Hello&speed=slow")
+                    self.assertEqual(res.status_code, 200)
+                    self.assertEqual(res.mimetype, "audio/wav")
+                    sent = uo.call_args[0][0]
+                    self.assertIn(b'"length_scale": 1.6', sent.data)
+                with patch("urllib.request.urlopen", side_effect=OSError("down")):
+                    self.assertEqual(client.get("/tts?text=Hello").status_code, 502)
+
+
+class TestLearnSite(unittest.TestCase):
+    def _load(self, name):
+        import json
+        import main
+
+        path = os.path.join(main.app.static_folder, "learn", "data", name)
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+
+    @patch("google.genai.Client")
+    def test_pages_served(self, mock_genai_client):
+        import main
+
+        with main.app.test_client() as client:
+            for path in ("/learn", "/learn/", "/learn/john9.html", "/learn/cards.html",
+                         "/learn/book.html", "/learn/learn.js", "/learn/learn.css",
+                         "/learn/data/cards.json", "/learn/img/man-blind.svg"):
+                res = client.get(path)
+                self.assertEqual(res.status_code, 200, path)
+                res.close()
+
+    @patch("google.genai.Client")
+    def test_images_exist_and_none_for_jesus(self, mock_genai_client):
+        import main
+
+        img_dir = os.path.join(main.app.static_folder, "learn", "img")
+        used = []
+        used += [c["image"] for c in self._load("cards.json")["cards"] if c["image"]]
+        used += [e["image"] for e in self._load("book.json")["entries"] if e["image"]]
+        used += [s["image"] for s in self._load("john9.json")["scenes"] if s["image"]]
+        chars = self._load("characters.json")["characters"]
+        used += [c["image"] for c in chars if c["image"]]
+        for name in used:
+            self.assertTrue(os.path.exists(os.path.join(img_dir, name + ".svg")), name)
+        # Project rule: no picture of Jesus. His card shows a light symbol only.
+        jesus = [c for c in chars if c["id"] == "jesus"][0]
+        self.assertEqual(jesus["image"], "light")
+        for f in os.listdir(img_dir):
+            self.assertNotIn("jesus", f.lower())
+
+    @patch("google.genai.Client")
+    def test_content_rules(self, mock_genai_client):
+        john = self._load("john9.json")
+        verses = {v["v"]: v["text"] for v in john["verified"]}
+        self.assertEqual(verses["9:1"], "As he passed by, he saw a man blind from birth.")
+        self.assertTrue(verses["9:5"].startswith("While I am in the world, I am the light of the world."))
+        self.assertEqual(sorted(verses), ["9:1", "9:2", "9:3", "9:4", "9:5"])
+        for ch in self._load("characters.json")["characters"]:
+            self.assertGreaterEqual(len(ch["sentences"]), 5, ch["id"])
+        cards = self._load("cards.json")["cards"]
+        self.assertGreaterEqual(len(cards), 30)
+        ids = [c["id"] for c in cards]
+        self.assertEqual(len(ids), len(set(ids)))
+        for c in cards:
+            self.assertTrue(c["phrase"] and c["sentence"] and c["note"], c["id"])
+        for e in self._load("book.json")["entries"]:
+            self.assertTrue(e["def"] and e["example"] and e["contrast"], e["id"])
+            self.assertTrue(e["qa"]["q"] and e["qa"]["a"], e["id"])
+
+
 if __name__ == "__main__":
     unittest.main()

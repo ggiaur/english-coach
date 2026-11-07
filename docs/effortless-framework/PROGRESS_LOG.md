@@ -6,6 +6,28 @@
 SESSION RECORD
 date: 2026-11-07
 track: Bible
+lesson: free speaking about the blind man, John 9 phrases, 20 min listening block (voice, Claude), second session
+duration_min: unknown (long)
+phase_reached: daily free speaking and feedback done; phrase building; listening block at the learner's request
+goal_met: yes
+new_items_taught: [parents, afraid of, brave, clever, honest, direct, tell the truth, heal, alive, Could you say that again?, task/exercise, phrase, definition, in other words, plus listening block: proud, patient, grateful, trouble, serious, miracle, doubt, believe, witness, mud, wash, sent]
+said_correctly_first_try_today: [The man was blind., He is brave., He is clever., He is clever and brave., He has parents., He is honest., Could you say that again?, His parents are alive.]
+said_correctly_after_repair: [He is not afraid of the Pharisees. (after two slips in the same round, then right twice later), He tells the truth. (after "he is tell"), He is a direct man., He is not afraid of the Pharisees (second run), He doesn't hide., Jesus healed him., How old was he? (word order)]
+pending (3rd failure, return in 3-7 days): [the Pharisees (the), he tells the truth (tells), a direct man (a), truth (th sound)]
+errors_seen: [missing of / the before Pharisees, he is tell -> he tells, direct man -> a direct man, two sentences instead of one with because, arrived for are, missing "and" between two parts]
+pronunciation: [truth heard as choose by speech recognition (may be recognition error)]
+task_confusion: ["Same words" repeated as a sentence, two-step tasks, hides or says (new words in a choice question), several "I don't understand the task", tutor ended the session twice before the learner said so]
+daily_speaking: yes (topic: the blind man; own sentences about him, parents and Pharisees; feedback given in Hungarian on request)
+time_of_day: unknown (before 10:39 local, asked, no answer)
+freshness_1_5: unknown (asked, no answer)
+next_priority: [a/the, third person s, of after afraid, the Pharisees, simple one-step tasks, think-aloud practice with `Could you say that again?`]
+return_dates: [{item: the Pharisees, on: 2026-11-10}, {item: he tells the truth, on: 2026-11-10}, {item: a direct man, on: 2026-11-11}, {item: truth, on: 2026-11-11}]
+```
+
+```
+SESSION RECORD
+date: 2026-11-07
+track: Bible
 lesson: John 9:1-5 (voice, Claude), partial
 duration_min: unknown
 phase_reached: chunk build-up of John 9:1 and John 9:5; session ended before the end phase

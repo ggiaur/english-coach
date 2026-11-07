@@ -1,8 +1,12 @@
+import hmac
+import json
 import logging
 import os
+import urllib.error
+import urllib.request
 import uuid
 
-from flask import Flask, jsonify, request, send_from_directory, session
+from flask import Flask, Response, jsonify, request, send_from_directory, session
 from google import genai
 from google.genai import types
 
@@ -149,6 +153,76 @@ def index():
     if os.path.exists(os.path.join(app.static_folder, "index.html")):
         return send_from_directory(app.static_folder, "index.html")
     return jsonify({"status": "ok", "service": "english-coach", "version": VERSION})
+
+
+# ---------------------------------------------------------------------------
+# Optional password (HTTP Basic). Off unless APP_PASSWORD is set, so the Cloud
+# Run deployment keeps working unchanged. /health stays open for probes.
+# ---------------------------------------------------------------------------
+OPEN_PATHS = {"/health"}
+
+
+@app.before_request
+def require_password():
+    password = os.environ.get("APP_PASSWORD")
+    if not password or request.path in OPEN_PATHS:
+        return None
+    user = os.environ.get("APP_USER", "bj")
+    auth = request.authorization
+    if (
+        auth
+        and hmac.compare_digest(auth.username or "", user)
+        and hmac.compare_digest(auth.password or "", password)
+    ):
+        return None
+    return Response(
+        "Login required.",
+        401,
+        {"WWW-Authenticate": 'Basic realm="English Coach", charset="UTF-8"'},
+    )
+
+
+# ---------------------------------------------------------------------------
+# Text to speech through the local Piper container (TTS_URL). The browser falls
+# back to its own speech engine when this returns an error.
+# ---------------------------------------------------------------------------
+TTS_SPEEDS = {"slow": 1.6, "medium": 1.25, "natural": 1.0}
+TTS_MAX_CHARS = 600
+
+
+@app.route("/tts", methods=["GET"])
+def tts():
+    base = os.environ.get("TTS_URL")
+    if not base:
+        return jsonify({"error": "tts_not_configured"}), 503
+    text = (request.args.get("text") or "").strip()
+    if not text or len(text) > TTS_MAX_CHARS:
+        return jsonify({"error": "bad_text"}), 400
+    speed = request.args.get("speed", "natural")
+    if speed not in TTS_SPEEDS:
+        return jsonify({"error": "bad_speed"}), 400
+    payload = json.dumps({"text": text, "length_scale": TTS_SPEEDS[speed]}).encode()
+    req = urllib.request.Request(
+        base.rstrip("/") + "/synthesize",
+        data=payload,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            audio = resp.read()
+    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+        logger.warning("TTS request failed: %s", exc)
+        return jsonify({"error": "tts_unavailable"}), 502
+    return Response(
+        audio, mimetype="audio/wav", headers={"Cache-Control": "private, max-age=86400"}
+    )
+
+
+@app.route("/learn", methods=["GET"])
+@app.route("/learn/", methods=["GET"])
+def learn_home():
+    return send_from_directory(os.path.join(app.static_folder, "learn"), "index.html")
 
 
 @app.route("/progress", methods=["GET"])

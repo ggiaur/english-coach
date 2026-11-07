@@ -655,3 +655,15 @@ Added after the 2026-11-07 voice session: compound questions and long sentences 
 - Use `Repeat.` and never "Say it" for repeating (the learner repeated "Say it" literally).
 - Build long sentences in small parts (section 20). Teaching sentences in L1 to L3: at most 6 words.
 - Task rescue (proposal, awaiting owner decision): see `TASK_LANGUAGE.md` section 3.
+
+# 29. Content rules for chapters, cards and the textbook
+
+Added 2026-11-07 on the owner's request.
+
+- A phrase card has three parts: the phrase, one full sentence, and a short grammar note (for example: a form of `be` is needed, `the` because we know which one). Learn the phrase inside the sentence, not alone (`he was brave`, not `brave`).
+- New words are explained in English, like a native dictionary and teacher: simple sentences, an example, a contrast, one question. Say the explanation in four speeds.
+- Listening blocks (explanations without a learner task) are allowed only when the learner asks for them, and they end with a task.
+- For each person in a Bible chapter: at least 5 simple sentences, traits (each with a sentence), cards, a picture. No picture of Jesus. Use a light symbol or text.
+- Mark Bible text (verbatim WEB) apart from the teacher's words. Do not state as fact what the chapter does not say (example: the man's age; his parents say he is old enough, about 9:21, wording to check). Say that traits are the teacher's reading.
+- The owner may keep his own handwritten phrase notes (phrase + full sentence). No word lists.
+- Where the content lives: `app/static/learn/data/` (`john9.json`, `characters.json`, `cards.json`, `book.json`), shown on the `/learn` pages with audio.

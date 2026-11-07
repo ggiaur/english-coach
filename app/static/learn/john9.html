@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hu"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>János 9</title><link rel="stylesheet" href="/learn/learn.css"></head>
+<body><main>
+<h1>János 9</h1>
+<p class="note" id="tr"></p>
+<h2>A szöveg (1–5. vers)</h2>
+<div id="verses"></div>
+<p class="warn" id="vnote"></p>
+<h2>Jelenetek</h2>
+<div class="grid" id="scenes"></div>
+<h2>Szereplők</h2>
+<p class="note" id="csrc"></p>
+<div class="grid" id="chars"></div>
+</main>
+<script src="/learn/learn.js"></script>
+<script>
+(function(){
+  var L = Learn;
+  L.json("john9.json").then(function(j){
+    document.getElementById("tr").textContent = "Fordítás: " + j.translation + ". Szó szerinti szöveg, átfogalmazás nélkül.";
+    document.getElementById("vnote").textContent = j.verify_note;
+    var v = document.getElementById("verses");
+    j.verified.forEach(function(x){
+      var bq = L.el("blockquote");
+      bq.appendChild(L.el("strong",{},x.v + " "));
+      bq.appendChild(document.createTextNode(x.text));
+      bq.appendChild(L.audioButtons(x.text));
+      v.appendChild(bq);
+    });
+    var sc = document.getElementById("scenes");
+    j.scenes.forEach(function(s){
+      var box = L.el("div",{"class":"card"});
+      var im = L.img(s.image,""); if (im) box.appendChild(im);
+      var h = L.el("h3",{},s.title); h.appendChild(L.el("span",{"class":"badge bible"},"János " + s.verses));
+      box.appendChild(h);
+      s.lines.forEach(function(l){ box.appendChild(L.el("p",{"class":"sent"},l)); });
+      box.appendChild(L.audioButtons(s.lines.join(" ").replace(/Teacher: /g,"")));
+      if (s.status !== "verified") {
+        var p = L.el("p",{"class":"warn"},"A Bibliai szöveg itt még nincs ellenőrizve. Olvasd el: ");
+        var a = L.el("a",{href:j.verse_link + s.verses.split("-")[0].split(":")[1],target:"_blank",rel:"noopener"},"thebible.ch");
+        p.appendChild(a); box.appendChild(p);
+      }
+      sc.appendChild(box);
+    });
+  }).catch(function(){ document.getElementById("tr").textContent = "Az adatok nem tölthetők be."; });
+  L.json("characters.json").then(function(c){
+    document.getElementById("csrc").textContent = c.source_note;
+    var g = document.getElementById("chars");
+    c.characters.forEach(function(ch){
+      var box = L.el("div",{"class":"card"});
+      var im = L.img(ch.image, ch.id === "jesus" ? "Fény (nem kép Jézusról)" : ""); if (im) box.appendChild(im);
+      var h = L.el("h3",{},ch.name); h.appendChild(L.el("span",{"class":"badge bible"},"János " + ch.verses)); box.appendChild(h);
+      ch.sentences.forEach(function(s){ box.appendChild(L.el("p",{"class":"sent"},s)); });
+      box.appendChild(L.audioButtons(ch.sentences.join(" ")));
+      var tr = L.el("p",{},"Traits: ");
+      ch.traits.forEach(function(t,i){ tr.appendChild(document.createTextNode((i?"; ":"") + t.w + " – " + t.s)); });
+      box.appendChild(tr);
+      box.appendChild(L.el("p",{"class":"note"},ch.note));
+      g.appendChild(box);
+    });
+  }).catch(function(){});
+})();
+</script></body></html>

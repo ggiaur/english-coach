@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hu"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tankönyv</title><link rel="stylesheet" href="/learn/learn.css"></head>
+<body><main>
+<h1>Tankönyv</h1>
+<p class="note" id="intro"></p>
+<div class="row"><input type="search" id="q" placeholder="Szó keresése" aria-label="Szó keresése"></div>
+<div id="chapters"></div>
+</main>
+<script src="/learn/learn.js"></script>
+<script>
+(function(){
+  var L = Learn, data;
+  function entry(e){
+    var d = L.el("div",{"class":"entry"});
+    var left = L.el("div"); var im = L.img(e.image,""); if (im) left.appendChild(im); d.appendChild(left);
+    var r = L.el("div");
+    var h = L.el("h3",{},e.word); h.appendChild(L.el("span",{"class":"badge"},e.kind));
+    if (e.ref) h.appendChild(L.el("span",{"class":"badge bible"},"János " + e.ref));
+    r.appendChild(h);
+    var text = e.def.join(" ");
+    e.def.forEach(function(s){ r.appendChild(L.el("p",{"class":"sent"},s)); });
+    r.appendChild(L.audioButtons(text + " For example: " + e.example));
+    r.appendChild(L.el("p",{},"Example: " + e.example));
+    r.appendChild(L.el("p",{"class":"note"},"Not the same: " + e.contrast));
+    var qa = L.el("p",{},"Question: " + e.qa.q + " ");
+    var ans = L.el("span",{"class":"hidden"},"Answer: " + e.qa.a);
+    var b = L.el("button",{type:"button","class":"ghost"},"Válasz");
+    b.onclick = function(){ ans.classList.remove("hidden"); b.classList.add("hidden"); };
+    qa.appendChild(b); qa.appendChild(ans);
+    r.appendChild(qa); d.appendChild(r);
+    return d;
+  }
+  function render(){
+    var q = document.getElementById("q").value.trim().toLowerCase();
+    var root = document.getElementById("chapters"); root.textContent = "";
+    var names = []; data.entries.forEach(function(e){ if (names.indexOf(e.chapter)<0) names.push(e.chapter); });
+    names.forEach(function(n){
+      var list = data.entries.filter(function(e){ return e.chapter===n && (!q || e.word.toLowerCase().indexOf(q)>=0); });
+      if (!list.length) return;
+      var det = L.el("details"); if (q) det.open = true;
+      det.appendChild(L.el("summary",{},n + " (" + list.length + ")"));
+      list.forEach(function(e){ det.appendChild(entry(e)); });
+      root.appendChild(det);
+    });
+  }
+  L.json("book.json").then(function(d){
+    data = d; document.getElementById("intro").textContent = d.source_note;
+    document.getElementById("q").addEventListener("input",render); render();
+    var first = document.querySelector("details"); if (first) first.open = true;
+  }).catch(function(){ document.getElementById("intro").textContent = "Az adatok nem tölthetők be."; });
+})();
+</script></body></html>

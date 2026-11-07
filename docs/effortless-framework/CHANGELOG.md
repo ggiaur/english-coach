@@ -1,5 +1,12 @@
 # CHANGELOG.md
 
+## 0.5 — 2026-11-07 (később)
+
+- `/learn` site: John 9 verses 1 to 5 (verbatim WEB), 8 scenes, 5 characters, 36 phrase cards, 39 textbook entries, 20 original pictures (none of Jesus), audio buttons with four speeds.
+- Optional password (`APP_PASSWORD`), `/tts` proxy to a local Piper container, `docker-compose.yml`, `DOCKER.md`.
+- `SYSTEM.md` section 29 (content rules), project rules in `CLAUDE.md` (no picture of Jesus, phrase cards allowed).
+- Second 2026-11-07 session recorded (`PROGRESS_LOG.md`, `ITEM_TRACKER.md`, `STUDENT_STATE.md`).
+
 ## 0.4 — 2026-11-07
 
 - `TASK_LANGUAGE.md` and `SYSTEM.md` section 28: 8 task words, one instruction and one question per turn, task rescue (proposal).

@@ -26,3 +26,10 @@ which are set in the Claude connection settings. It does not apply to other repo
 - Progress is mastery-based (see `SYSTEM.md` section 24): move on when an item is secure, two full retries
   at most, then mark it pending and bring it back 3 to 7 days later in a different context.
 - No vocabulary notebooks or word lists. Phrases in context, plus a short weekly written task.
+  Phrase cards (phrase + one full sentence + a short grammar note) are allowed, and the owner may keep his own
+  handwritten phrase notes in the same form (owner's statement, voice, 2026-11-07).
+- No picture of Jesus anywhere (owner's statement, voice, 2026-11-07). Use a light symbol or text. Pictures of other
+  people, qualities and scenes are allowed if they are original drawings or clearly free to use, with the source noted.
+- Every new word is explained in English like a native dictionary and teacher: simple sentences, example, contrast,
+  one question. No Hungarian translation inside the lesson. Each Bible-chapter person gets at least 5 simple sentences,
+  traits, phrase cards and a picture (not for Jesus). Teacher's words are always marked apart from Bible text.
