@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hu"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kifejezéskártyák</title><link rel="stylesheet" href="/learn/learn.css"></head>
+<body><main>
+<h1>Kifejezéskártyák</h1>
+<p class="note" id="intro"></p>
+<div class="row">
+ <label>Csoport <select id="group"><option value="">mind</option></select></label>
+ <label><input type="checkbox" id="pending"> csak a visszahozandók</label>
+ <label><input type="checkbox" id="practice"> gyakorló mód (a mondat rejtve)</label>
+ <label><input type="checkbox" id="hu"> magyar segítség</label>
+</div>
+<p id="count" class="note"></p>
+<div class="grid" id="grid"></div>
+</main>
+<script src="/learn/learn.js"></script>
+<script>
+(function(){
+  var L = Learn, data, GROUPS = {people:"Szereplők",qualities:"Tulajdonságok",feelings:"Érzések",actions:"Cselekvések",bible:"Bibliai mondatok",useful:"Hasznos mondatok az órán"};
+  function render(){
+    var g = document.getElementById("group").value, pend = document.getElementById("pending").checked,
+        prac = document.getElementById("practice").checked, hu = document.getElementById("hu").checked;
+    var grid = document.getElementById("grid"); grid.textContent = "";
+    var n = 0;
+    data.cards.forEach(function(c){
+      if (g && c.group !== g) return; if (pend && c.status !== "pending") return;
+      n++;
+      var box = L.el("div",{"class":"card"});
+      var im = L.img(c.image, ""); if (im) box.appendChild(im);
+      var t = L.el("div",{"class":"big"},c.phrase);
+      if (c.status === "pending") t.appendChild(L.el("span",{"class":"badge pending"},"visszahozandó"));
+      if (c.bible) t.appendChild(L.el("span",{"class":"badge bible"},"Biblia-mondat"));
+      box.appendChild(t);
+      var s = L.el("p",{"class":"sent"},c.sentence);
+      var det = L.el("div");
+      det.appendChild(L.el("p",{"class":"sent"},"Another: " + c.more));
+      det.appendChild(L.el("p",{"class":"note"},"Note: " + c.note));
+      if (hu && c.hu) det.appendChild(L.el("p",{"class":"hu"},c.hu));
+      if (prac) {
+        s.classList.add("hidden");
+        var show = L.el("button",{type:"button","class":"ghost"},"Mutasd a mondatot");
+        show.onclick = function(){ s.classList.remove("hidden"); show.classList.add("hidden"); };
+        box.appendChild(show);
+        det.classList.add("hidden");
+        s.addEventListener("transitionend",function(){});
+        show.addEventListener("click",function(){ det.classList.remove("hidden"); });
+      }
+      box.appendChild(s); box.appendChild(L.audioButtons(c.sentence)); box.appendChild(det);
+      grid.appendChild(box);
+    });
+    document.getElementById("count").textContent = n + " kártya";
+  }
+  L.json("cards.json").then(function(d){
+    data = d; document.getElementById("intro").textContent = d.note;
+    var sel = document.getElementById("group");
+    Object.keys(GROUPS).forEach(function(k){ sel.appendChild(L.el("option",{value:k},GROUPS[k])); });
+    ["group","pending","practice","hu"].forEach(function(id){ document.getElementById(id).addEventListener("change",render); });
+    render();
+  }).catch(function(){ document.getElementById("intro").textContent = "Az adatok nem tölthetők be."; });
+})();
+</script></body></html>

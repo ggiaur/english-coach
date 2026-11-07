@@ -1,0 +1,747 @@
+{
+ "source_note": "General meaning of the words, written by the teacher. These are not Bible text. Bible references show where the word appears in the story.",
+ "entries": [
+  {
+   "id": "b01",
+   "chapter": "People in the story",
+   "word": "parents",
+   "kind": "noun",
+   "def": [
+    "Parents means a mother and a father.",
+    "A child has parents. Some parents are young. Some parents are old.",
+    "Another way to say it: a mother and a father."
+   ],
+   "example": "His parents are alive.",
+   "contrast": "A parent is one person. Parents are two or more.",
+   "qa": {
+    "q": "Is a parent one person or two people?",
+    "a": "One person."
+   },
+   "image": "parents",
+   "ref": "9:18-23"
+  },
+  {
+   "id": "b02",
+   "chapter": "People in the story",
+   "word": "Pharisee",
+   "kind": "noun",
+   "def": [
+    "A Pharisee is a religious teacher in the Bible time.",
+    "The Pharisees know the law. They teach the people.",
+    "They are serious about the rules of God."
+   ],
+   "example": "The Pharisees ask many questions.",
+   "contrast": "A Pharisee is not a doctor. A Pharisee is not a king.",
+   "qa": {
+    "q": "Does a Pharisee teach the law?",
+    "a": "Yes, he does."
+   },
+   "image": "pharisees",
+   "ref": "9:13"
+  },
+  {
+   "id": "b03",
+   "chapter": "People in the story",
+   "word": "disciple",
+   "kind": "noun",
+   "def": [
+    "A disciple is a person who follows a teacher and learns from him.",
+    "A disciple listens. A disciple asks questions.",
+    "Another way to say it: a student who follows."
+   ],
+   "example": "The disciples ask Jesus a question.",
+   "contrast": "A disciple is not a boss. A disciple learns.",
+   "qa": {
+    "q": "Does a disciple teach or learn?",
+    "a": "He learns."
+   },
+   "image": "disciples",
+   "ref": "9:2"
+  },
+  {
+   "id": "b04",
+   "chapter": "People in the story",
+   "word": "witness",
+   "kind": "noun",
+   "def": [
+    "A witness is a person who saw something. He tells others what he saw.",
+    "In a court, a witness says, \"I saw this.\"",
+    "A witness does not guess. He tells what he knows."
+   ],
+   "example": "The man is a witness. He says, \"This happened to me.\"",
+   "contrast": "A witness is not a person who guesses.",
+   "qa": {
+    "q": "Does a witness guess?",
+    "a": "No, he does not."
+   },
+   "image": "witness",
+   "ref": "9:25"
+  },
+  {
+   "id": "b05",
+   "chapter": "Qualities",
+   "word": "blind",
+   "kind": "adjective",
+   "def": [
+    "Blind means you cannot see. The eyes do not work.",
+    "A blind person cannot see the sun or a face.",
+    "Blind is not the same as dark. Dark means there is no light.",
+    "From birth means from the first day of life."
+   ],
+   "example": "The man was blind from birth.",
+   "contrast": "Blind is not deaf. A deaf person cannot hear.",
+   "qa": {
+    "q": "Can a blind man see?",
+    "a": "No, he cannot."
+   },
+   "image": "man-blind",
+   "ref": "9:1"
+  },
+  {
+   "id": "b06",
+   "chapter": "Qualities",
+   "word": "brave",
+   "kind": "adjective",
+   "def": [
+    "Brave means you are not afraid, and you do the right thing.",
+    "A brave person speaks, even when it is hard.",
+    "Another way to say it: not afraid."
+   ],
+   "example": "The man is brave. He tells the leaders the truth.",
+   "contrast": "The opposite is afraid.",
+   "qa": {
+    "q": "Is a brave man afraid?",
+    "a": "No, he is not."
+   },
+   "image": "shield",
+   "ref": ""
+  },
+  {
+   "id": "b07",
+   "chapter": "Qualities",
+   "word": "honest",
+   "kind": "adjective",
+   "def": [
+    "Honest means you say the truth. You do not lie.",
+    "An honest friend says, \"I broke the cup.\" He does not say, \"I did not.\"",
+    "Another way to say it: he tells the truth."
+   ],
+   "example": "He is honest. In other words, he doesn't lie.",
+   "contrast": "Lie means you say something that is not true.",
+   "qa": {
+    "q": "Does an honest man lie?",
+    "a": "No, he does not."
+   },
+   "image": "truth",
+   "ref": ""
+  },
+  {
+   "id": "b08",
+   "chapter": "Qualities",
+   "word": "direct",
+   "kind": "adjective",
+   "def": [
+    "Direct means you say what you think. You say it clearly. You do not hide it.",
+    "A direct man does not hide the truth. He says it.",
+    "Another way to say it: he says it clearly."
+   ],
+   "example": "He is a direct man.",
+   "contrast": "The opposite is: he hides what he thinks.",
+   "qa": {
+    "q": "Does a direct man hide the truth?",
+    "a": "No, he says it."
+   },
+   "image": "truth",
+   "ref": ""
+  },
+  {
+   "id": "b09",
+   "chapter": "Qualities",
+   "word": "clever",
+   "kind": "adjective",
+   "def": [
+    "Clever means you think fast and well.",
+    "A clever child learns fast. A clever answer is a good answer.",
+    "Another way to say it: smart."
+   ],
+   "example": "He is clever. He gives a good answer.",
+   "contrast": "Clever is not the same as strong.",
+   "qa": {
+    "q": "Is a clever person a person who thinks well?",
+    "a": "Yes, he is."
+   },
+   "image": null,
+   "ref": ""
+  },
+  {
+   "id": "b10",
+   "chapter": "Qualities",
+   "word": "logical",
+   "kind": "adjective",
+   "def": [
+    "Logical means the reasons fit together.",
+    "A logical answer has a clear reason: A, so B.",
+    "Another way to say it: it makes sense."
+   ],
+   "example": "His answer is logical.",
+   "contrast": "Not logical means: it does not make sense.",
+   "qa": {
+    "q": "Does a logical answer make sense?",
+    "a": "Yes, it does."
+   },
+   "image": null,
+   "ref": ""
+  },
+  {
+   "id": "b11",
+   "chapter": "Qualities",
+   "word": "proud",
+   "kind": "adjective",
+   "def": [
+    "Proud means you feel very good about yourself. You think you are better than other people.",
+    "A proud man says, \"I am the best.\" He does not listen.",
+    "But a mother can be proud of her son. That is a good feeling. She is happy about him."
+   ],
+   "example": "The Pharisees are proud. They do not listen to the man.",
+   "contrast": "Proud is not humble. A humble man does not say, \"I am better.\"",
+   "qa": {
+    "q": "Does a proud man listen?",
+    "a": "Often not."
+   },
+   "image": "proud",
+   "ref": ""
+  },
+  {
+   "id": "b12",
+   "chapter": "Qualities",
+   "word": "patient",
+   "kind": "adjective",
+   "def": [
+    "Patient means you can wait. You do not get angry fast.",
+    "A patient teacher says the same thing again and again. He does not shout.",
+    "A patient man waits in a long line and stays calm."
+   ],
+   "example": "A patient teacher explains again.",
+   "contrast": "The opposite is impatient. An impatient man says, \"Hurry up.\"",
+   "qa": {
+    "q": "Does a patient man get angry fast?",
+    "a": "No, he does not."
+   },
+   "image": "clock",
+   "ref": ""
+  },
+  {
+   "id": "b13",
+   "chapter": "Qualities",
+   "word": "grateful",
+   "kind": "adjective",
+   "def": [
+    "Grateful means you feel thank you inside.",
+    "Someone did something good for you, and you remember it.",
+    "A grateful man says thank you, and he means it."
+   ],
+   "example": "The man is grateful. Now he can see.",
+   "contrast": "Grateful is not angry. Grateful is warm.",
+   "qa": {
+    "q": "Does a grateful man say thank you?",
+    "a": "Yes, he does."
+   },
+   "image": "heart",
+   "ref": ""
+  },
+  {
+   "id": "b14",
+   "chapter": "Qualities",
+   "word": "kind",
+   "kind": "adjective",
+   "def": [
+    "Kind means you help people. You are good to others.",
+    "A kind teacher is good to the children.",
+    "Another way to say it: good to people."
+   ],
+   "example": "Jesus is kind. He helps the man.",
+   "contrast": "The opposite is unkind. An unkind man is bad to others.",
+   "qa": {
+    "q": "Does a kind man help people?",
+    "a": "Yes, he does."
+   },
+   "image": "heart",
+   "ref": ""
+  },
+  {
+   "id": "b15",
+   "chapter": "Qualities",
+   "word": "powerful",
+   "kind": "adjective",
+   "def": [
+    "Powerful means you can do very big things.",
+    "A powerful machine can lift a car.",
+    "Only a powerful person can do this miracle."
+   ],
+   "example": "Jesus healed a man who was blind from birth.",
+   "contrast": "Powerful is not weak. A weak man cannot lift much.",
+   "qa": {
+    "q": "Can a powerful person do big things?",
+    "a": "Yes, he can."
+   },
+   "image": null,
+   "ref": ""
+  },
+  {
+   "id": "b16",
+   "chapter": "Qualities",
+   "word": "serious",
+   "kind": "adjective",
+   "def": [
+    "Serious means you think about important things, and you do not joke.",
+    "A serious teacher does not laugh in class.",
+    "A serious problem is a big problem."
+   ],
+   "example": "The Pharisees are serious about the law.",
+   "contrast": "Serious is not funny. A funny man makes you laugh.",
+   "qa": {
+    "q": "Does a serious teacher joke in class?",
+    "a": "No, he does not."
+   },
+   "image": "law",
+   "ref": ""
+  },
+  {
+   "id": "b17",
+   "chapter": "Qualities",
+   "word": "afraid",
+   "kind": "adjective",
+   "def": [
+    "Afraid means you feel fear. You think something bad can happen.",
+    "A child is afraid of the dark. A person can be afraid of a big dog.",
+    "We say: afraid of something."
+   ],
+   "example": "The parents are afraid of the leaders.",
+   "contrast": "The opposite is not afraid. A brave man is not afraid.",
+   "qa": {
+    "q": "Are the parents afraid, or not afraid?",
+    "a": "They are afraid."
+   },
+   "image": "fear",
+   "ref": "9:22"
+  },
+  {
+   "id": "b18",
+   "chapter": "Qualities",
+   "word": "angry",
+   "kind": "adjective",
+   "def": [
+    "Angry means you feel hot inside because something is wrong.",
+    "An angry person talks loud. An angry person can say bad words.",
+    "We say: angry with a person, angry about a thing."
+   ],
+   "example": "The leaders are angry with the man.",
+   "contrast": "The opposite is calm. A calm man is not angry.",
+   "qa": {
+    "q": "Is a calm man angry?",
+    "a": "No, he is not."
+   },
+   "image": "anger",
+   "ref": ""
+  },
+  {
+   "id": "b19",
+   "chapter": "Actions and things",
+   "word": "heal",
+   "kind": "verb",
+   "def": [
+    "Heal means to make a sick person well.",
+    "A doctor can heal a broken arm. After it is healed, the arm works again.",
+    "Heal is not the same as help. You help a sick man with water. You heal him when he is well."
+   ],
+   "example": "Jesus healed the blind man. Before, he could not see. After, he could see.",
+   "contrast": "Heal is not break. Break means to make something not work.",
+   "qa": {
+    "q": "Did Jesus heal the man?",
+    "a": "Yes, he did."
+   },
+   "image": "eyes",
+   "ref": "9:6-7"
+  },
+  {
+   "id": "b20",
+   "chapter": "Actions and things",
+   "word": "miracle",
+   "kind": "noun",
+   "def": [
+    "A miracle is something that only God can do. People cannot do it.",
+    "A man who is blind from birth cannot see. When he suddenly sees, that is a miracle.",
+    "A miracle is not normal. It does not happen every day."
+   ],
+   "example": "The Bible tells about many miracles.",
+   "contrast": "A miracle is not a trick. A trick is something a man does to look strange.",
+   "qa": {
+    "q": "Can a person do a miracle alone?",
+    "a": "No. Only God can."
+   },
+   "image": null,
+   "ref": ""
+  },
+  {
+   "id": "b21",
+   "chapter": "Actions and things",
+   "word": "doubt",
+   "kind": "verb",
+   "def": [
+    "Doubt means you are not sure. You think, \"Maybe it is true, maybe not.\"",
+    "When you doubt, you do not say no. You say, \"I am not sure.\"",
+    "The opposite is believe."
+   ],
+   "example": "Some people doubt the man.",
+   "contrast": "Doubt is not the same as no.",
+   "qa": {
+    "q": "Does a person who doubts say yes?",
+    "a": "No. He is not sure."
+   },
+   "image": "question",
+   "ref": ""
+  },
+  {
+   "id": "b22",
+   "chapter": "Actions and things",
+   "word": "believe",
+   "kind": "verb",
+   "def": [
+    "Believe means you think something is true. You trust it.",
+    "A child believes his mother. He trusts her words.",
+    "Believe is a very important word in the Bible."
+   ],
+   "example": "The man believes in Jesus.",
+   "contrast": "The opposite is doubt.",
+   "qa": {
+    "q": "Does a child believe his mother?",
+    "a": "Yes, he does."
+   },
+   "image": "light",
+   "ref": "9:38"
+  },
+  {
+   "id": "b23",
+   "chapter": "Actions and things",
+   "word": "see",
+   "kind": "verb",
+   "def": [
+    "See means you use your eyes. You know what is in front of you.",
+    "You see the sun. You see a face. You see a book.",
+    "See is the opposite of blind."
+   ],
+   "example": "Before, the man was blind. Now he can see.",
+   "contrast": "See is not hear. You hear with your ears.",
+   "qa": {
+    "q": "Do you see with your ears?",
+    "a": "No. With your eyes."
+   },
+   "image": "eyes",
+   "ref": ""
+  },
+  {
+   "id": "b24",
+   "chapter": "Actions and things",
+   "word": "wash",
+   "kind": "verb",
+   "def": [
+    "Wash means to make clean with water.",
+    "You wash your hands before you eat. You wash a cup after tea.",
+    "Wash is not the same as swim. When you swim, you move in water."
+   ],
+   "example": "The man washes his eyes in the pool.",
+   "contrast": "Dirty is the opposite of clean.",
+   "qa": {
+    "q": "Do you wash with water?",
+    "a": "Yes, you do."
+   },
+   "image": "wash",
+   "ref": "9:7"
+  },
+  {
+   "id": "b25",
+   "chapter": "Actions and things",
+   "word": "mud",
+   "kind": "noun",
+   "def": [
+    "Mud is wet earth.",
+    "When it rains, the ground is wet, and you can get mud on your shoes.",
+    "Mud is soft and brown."
+   ],
+   "example": "Jesus makes mud and puts it on the man's eyes.",
+   "contrast": "Mud is not water. Mud is not stone. It is earth and water together.",
+   "qa": {
+    "q": "Is mud wet earth?",
+    "a": "Yes, it is."
+   },
+   "image": "mud",
+   "ref": "9:6"
+  },
+  {
+   "id": "b26",
+   "chapter": "Actions and things",
+   "word": "pool",
+   "kind": "noun",
+   "def": [
+    "A pool is a small place with water.",
+    "You can wash in a pool. You can swim in a big pool.",
+    "The pool in the story is called Siloam."
+   ],
+   "example": "The man washes in the pool of Siloam.",
+   "contrast": "A pool is not a river. A river is long and moves.",
+   "qa": {
+    "q": "Is a pool a place with water?",
+    "a": "Yes, it is."
+   },
+   "image": "pool",
+   "ref": "9:7"
+  },
+  {
+   "id": "b27",
+   "chapter": "Actions and things",
+   "word": "sent",
+   "kind": "verb (past)",
+   "def": [
+    "Sent means someone told you to go somewhere, or someone sent a thing.",
+    "A boss sends an email. A mother sends a child to the shop.",
+    "Send is the present. Sent is the past."
+   ],
+   "example": "The name Siloam means Sent.",
+   "contrast": "Sent is not stayed. Stayed means you did not go.",
+   "qa": {
+    "q": "Does a mother send a child to the shop?",
+    "a": "Yes, she does."
+   },
+   "image": "pool",
+   "ref": "9:7"
+  },
+  {
+   "id": "b28",
+   "chapter": "Actions and things",
+   "word": "trouble",
+   "kind": "noun",
+   "def": [
+    "Trouble means a problem with other people. Or a danger.",
+    "If you break a window, you have trouble.",
+    "The parents do not want trouble."
+   ],
+   "example": "The leaders can punish them.",
+   "contrast": "Trouble is not fun. Fun means you feel good.",
+   "qa": {
+    "q": "Does a person want trouble?",
+    "a": "No, he does not."
+   },
+   "image": "fear",
+   "ref": ""
+  },
+  {
+   "id": "b29",
+   "chapter": "Actions and things",
+   "word": "punish",
+   "kind": "verb",
+   "def": [
+    "Punish means: you do something bad to a person because he did something you do not like.",
+    "A teacher can punish a child who does not do the homework.",
+    "Punish is not help."
+   ],
+   "example": "The leaders can punish the parents.",
+   "contrast": "Punish is not reward. A reward is a good thing for good work.",
+   "qa": {
+    "q": "Is a punishment a good thing?",
+    "a": "No, it is not."
+   },
+   "image": "fear",
+   "ref": ""
+  },
+  {
+   "id": "b30",
+   "chapter": "Actions and things",
+   "word": "the law",
+   "kind": "noun",
+   "def": [
+    "The law means the rules of God in the Bible time.",
+    "The Pharisees teach the law. They want people to keep it.",
+    "The law is also the rules of a country: do not steal."
+   ],
+   "example": "The Pharisees are serious about the law.",
+   "contrast": "The law is not a game.",
+   "qa": {
+    "q": "Do the Pharisees teach the law?",
+    "a": "Yes, they do."
+   },
+   "image": "law",
+   "ref": ""
+  },
+  {
+   "id": "b31",
+   "chapter": "Actions and things",
+   "word": "the Sabbath",
+   "kind": "noun",
+   "def": [
+    "The Sabbath is a holy day of rest. It is the seventh day.",
+    "On the Sabbath, people stop their normal work.",
+    "For you, the Sabbath is from Friday sunset to Saturday sunset."
+   ],
+   "example": "It was the Sabbath when Jesus healed the man.",
+   "contrast": "The Sabbath is not a work day.",
+   "qa": {
+    "q": "Is the Sabbath a work day?",
+    "a": "No, it is a day of rest."
+   },
+   "image": "light",
+   "ref": "9:14"
+  },
+  {
+   "id": "b32",
+   "chapter": "Actions and things",
+   "word": "light",
+   "kind": "noun",
+   "def": [
+    "Light helps you to see. The sun gives light. A lamp gives light.",
+    "When there is no light, it is dark.",
+    "Jesus says, \"I am the light of the world.\""
+   ],
+   "example": "The room is dark. Turn on the light.",
+   "contrast": "Light is the opposite of dark.",
+   "qa": {
+    "q": "Does light help you see?",
+    "a": "Yes, it does."
+   },
+   "image": "light",
+   "ref": "9:5"
+  },
+  {
+   "id": "b33",
+   "chapter": "Actions and things",
+   "word": "truth",
+   "kind": "noun",
+   "def": [
+    "Truth is what is real. It is what really happened.",
+    "When you tell the truth, you say what is real.",
+    "The word has the sound th. Put your tongue between your teeth."
+   ],
+   "example": "He tells the truth.",
+   "contrast": "Truth is not a lie.",
+   "qa": {
+    "q": "Is the truth a lie?",
+    "a": "No, it is not."
+   },
+   "image": "truth",
+   "ref": ""
+  },
+  {
+   "id": "b34",
+   "chapter": "Actions and things",
+   "word": "lie",
+   "kind": "verb and noun",
+   "def": [
+    "Lie means you say something that is not true.",
+    "A child says, \"I did not break the cup,\" but he did. That is a lie.",
+    "A person who lies is not honest."
+   ],
+   "example": "He doesn't lie.",
+   "contrast": "Lie is the opposite of tell the truth.",
+   "qa": {
+    "q": "Does an honest man lie?",
+    "a": "No, he does not."
+   },
+   "image": "truth",
+   "ref": ""
+  },
+  {
+   "id": "b35",
+   "chapter": "Useful phrases for the lesson",
+   "word": "phrase",
+   "kind": "noun",
+   "def": [
+    "A phrase is a short group of words. It is not a whole sentence.",
+    "\"Afraid of\" is a phrase. \"He is not afraid of the Pharisees\" is a sentence.",
+    "We learn phrases inside sentences."
+   ],
+   "example": "Tell the truth is a phrase.",
+   "contrast": "A phrase is not one word.",
+   "qa": {
+    "q": "Is a phrase one word?",
+    "a": "No. It is a group of words."
+   },
+   "image": null,
+   "ref": ""
+  },
+  {
+   "id": "b36",
+   "chapter": "Useful phrases for the lesson",
+   "word": "definition",
+   "kind": "noun",
+   "def": [
+    "A definition tells you what a word means.",
+    "\"Honest means you say the truth\" is a definition.",
+    "A good definition uses easy words."
+   ],
+   "example": "This book gives a definition for each word.",
+   "contrast": "A definition is not a story.",
+   "qa": {
+    "q": "Does a definition tell you what a word means?",
+    "a": "Yes, it does."
+   },
+   "image": null,
+   "ref": ""
+  },
+  {
+   "id": "b37",
+   "chapter": "Useful phrases for the lesson",
+   "word": "task / exercise",
+   "kind": "noun",
+   "def": [
+    "A task is a small job in the lesson. An exercise is the same idea.",
+    "Your task can be: Repeat. Or: Answer.",
+    "You can ask: What is the task?"
+   ],
+   "example": "The task is: Repeat the sentence.",
+   "contrast": "A task is not a test. It is practice.",
+   "qa": {
+    "q": "Is a task a small job?",
+    "a": "Yes, it is."
+   },
+   "image": null,
+   "ref": ""
+  },
+  {
+   "id": "b38",
+   "chapter": "Useful phrases for the lesson",
+   "word": "in other words",
+   "kind": "phrase",
+   "def": [
+    "In other words means: I say the same idea with easier words.",
+    "You use it when someone does not understand.",
+    "After it, say the idea in a simple way."
+   ],
+   "example": "He is honest. In other words, he doesn't lie.",
+   "contrast": "It is not a new idea. It is the same idea.",
+   "qa": {
+    "q": "Does it give a new idea?",
+    "a": "No. The same idea."
+   },
+   "image": null,
+   "ref": ""
+  },
+  {
+   "id": "b39",
+   "chapter": "Useful phrases for the lesson",
+   "word": "Could you say that again?",
+   "kind": "phrase",
+   "def": [
+    "Use it when you do not understand.",
+    "It is polite. You ask the teacher to say it once more.",
+    "You can add: more slowly, please."
+   ],
+   "example": "Could you say that again, more slowly?",
+   "contrast": "It is not rude. It is a good question.",
+   "qa": {
+    "q": "Is it polite?",
+    "a": "Yes, it is."
+   },
+   "image": "question",
+   "ref": ""
+  }
+ ]
+}

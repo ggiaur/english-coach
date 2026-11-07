@@ -1,0 +1,126 @@
+{
+ "title": "John 9",
+ "translation": "World English Bible (WEB), public domain",
+ "verified": [
+  {
+   "v": "9:1",
+   "text": "As he passed by, he saw a man blind from birth."
+  },
+  {
+   "v": "9:2",
+   "text": "His disciples asked him, \"Rabbi, who sinned, this man or his parents, that he was born blind?\""
+  },
+  {
+   "v": "9:3",
+   "text": "Jesus answered, \"This man didn't sin, nor did his parents, but that the works of God might be revealed in him."
+  },
+  {
+   "v": "9:4",
+   "text": "I must work the works of him who sent me while it is day. The night is coming, when no one can work."
+  },
+  {
+   "v": "9:5",
+   "text": "While I am in the world, I am the light of the world.\""
+  }
+ ],
+ "verify_note": "Verses 1 to 5 were checked against three WEB pages on 2026-11-06. In verse 3 the older WEB edition has different wording. Verses 6 to 41: the wording is not stored yet. Open the link and read the verse yourself.",
+ "verse_link": "https://thebible.ch/WEB/JHN/9/",
+ "scenes": [
+  {
+   "id": "sc1",
+   "title": "A man who was blind from birth",
+   "verses": "9:1",
+   "image": "man-blind",
+   "status": "verified",
+   "lines": [
+    "Teacher: Jesus passes by. He sees a man.",
+    "Teacher: The man is blind. He was blind from birth.",
+    "Teacher: From birth means: from the first day of his life."
+   ]
+  },
+  {
+   "id": "sc2",
+   "title": "The question",
+   "verses": "9:2-5",
+   "image": "disciples",
+   "status": "verified",
+   "lines": [
+    "Teacher: The disciples ask a question. They want to know why the man is blind.",
+    "Teacher: Jesus answers. The blindness is not a punishment.",
+    "Teacher: Jesus says, \"I am the light of the world.\""
+   ]
+  },
+  {
+   "id": "sc3",
+   "title": "Mud and the pool",
+   "verses": "9:6-7",
+   "image": "pool",
+   "status": "wording_not_checked",
+   "lines": [
+    "Teacher: Jesus makes mud. He puts it on the man's eyes.",
+    "Teacher: He tells the man to go and wash in the pool of Siloam.",
+    "Teacher: The man goes. He washes. Now he can see."
+   ]
+  },
+  {
+   "id": "sc4",
+   "title": "The neighbors ask",
+   "verses": "9:8-12",
+   "image": "question",
+   "status": "wording_not_checked",
+   "lines": [
+    "Teacher: The neighbors see the man. They are not sure.",
+    "Teacher: Some say, \"It is the same man.\" Some say, \"No, it is a different man.\"",
+    "Teacher: The man says, \"I am the man.\""
+   ]
+  },
+  {
+   "id": "sc5",
+   "title": "The Pharisees ask",
+   "verses": "9:13-17",
+   "image": "pharisees",
+   "status": "wording_not_checked",
+   "lines": [
+    "Teacher: It was the Sabbath when Jesus healed him.",
+    "Teacher: The Pharisees ask the man many questions.",
+    "Teacher: They do not agree with each other. Some are against Jesus. Some ask, \"How can a bad man do this?\""
+   ]
+  },
+  {
+   "id": "sc6",
+   "title": "The parents",
+   "verses": "9:18-23",
+   "image": "parents",
+   "status": "wording_not_checked",
+   "lines": [
+    "Teacher: The leaders call the man's parents.",
+    "Teacher: The parents say, \"He is our son. He was born blind.\"",
+    "Teacher: They do not say more. They are afraid of the leaders. They say, \"He is old enough. Ask him.\""
+   ]
+  },
+  {
+   "id": "sc7",
+   "title": "The man speaks",
+   "verses": "9:24-34",
+   "image": "shield",
+   "status": "wording_not_checked",
+   "lines": [
+    "Teacher: The leaders call the man again. They are angry.",
+    "Teacher: The man is not afraid. He tells them what he knows.",
+    "Teacher: He says he was blind and now he sees. The leaders send him away."
+   ]
+  },
+  {
+   "id": "sc8",
+   "title": "The man believes",
+   "verses": "9:35-38",
+   "image": "light",
+   "status": "wording_not_checked",
+   "lines": [
+    "Teacher: Jesus finds the man again.",
+    "Teacher: Jesus talks with him.",
+    "Teacher: The man believes in Jesus."
+   ]
+  }
+ ]
+}

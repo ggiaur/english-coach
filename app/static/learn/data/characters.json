@@ -1,0 +1,166 @@
+{
+ "source_note": "Teacher's words. Not Bible text.",
+ "characters": [
+  {
+   "id": "man",
+   "name": "The man who was blind",
+   "image": "man-blind",
+   "verses": "9:1; 9:6-9:38",
+   "sentences": [
+    "He is a man. He was blind from birth.",
+    "Before, he could not see. Now he can see.",
+    "He goes to the pool and washes his eyes.",
+    "He answers the questions of the Pharisees.",
+    "He tells the truth, and he is not afraid.",
+    "He is an adult. His parents say he is old enough to answer for himself."
+   ],
+   "traits": [
+    {
+     "w": "honest",
+     "s": "He tells the truth."
+    },
+    {
+     "w": "brave",
+     "s": "He is not afraid of the leaders."
+    },
+    {
+     "w": "direct",
+     "s": "He says clearly what he knows."
+    },
+    {
+     "w": "logical",
+     "s": "He gives a simple reason."
+    },
+    {
+     "w": "grateful",
+     "s": "He thanks God for his eyes."
+    }
+   ],
+   "note": "Verse 1 is Bible text. The other sentences are the teacher's summary of the story (wording of verses 6 to 38 not checked here). The traits are the teacher's reading of the story, not the Bible's words. About his age: your lesson sentence said the Bible does not say how old he was. That was too strong. His parents say he is old enough (about 9:21, wording to check), so he is an adult."
+  },
+  {
+   "id": "parents",
+   "name": "His parents",
+   "image": "parents",
+   "verses": "9:18-23",
+   "sentences": [
+    "They are his mother and his father.",
+    "They are alive. The leaders call them.",
+    "They say, \"He is our son. He was born blind.\"",
+    "They do not know how he can see now.",
+    "They are afraid of the leaders.",
+    "They do not want trouble, so they say, \"Ask him.\""
+   ],
+   "traits": [
+    {
+     "w": "afraid",
+     "s": "They are afraid of the leaders."
+    },
+    {
+     "w": "careful",
+     "s": "They say only what they know."
+    },
+    {
+     "w": "honest",
+     "s": "They say what is true."
+    },
+    {
+     "w": "worried",
+     "s": "They worry about trouble."
+    }
+   ],
+   "note": "Teacher's summary of the story (wording of verses 18 to 23 not checked here). The Bible says they were afraid of the Jewish leaders. The Pharisees are among the leaders. That is why the card sentence says \"the leaders\"."
+  },
+  {
+   "id": "pharisees",
+   "name": "The Pharisees",
+   "image": "pharisees",
+   "verses": "9:13-17; 9:24-34",
+   "sentences": [
+    "The Pharisees are religious teachers.",
+    "They know the law. The law is the rules of God.",
+    "They are serious about the Sabbath.",
+    "They ask the man many questions.",
+    "They do not all think the same. Some say, \"This is not from God.\" Some ask, \"How can a bad man do this?\"",
+    "At the end, they are angry and proud. They send the man away."
+   ],
+   "traits": [
+    {
+     "w": "serious",
+     "s": "They are serious about the law."
+    },
+    {
+     "w": "proud",
+     "s": "They think they know everything."
+    },
+    {
+     "w": "angry",
+     "s": "They are angry with the man."
+    },
+    {
+     "w": "divided",
+     "s": "They do not agree with each other."
+    }
+   ],
+   "note": "Teacher's summary of the story (wording not checked here). Important: not every Pharisee in the story is the same. The chapter shows them divided. Do not read it as a statement about all Pharisees."
+  },
+  {
+   "id": "jesus",
+   "name": "Jesus",
+   "image": "light",
+   "verses": "9:1-5; 9:6-7; 9:35-38",
+   "sentences": [
+    "Jesus sees the man. He stops.",
+    "Jesus heals the man. The man can see.",
+    "Jesus says, \"I am the light of the world.\"",
+    "Jesus is kind to the man. He helps him.",
+    "Jesus is powerful. Only God can do this.",
+    "Jesus finds the man again after the leaders send him away."
+   ],
+   "traits": [
+    {
+     "w": "kind",
+     "s": "Jesus helps the man."
+    },
+    {
+     "w": "powerful",
+     "s": "He heals a man who was blind from birth."
+    },
+    {
+     "w": "caring",
+     "s": "He finds the man again."
+    },
+    {
+     "w": "light",
+     "s": "He says, \"I am the light of the world.\""
+    }
+   ],
+   "note": "This page shows a light and not a picture of Jesus. This is a rule of the project (your decision, 2026-11-07). Sentence 3 is Bible text (9:5, WEB). The other sentences are the teacher's summary."
+  },
+  {
+   "id": "disciples",
+   "name": "The disciples",
+   "image": "disciples",
+   "verses": "9:2",
+   "sentences": [
+    "The disciples are friends of Jesus.",
+    "They follow him. They learn from him.",
+    "They see the blind man.",
+    "They ask Jesus a question.",
+    "They think the blindness is a punishment.",
+    "Jesus says, \"No.\" He answers them."
+   ],
+   "traits": [
+    {
+     "w": "curious",
+     "s": "They ask a question."
+    },
+    {
+     "w": "loyal",
+     "s": "They follow Jesus."
+    }
+   ],
+   "note": "Verse 2 is Bible text (see above). The other sentences are the teacher's summary. Jesus' answer is in verse 3 (see above)."
+  }
+ ]
+}

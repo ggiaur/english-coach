@@ -54,6 +54,10 @@ Legfeljebb kétszer próbáljuk teljesen újra két külön napon. Harmadszor f�
 
 A `CLAUDE.md` rögzíti, hogy ennek a repónak az írását végleg engedélyezted. A tényleges hozzáférést a csatlakozás beállítása adja, azt Claude nem változtatja.
 
+## Tanulóoldalak (`/learn`)
+
+János 9 (szöveg, jelenetek, 5 szereplő), kifejezéskártyák, tankönyv. Minden mondat mellett lejátszó: ▶ természetes, 🐢 lassú, „4 sebesség” (lassú, lassú, közepes, természetes). A kártyán: kifejezés, teljes mondat, nyelvtani megjegyzés. Gyakorló mód: a mondat rejtve, először te mondod. Jézusról nincs kép. A telepítés a saját Dockerre: `DOCKER.md`.
+
 ## Haladási weboldal
 
 Az app `/progress` oldala: napi lista pipákkal, kattintható dallinkek, SESSION RECORD vázlat. A pipák csak abban a böngészőben maradnak meg, ahol bepipáltad (nincs bejelentkezés, nincs szerveren tárolt adat). Ha több eszközön vagy bejelentkezéssel akarod, azt külön döntjük el.

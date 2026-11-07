@@ -89,6 +89,7 @@ Common current issues include:
 - Song lane is 10 minutes per weekday. Total plan about 6 hours per week, to be reviewed every two weeks for actual time, time of day, freshness and session length. (2026-11-06)
 - Timing and level estimates are not guarantees; they depend on health, rest, method and individual learning speed. (2026-11-06)
 - Wants a web page for progress with clickable music links: `/progress` in the app. Progress is kept in the browser only. (2026-11-06)
+- Wants phrase cards with a full sentence and a short grammar note (a form of be, the). Wants a textbook with English explanations, pictures for people, qualities and scenes (never Jesus), audio with local open source Piper, a password, his own Docker host. May write his own phrase notes by hand. (2026-11-07)
 - Early sentences and tasks must be simpler: one instruction, one question, up to 6 words per sentence, `Repeat.` not `Say it`. (2026-11-07)
 - After lesson-mode ends, explanations of system or evaluation may be in Hungarian; the lesson itself is English only.
 
@@ -125,6 +126,16 @@ Still unstable: `the` / `a`, `tried`, `saw`, and long question comprehension.
 - Errors: `for` for `from`, missing `the`, `helps` without `s`, light/like.
 - Task confusion: `Say it` was repeated literally; compound questions and long sentences were too hard. New rule: `TASK_LANGUAGE.md` and `SYSTEM.md` section 28.
 - Daily free speaking and Genesis review were not done.
+
+## Recent observed progress — 2026-11-07 (Bible track, second voice session, daily free speaking)
+
+- Spoke freely about the blind man with many pauses, in short sentences: `He is clever. He is brave. He is not afraid of the Pharisees.` Asked for words in Hungarian while speaking (logical, young, Pharisees, parents).
+- Built `He is not afraid of the Pharisees.` in parts. Slips: missing `of`, missing `the`. Correct at the end of two later rounds (not yet secure).
+- `tells` (not `is tell`) and `a direct man` slipped three times, then correct. `truth` (th sound) was heard as `choose` by speech recognition.
+- Used real classroom phrases: `Could you say that again?`, `Please continue.`, `Repeat, please.`, `How old was he?`
+- Listened to about 20 minutes of English word explanations at his own request. Liked: explanations in English, step by step, words around people and qualities.
+- Still confusing: `Same words` and `Say only the last word` were repeated as sentences; two-step tasks; choice questions with new words (`hides or says`).
+- Asked many English meanings of single words (task, phrase, definition, in other words). Good sign: he asks in English.
 
 ## Next priorities
 

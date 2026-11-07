@@ -39,6 +39,8 @@ For ChatGPT Projects or any environment with persistent project instructions, co
 - `STATE_PROTOCOL.md`, `PROGRESS_LOG.md`, `ITEM_TRACKER.md` — how state travels between tutors.
 - `DAILY_SPEAKING.md` — daily free speaking with end feedback, plus the synonym and collocation bank.
 - `TASK_LANGUAGE.md` — simple task words and turn rules for the early weeks.
+- `app/static/learn/` — the learning website (`/learn`): John 9, characters, phrase cards, textbook, audio.
+- `DOCKER.md` (repo root) — run it on your own Docker host with a password and local Piper speech.
 - `HASZNALAT.md` — short how-to in Hungarian.
 - `QUALITY_CHECKLIST.md` — pre-flight and live lesson checks.
 - `CHANGELOG.md` — methodology changes.
